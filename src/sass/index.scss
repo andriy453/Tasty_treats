@@ -1,5 +1,5 @@
-@import './common';
-@import './example';
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
 
 @font-face {
     font-family: Inter-Regular;
@@ -15,10 +15,58 @@
         --gray:#cecdcd;
     }
   body {
-    font-family: 'Inter-Regular', sans-serif;
+    font-family: Inter-Regular, sans-serif;
     background-color:var(--white);
     color: var(--black);
+    text-align: center;
   }
+  *{
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *, *:before, *:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  :focus, :active{outline: none;}
+  a:focus, a:active{outline: none;}
+
+  nav,footer,header,aside{display: block;}
+  
+  html, body{
+  
+    height: 100%;
+    width: 100%;
+    font-style: 100%;
+    line-height: 1;
+    font-style: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  input, button, textarea{font-family: inherit;}
+  
+  input::-ms-clear{display:none;}
+  
+  button{cursor: pointer;}
+  
+  button::-moz-focus-inner{padding: 0;border: 0;}
+  
+  a, a:visited{text-decoration: none;}
+  
+  a:hover{text-decoration: none;}
+  
+  ul li{list-style-type: none;}
+  
+  img{vertical-align: top;}
+  
+  h1,h2, h3, h4, h5, h6{font-style: inherit; font-weight: 400;}
+
   .container {
     width: 100%;
     padding-left: 5px;
@@ -42,7 +90,8 @@
   @media screen and (min-width: 1280px) {
     .container {
       max-width: 1200px;
-      padding-left: 12px;
-      padding-right: 12px;
+      padding-left: 100px;
+      padding-right: 100px;
     }
   }
+
