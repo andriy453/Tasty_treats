@@ -33,18 +33,6 @@
     border-radius: 8px;
     margin-top: 6px;
   }
-  .modal input {
-    padding: 0.7rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 0.9em;
-  }
-  
-  .modal p {
-    font-size: 0.9rem;
-    color: #777;
-    margin: 0.4rem 0 0.2rem;
-  }
   
   button {
     cursor: pointer;
@@ -106,6 +94,7 @@
     line-height: 18px;
     display: flex;
     color: var(--black_2_50);
+    margin-top: 14px;
   }
 
   .rating {
@@ -117,4 +106,30 @@
     width: 94px;
     height: 18px;
     margin-left: 6px;
+  }
+
+  .ingridients_list {
+    // display: flex;
+    margin-top: 33px;
+  }
+
+  .ingridient_item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(5, 5, 5, 0.1);
+    width: 295px;
+    height: 26px;
+    padding-bottom: 8px;
+  }
+
+  .ingridient_item:not(:last-of-type) {
+    margin-bottom: 14px;
+  }
+
+  .ingridient_name {
+    color: var(--black_2);
+  }
+
+  .ingriedient_amount{
+    color: var(--black_2_50);
   }
