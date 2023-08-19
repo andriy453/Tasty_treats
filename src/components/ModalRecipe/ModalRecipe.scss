@@ -133,3 +133,19 @@
   .ingriedient_amount{
     color: var(--black_2_50);
   }
+
+  .tags_list {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tag_item {
+    border-radius: 35px;
+    border: 1px solid rgba(5, 5, 5, 0.20);
+    height: 30px;
+  }
+
+  .tag_item p {
+    padding: 8px 16px;
+  }
