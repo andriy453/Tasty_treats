@@ -25,6 +25,7 @@ const openModal = function () {
 
     // Disable scroll
     refs.body.style.overflow = "hidden";
+    refs.modal.style.overflow = "auto";
        
 };
 
