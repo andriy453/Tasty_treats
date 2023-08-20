@@ -1,3 +1,3 @@
-import cart from './components/cards/cards.js'
-import Categories from './components/Categories/Categories.js'
+import './components/cards/cards.js'
+import './components/Categories/Categories.js'
 
