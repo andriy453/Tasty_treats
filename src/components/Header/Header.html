@@ -1,0 +1,72 @@
+<header class="header">
+  <div class="header-container">
+    <nav class="header-navigation">
+      <ul class="header-nav-list list">
+        <li class="header-nav-item">
+          <a href="./index.html" class="header-nav-link link current">Home</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="./favorites.html" class="header-nav-link link">Favorites</a>
+        </li>
+      </ul>
+    </nav>
+    <a href="./index.html" class="header-logo-link link"
+      >tasty<span class="logo-link-span">treats.</span></a
+    >
+    <div class="header-btn">
+      <a href="tel:+380730000000" class="shopping-cart-btn link">
+        <svg class="shopping-cart-pic" width="24" height="24">
+          <use href="./images/sprite.svg#icon-shopping-cart"></use>
+        </svg>
+      </a>
+      <!-- <button class="shopping-cart-btn" type="button">
+            <svg class="shopping-cart-pic" width="24" height="24">
+              <use href="./images/icons.svg#icon-shopping-cart"></use>
+            </svg>
+          </button> -->
+      <label id="switch" class="switch switch-tab">
+        <input
+          type="checkbox"
+          onchange="toggleTheme()"
+          id="slider"
+          class="switch-input"
+        />
+        <span class="slider round"></span>
+      </label>
+      <button class="mobile-menu-open" data-menu-open type="button">
+        <svg class="mobile-menu-pic" width="32" height="32">
+          <use href="./images/sprite.svg#icon-hamburger"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="mob-modal is-hidden" data-menu>
+    <div class="modal-container">
+      <div class="mob-menu-top-part">
+        <button type="button" class="menu-close-btn" data-menu-close>
+          <svg class="menu-close-pic" width="32" height="32">
+            <use href="./images/sprite.svg#icon-x"></use>
+          </svg>
+        </button>
+        <nav class="nav-mob-menu">
+          <ul class="mob-menu-list list">
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link link current-mob" href="./index.html"
+                >Home</a
+              >
+            </li>
+            <li class="mobile-nav-item">
+              <a class="mobile-nav-link link" href="./favorites.html"
+                >Favorites</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <label id="mob-switch" class="switch-mob switch">
+        <input type="checkbox" onchange="toggleTheme()" class="switch-input" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+</header>

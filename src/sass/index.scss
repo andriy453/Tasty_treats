@@ -1,11 +1,32 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 @import '../components/cards/styles.scss';
+@import '../components/Header/Header.scss';
 // @import '../components/Categories/Categories.scss';
 
 @font-face {
     font-family: Inter-Regular;
     src: url(../../Fonts/Inter-Regular.ttf);
   }
+body.light {
+  --bg-main: #F8F8F8;
+  --txt-color: #050505;
+  --bg-mob-menu: #9BB537;
+  --accent: #9BB537;
+  --current-mob: #ffffff;
+  --gray-color-btn: rgba(5, 5, 5, 0.30);
+  --oragne: #EEA10C;
+}
+
+body.dark {
+  --bg-main: #161616;
+  --txt-color: #ffffff;
+  --bg-mob-menu: #050505;
+  --accent: #9BB537;
+  --current-mob: #9BB537;
+  --gray-color-btn: rgba(255, 255, 255, 0.3);
+  --oragne: #EEA10C;
+}
+
     :root{
       --bg-main: #F8F8F8;
       --txt-color: #050505;
