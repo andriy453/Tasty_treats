@@ -1,0 +1,70 @@
+.btn-categories {
+    max-width: 176px;
+  
+    font-family: Inter;
+    font-size: 18px;
+  
+    line-height: 1.2;
+    color: rgba(5, 5, 5, 0.5);
+  
+    padding: 14px 29px;
+    border-radius: 15px;
+  
+    border-color: rgba(5, 5, 5, 0.2);
+  
+    margin-bottom: 24px;
+  }
+  
+  .category-item {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 1.3;
+    color: rgba(5, 5, 5, 0.3);
+  }
+  
+  .scrollable-list {
+    max-width: 326px;
+    height: 198px;
+    //   border: 1px solid black;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  
+  .categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .popular-recipes {
+    margin-bottom: 40px;
+  }
+  
+  .select-text {
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 1.2;
+    color: rgba(5, 5, 5, 0.5);
+    margin-bottom: 8px;
+  }
+  
+  .mob-time-area {
+    display: flex;
+    gap: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    .scrollable-list {
+      max-width: 176px;
+      height: 416px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+  }
+  .active{
+    color: rgb(255, 0, 0);
+  }

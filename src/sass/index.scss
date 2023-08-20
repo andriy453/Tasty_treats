@@ -1,11 +1,18 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 @import '../components/cards/css/styles.scss';
+@import '../components/Categories//Categories.scss';
 
 @font-face {
     font-family: Inter-Regular;
     src: url(../../Fonts/Inter-Regular.ttf);
   }
     :root{
+      --bg-main: #F8F8F8;
+      --txt-color: #050505;
+      --bg-secondary: #E0E9F5;
+      --accent: #9BB537;
+
+
         --white: #F8F8F8;
         --black: #161616;
         --black_2: #050505;
@@ -16,7 +23,7 @@
     }
   body {
     font-family: Inter-Regular, sans-serif;
-    background-color:var(--white);
+    background-color:var(--bg-main);
     color: var(--black);
     text-align: center;
   }
@@ -94,4 +101,12 @@
       padding-right: 100px;
     }
   }
+
+
+
+
+
+
+
+
 
