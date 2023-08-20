@@ -6,9 +6,7 @@ export class axiosRecipes {
   async getFilteredData(filters) {
     return axios
       .get(`${this.BASE_URL}${filters}`)
-      .then(response => {
-        return response.data;
-      })
+      .then(response => response.data)
       .catch(error => {
         console.error('Error:', error);
       });
