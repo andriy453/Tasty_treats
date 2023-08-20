@@ -5,7 +5,7 @@
   "homepage": "https://andriy453.github.io/Tasty_treats",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Tasty_treats/"
+    "build": "parcel build src/*.html  --public-url ./Tasty_treats/ "
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,13 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "babel-preset-minify": "^0.5.2",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
     "swiper": "^10.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.10",
     "@parcel/transformer-sass": "^2.6.0",
     "buffer": "^6.0.3",
     "parcel": "^2.6.0",

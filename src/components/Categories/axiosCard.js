@@ -22,6 +22,7 @@ export class axiosCard {
           tags: this.tags,
         },
       });
+
       return response.data;
     } catch (err) {
       console.log(err);
