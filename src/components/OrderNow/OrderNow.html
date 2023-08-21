@@ -1,0 +1,76 @@
+<button class="roz style-btn-site" id="openModal">Order Now</button>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <div class="">
+      <div class="">
+        <h2 class="font-style">Order Now</h2>
+        <div class="">
+          <form class="modal-form-stl">
+            <label class="modal-style">
+              <span class="modal-style-input-text">Name</span>
+              <input
+                class="modal-style-input"
+                type="text"
+                name="user_name"
+                type="text"
+                minlength="2"
+                maxlength="100"
+                autofocus
+                required
+              />
+            </label>
+
+            <label class="modal-style">
+              <span class="modal-style-input-text">Phone number</span>
+              <input
+                class="modal-style-input"
+                type="tel"
+                name="user_phone"
+                minlength="11"
+                maxlength="17"
+                pattern="[+0-9]{3} [0-9]{3} [0-9]{7}"
+                title="+xx xxx xxxxxxx"
+                required
+              />
+            </label>
+            <label class="modal-style">
+              <span class="modal-style-input-text">Email</span>
+              <input
+                class="modal-style-input"
+                type="email"
+                name="user_email"
+                required
+              />
+            </label>
+            <label class="modal-style">
+              <span class="modal-style-input-text">Comment</span>
+              <textarea
+                class="modal-style-input"
+                placeholder="Write your comment here, please."
+                name="user_comment"
+              ></textarea>
+            </label>
+            <button class="modal-btn-modal-form hover-btn" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ... (код формы) ... -->
+
+<div id="messageBox" class="message-box">
+  <p id="messageText"></p>
+  <button id="okButton">ОК</button>
+</div>
+
+<div id="thanksBox" class="message-box">
+  <p>Thank you for your order, we will contact you shortly!</p>
+  <button class="closeThanksBtn" id="closeThanksButton">ОК</button>
+</div>
