@@ -11,20 +11,15 @@ events();
 
 function murkap(mar) {
   div.insertAdjacentHTML(
-    'beforeend',
-    mar.map(mar => {
+    'beforeend',mar
+    .map(mar => {
         return `
         <swiper-slide  class="slide">
         <div class='slider_img1'> <img class="img_imgUrl" src="${mar.cook.imgUrl}" alt=""></div>
         <div class='slider_img2'><img class="img_previewUrl" src="${mar.topic.previewUrl}" alt=""></div>
         <div class='slider_img3'><img class="img_imgWebpUrl" src="${mar.topic.imgWebpUrl}" alt=""></div>
-      </swiper-slide>
-      
-      
-              `;
+      </swiper-slide>`;
       })
       .join('')
   );
-  console.log(mar.topic.previewUrl)
-  console.log(mar.topic.imgWebpUrl)
 }
