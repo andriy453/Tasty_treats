@@ -2,9 +2,9 @@ import { debounce } from "lodash";
 
 import { axiosRecipes } from './axiosFilters';
 import { axiosCard } from './axiosCard';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import SlimSelect from 'slim-select';
-import 'slim-select/dist/slimselect.css';
+import Notify  from 'notiflix/build/notiflix-notify-aio';
+import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
+import   'slim-select/dist/slimselect.css'; 
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 const categoriesRef = 'categories';
@@ -109,7 +109,7 @@ function handleCategory(e) {
   e.target.classList.add('active');
 }
 
-refs.inputEl.addEventListener('input', _.debounce(handleInputEl, 300));
+refs.inputEl.addEventListener('input', debounce(handleInputEl, 300));
 
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
@@ -221,8 +221,6 @@ if (window.screen.width >= 1280) {
   showRecipesAdapt();
 
 axiosCardInstance.query = inputValue;
-
-
 }
 
 //Якщо рецептів не знайдено, або показати рецепти
@@ -393,10 +391,9 @@ function createGalleryCard(searchResults) {
       })
       .join('');
   }
-
 }
 
-      }
+      
 
 
 
