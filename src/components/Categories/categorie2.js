@@ -22,7 +22,7 @@ const refs = {
   btn_right: document.querySelector('.btn-right'),
   btn_left: document.querySelector('.btn-left1'),
   btn_end: document.querySelector('.btn-right-end'),
-  btn_categories: document.querySelector('.btn-categories'),
+  btn_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector(".reset-filter"),
 
 };
