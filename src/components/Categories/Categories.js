@@ -52,8 +52,8 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients =>
     const optionEl = document.createElement('option');
     optionEl.value = ingredient._id; //тут треба не name, а id
     optionEl.id = ingredient._id;
+    optionEl.textContent = ingredient.name;
     refs.ingredientsEl.appendChild(optionEl);
-    // optionEl.textContent = ingredient.name;
   })
 );
 
