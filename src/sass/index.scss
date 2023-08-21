@@ -1,9 +1,11 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+@import '../components/PopularRecipes/PopularRecipes.scss';
+
+
 @import '../components/cards/styles.scss';
 @import '../components/Header/Header.scss';
 @import '../components/Categories/Categories.scss';
-
 
 @font-face {
     font-family: Inter-Regular;
