@@ -53,7 +53,7 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients =>
     optionEl.value = ingredient._id; //тут треба не name, а id
     optionEl.id = ingredient._id;
     refs.ingredientsEl.appendChild(optionEl);
-    optionEl.textContent = ingredient.name;
+    // optionEl.textContent = ingredient.name;
   })
 );
 
