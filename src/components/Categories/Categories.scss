@@ -5,13 +5,12 @@
     font-size: 18px;
   
     line-height: 1.2;
-    color: rgba(5, 5, 5, 0.5);
-  
+    color: var(--grey);
+  border: 1px solid var(--grey);
     padding: 14px 29px;
     border-radius: 15px;
-  
-    border-color: rgba(5, 5, 5, 0.2);
-  
+
+  background-color: var(--bg-main);
     margin-bottom: 24px;
   }
   
@@ -50,7 +49,7 @@
     font-family: Inter;
     font-size: 12px;
     line-height: 1.2;
-    color: rgba(5, 5, 5, 0.5);
+    color: var(--grey);
     margin-bottom: 8px;
   }
   

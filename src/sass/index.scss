@@ -6,6 +6,7 @@
 @import '../components/cards/styles.scss';
 @import '../components/Header/Header.scss';
 @import '../components/Categories/Categories.scss';
+@import '../components/Hero/Hero.scss';
 
 @font-face {
     font-family: Inter-Regular;
@@ -66,7 +67,7 @@
   --primary-raiting: #1e1e1e;
   --border-pag: #9bb537;
   --option-color: #050505;
-  --grey:rgba(255, 255, 255, 0.30);;
+  --grey:rgba(255, 255, 255, 0.50);
 }
 
   body {
@@ -153,6 +154,10 @@
       padding-right: 100px;
     }
   }
+
+
+
+
 
 
 

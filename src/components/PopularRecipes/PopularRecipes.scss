@@ -7,7 +7,7 @@
     }
   }
   .popular-title {
-    color: var(--black_2);
+    color: var(--txt-color);
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
@@ -34,7 +34,7 @@
   }
 
   .recipe-title {
-    color: var(--black_2);
+    color: var(--txt-color);
     text-align: left;
     font-size: 14px;
     font-weight: 600;
@@ -51,7 +51,7 @@
   }
  
   .info-item_recipes {
-    color: rgba(5, 5, 5, 0.80);
+    color:var(--txt-color);
     font-size: 12px;
     font-weight: 400;
     line-height: 1.4;

@@ -77,6 +77,7 @@ let inputValue;
 let  totalPages = 1;
 let  arayRecept;
 let limitID;
+let results =[];
 
 let activeCategories ;
 
@@ -110,12 +111,13 @@ function handleInputEl(e) {
   inputValue = e.target.value;
   axiosCardInstance.query = inputValue;
   console.log(inputValue);
-  let filter = arayRecept.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
+
   axiosCardInstance.getCardData().then(data => {
+    let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
     console.log('це рецепти', filter );
-    if(filter.length === 0){
-      return console.log('njilj')
-    }
+    // if(filter.length === 0){
+    //   return 
+    // }
     refs.gallery.innerHTML =  createGalleryCard(filter)
   });
 }
@@ -128,6 +130,10 @@ function handleArea(e) {
  
   console.log('areaId:', selectedAreaId);
   axiosCardInstance.getCardData().then(data => {
+      if(!data.results){
+      console.log('jjjjjjjj')
+      refs.gallery.innerHTML =  MarkapCard()
+    }
     console.log('це рецепти', data);
     arayRecept = data.results;
     refs.gallery.innerHTML =  createGalleryCard(data.results)
@@ -142,6 +148,10 @@ function handleTime(e) {
   arayRecept = selectedTimeId;
   console.log('timeId:', selectedTimeId);
   axiosCardInstance.getCardData().then(data => {
+    if(!data.result){
+      console.log('jjjjjjjj')
+      refs.gallery.innerHTML =  MarkapCard()
+    }
     console.log('це рецепти', data);
     arayRecept = data.results;
     refs.gallery.innerHTML =  createGalleryCard(data.results)
@@ -176,6 +186,7 @@ axiosCardInstance.query = inputValue;
   axiosCardInstance.limit = limitID ;
   arayRecept =limitID ;
   axiosCardInstance.getCardData().then(data => {
+   results = data.results
     console.log('Обрані рецепти', data)
     totalPages = data.totalPages
     refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
@@ -186,6 +197,7 @@ else if(window.screen.width >= 768){
   axiosCardInstance.limit = limitID ;
   arayRecept =limitID ;
   axiosCardInstance.getCardData().then(data => {
+    results = data.results
     console.log('Обрані рецепти', data)
     totalPages = data.totalPages
     refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
@@ -193,6 +205,7 @@ else if(window.screen.width >= 768){
 }
 else{
   axiosCardInstance.getCardData().then(data => {
+    results = data.results
     console.log('Обрані рецепти', data)
     arayRecept = data.results
     totalPages = data.totalPages
@@ -340,4 +353,29 @@ function createGalleryCard(searchResults){
   }
       }
 
+
+
+function MarkapCard(){
+const array = [{preview:'not found', title:'not found', text:'not found' },
+{preview:'not found', title:'not found', text:'not found' },
+{preview:'not found', title:'not found', text:'not found' },]
+
+    return array.map(({ preview, title, text}) => {
+
+      return `<div class="photo-card">
+      <div class = "backdrop"></div>
+          <img class="img-card" src="${preview}" alt="${title}"/>
+          <div class="info">
+          <div class="info-text">
+          <h3 class="info-item">${title}</h3>
+          <p class="info-text">${text}</p>
+          </div>
+      </div>
+      <button type="button" class="btn-see-recipe">See recipe</button>
+      </div>`
+  }).join('');
+  }
+      
+
+ 
  
