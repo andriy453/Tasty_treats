@@ -1,3 +1,5 @@
+import { debounce } from "lodash";
+
 import { axiosRecipes } from './axiosFilters';
 import { axiosCard } from './axiosCard';
 
@@ -111,15 +113,13 @@ function handleInputEl(e) {
   inputValue = e.target.value;
   axiosCardInstance.query = inputValue;
   console.log(inputValue);
-
-  axiosCardInstance.getCardData().then(data => {
+  const dec = debounce(()=>  axiosCardInstance.getCardData().then(data => {
     let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
     console.log('це рецепти', filter );
-    // if(filter.length === 0){
-    //   return 
-    // }
     refs.gallery.innerHTML =  createGalleryCard(filter)
-  });
+  }),300)
+  dec()
+
 }
 
 refs.areaEl.addEventListener('change', handleArea);
