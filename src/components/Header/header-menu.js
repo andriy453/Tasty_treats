@@ -2,7 +2,7 @@ import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
-} from 'body-scroll-lock';
+} from '../../../node_modules/boolbase/index.js';
 
 (() => {
   const mobileMenu = document.querySelector('.js-menu-container');
