@@ -15,3 +15,14 @@ export const  fetchApi = (url)=>{
 
 }
 
+
+//----------fetchPopular-------------
+
+export const fetchPopular = () => fetch("https://tasty-treats-backend.p.goit.global/api/recipes/popular")
+.then(response => {
+  if (!response.ok) {
+    throw new Error(response.status);
+  }      
+  return response.json();
+});
+
