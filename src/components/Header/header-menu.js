@@ -16,7 +16,7 @@ import {
     mobileMenu.classList.toggle('is-open');
 
     const scrollLockMethod = !isOpenMenu ? disableBodyScroll : enableBodyScroll;
-    scrollLockMethod(document.body);
+    // scrollLockMethod(document.body);
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -26,6 +26,6 @@ import {
     if (!evt.matches) return;
     mobileMenu.classList.remove('is-open');
     openMenuBtn.setAttribute('aria-expanded', false);
-    enableBodyScroll(document.body);
+    // enableBodyScroll(document.body);
   });
 })();
