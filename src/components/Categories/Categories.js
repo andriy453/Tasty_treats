@@ -1,10 +1,11 @@
 import { debounce } from "lodash";
+import Notiflix from 'notiflix';
+import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
+import   'slim-select/dist/slimselect.css'; 
 
 import { axiosRecipes } from './axiosFilters';
 import { axiosCard } from './axiosCard';
-import Notify  from 'notiflix/build/notiflix-notify-aio';
-import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
-import   'slim-select/dist/slimselect.css'; 
+
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 const categoriesRef = 'categories';
@@ -22,8 +23,11 @@ const refs = {
   button2: document.querySelector('.btn-center2'),
   button3: document.querySelector('.btn-center3'),
   btn_right: document.querySelector('.btn-right'),
-  btn_left: document.querySelector('.btn-left1'),
   btn_end: document.querySelector('.btn-right-end'),
+
+  btn_start: document.querySelector('.btn-left'),
+  btn_left: document.querySelector('.btn-left1'),
+
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
 };
@@ -96,9 +100,12 @@ refs.categoriesEl.addEventListener('click', handleCategory);
 const axiosCardInstance = new axiosCard();
 function handleCategory(e) {
   if (e.target.classList.contains('category-item')) {
+    
+    refs.btn_all_categories.classList.remove('active_all-categories')
     selectedCategoryId = e.target.getAttribute('value');
     axiosCardInstance.category = selectedCategoryId;
     axiosCardInstance.page = 1;
+    
     showRecipes();
 
     if (activeCategories !== undefined) {
@@ -109,7 +116,7 @@ function handleCategory(e) {
   e.target.classList.add('active');
 }
 
-refs.inputEl.addEventListener('input', debounce(handleInputEl, 300));
+refs.inputEl.addEventListener('input', handleInputEl, 300);
 
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
@@ -117,12 +124,12 @@ function handleInputEl(e) {
   console.log(inputValue);
 
   showRecipes();
-  const dec = debounce(()=>  axiosCardInstance.getCardData().then(data => {
-    let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
-    console.log('це рецепти', filter );
-    refs.gallery.innerHTML =  createGalleryCard(filter)
-  }),300)
-  dec()
+  // const dec = debounce(()=>  axiosCardInstance.getCardData().then(data => {
+  //   let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
+  //   console.log('це рецепти', filter );
+  //   refs.gallery.innerHTML =  createGalleryCard(filter)
+  // }),300)
+  // dec()
 
 }
 
@@ -177,10 +184,7 @@ function handleTime(e) {
   showRecipes();
 
   axiosCardInstance.getCardData().then(data => {
-    if(!data.result){
-      console.log('jjjjjjjj')
-      refs.gallery.innerHTML =  MarkapCard()
-    }
+
     console.log('це рецепти', data);
     arayRecept = data.results;
     refs.gallery.innerHTML =  createGalleryCard(data.results)
@@ -211,14 +215,27 @@ if (window.screen.width >= 1280) {
   limitID = 9;
   axiosCardInstance.limit = limitID;
   arayRecept = limitID;
-  showRecipesAdapt();
+  axiosCardInstance.getCardData().then(data => {
+
+    console.log('це рецепти', data);
+    totalPages = data.totalPages
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
 } else if (window.screen.width >= 768) {
   limitID = 8;
   axiosCardInstance.limit = limitID;
   arayRecept = limitID;
-  showRecipesAdapt();
+  axiosCardInstance.getCardData().then(data => {
+    totalPages = data.totalPages
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
 } else {
-  showRecipesAdapt();
+  axiosCardInstance.getCardData().then(data => {
+    totalPages = data.totalPages
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });;
 
 axiosCardInstance.query = inputValue;
 }
@@ -226,18 +243,14 @@ axiosCardInstance.query = inputValue;
 //Якщо рецептів не знайдено, або показати рецепти
 function showRecipes() {
   axiosCardInstance.getCardData().then(data => {
-
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-
-    const totalPages = data.totalPages;
+    totalPages = data.totalPages
     if (totalPages === null) {
-      Notify.info("😪 We don't have recipes for your request!");
+      Notiflix.Notify.info("😪 We don't have recipes for your request!");
     }
-    results = data.results
+    // results = data.results
     console.log('Обрані рецепти', data)
     totalPages = data.totalPages
-    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
-
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
   });
 }
 function showRecipesAdapt() {
@@ -260,6 +273,7 @@ function showRecipesAdapt() {
 // pagination ==========================pagination=============pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
+console.log('fffff')
   axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
@@ -267,7 +281,8 @@ refs.button1.addEventListener('click', e => {
 });
 
 refs.button2.addEventListener('click', e => {
-  if (totalPages === 1) {
+  console.log(totalPages)
+  if (totalPages === 2) {
     return;
   } else {
     axiosCardInstance.page = e.currentTarget.innerText;
@@ -280,29 +295,36 @@ refs.button2.addEventListener('click', e => {
 });
 refs.button3.addEventListener('click', e => {
   console.log(totalPages);
-  if (totalPages === 1) {
+  if (totalPages === 3) {
     return;
-  } else if (totalPages === 2) {
-    return;
-  } else {
+  } 
     axiosCardInstance.page = e.currentTarget.innerText;
 
     axiosCardInstance.getCardData().then(data => {
       console.log('це рецепти', data);
       refs.gallery.innerHTML = createGalleryCard(data.results);
     });
-  }
+  
 });
 
 refs.btn_right.addEventListener('click', e => {
-  if (axiosCardInstance.page === totalPages) {
-    return;
-  }
+  console.log(totalPages)
+
   console.log(totalPages);
   axiosCardInstance.page++;
-  console.log(axiosCardInstance.page++);
+  console.log(axiosCardInstance.page+1);
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML = createGalleryCard(data.results);
+  });
+});
+refs.btn_end.addEventListener('click', e => {
+  
+    console.log( totalPages);
+  
+  axiosCardInstance.page = totalPages;
+  axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
@@ -318,30 +340,34 @@ refs.btn_left.addEventListener('click', e => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
-refs.btn_end.addEventListener('click', e => {
-  if (totalPages === 1) {
-    console.log('dddd');
-  }
-  axiosCardInstance.page = totalPages;
+
+refs.btn_start.addEventListener('click', e => {
+  axiosCardInstance.page =  1;
+  console.log(axiosCardInstance.page);
   axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
+
 // pagination ==========================pagination=============pagination
 
 //Cкинути фільтри
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
-  axiosCardInstance.category = selectedCategoryId;
+  axiosCardInstance.category = '';
   axiosCardInstance.area = '';
   axiosCardInstance.time = '';
   axiosCardInstance.ingredients = '';
   axiosCardInstance.title = '';
   console.log(axiosCardInstance);
 
-  showRecipesAdapt();
+  axiosCardInstance.getCardData().then(data => {
+
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
 }
 
 refs.btn_all_categories.addEventListener('click', displayAllCategories);
@@ -351,12 +377,17 @@ function displayAllCategories(e) {
   e.target.classList.add('active');
 
   axiosCardInstance.category = '';
-  axiosCardInstance.time = selectedTimeId;
-  axiosCardInstance.area = selectedAreaId;
-  axiosCardInstance.ingredients = selectedIngredientsId;
-  axiosCardInstance.title = inputValue;
+  axiosCardInstance.area = '';
+  axiosCardInstance.time = '';
+  axiosCardInstance.ingredients = '';
+  axiosCardInstance.title = '';
   console.log(axiosCardInstance);
-  showRecipesAdapt();
+
+  axiosCardInstance.getCardData().then(data => {
+
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
 
   if (activeCategories === e.target) {
     activeCategories.classList.remove('active');
