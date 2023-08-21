@@ -1,3 +1,5 @@
+import { debounce } from "lodash";
+
 import { axiosRecipes } from './axiosFilters';
 import { axiosCard } from './axiosCard';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -86,6 +88,7 @@ let inputValue;
 let totalPages = 1;
 let arayRecept;
 let limitID;
+let results =[];
 
 let activeCategories;
 
@@ -112,7 +115,15 @@ function handleInputEl(e) {
   inputValue = e.target.value.trim();
   axiosCardInstance.title = inputValue;
   console.log(inputValue);
+
   showRecipes();
+  const dec = debounce(()=>  axiosCardInstance.getCardData().then(data => {
+    let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
+    console.log('це рецепти', filter );
+    refs.gallery.innerHTML =  createGalleryCard(filter)
+  }),300)
+  dec()
+
 }
 
 // refs.inputEl.addEventListener('input', handleInputEl);
@@ -140,7 +151,19 @@ function handleArea(e) {
   axiosCardInstance.area = selectedAreaId;
 
   console.log('areaId:', selectedAreaId);
+
   showRecipes();
+
+  axiosCardInstance.getCardData().then(data => {
+      if(!data.results){
+      console.log('jjjjjjjj')
+      refs.gallery.innerHTML =  MarkapCard()
+    }
+    console.log('це рецепти', data);
+    arayRecept = data.results;
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
+
 }
 
 refs.timeEl.addEventListener('change', handleTime);
@@ -150,7 +173,18 @@ function handleTime(e) {
   axiosCardInstance.time = selectedTimeId;
   arayRecept = selectedTimeId;
   console.log('timeId:', selectedTimeId);
+
   showRecipes();
+
+  axiosCardInstance.getCardData().then(data => {
+    if(!data.result){
+      console.log('jjjjjjjj')
+      refs.gallery.innerHTML =  MarkapCard()
+    }
+    console.log('це рецепти', data);
+    arayRecept = data.results;
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
 }
 
 refs.ingredientsEl.addEventListener('change', handleIngredients);
@@ -170,6 +204,7 @@ axiosCardInstance.totalPages = totalPages;
 axiosCardInstance.time = selectedTimeId;
 axiosCardInstance.area = selectedAreaId;
 axiosCardInstance.ingredients = selectedIngredientsId;
+
 axiosCardInstance.title = inputValue;
 
 if (window.screen.width >= 1280) {
@@ -184,25 +219,43 @@ if (window.screen.width >= 1280) {
   showRecipesAdapt();
 } else {
   showRecipesAdapt();
+
+axiosCardInstance.query = inputValue;
+
+
 }
 
 //Якщо рецептів не знайдено, або показати рецепти
 function showRecipes() {
   axiosCardInstance.getCardData().then(data => {
+
     refs.gallery.innerHTML = createGalleryCard(data.results);
 
     const totalPages = data.totalPages;
     if (totalPages === null) {
       Notify.info("😪 We don't have recipes for your request!");
     }
+    results = data.results
+    console.log('Обрані рецепти', data)
+    totalPages = data.totalPages
+    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
+
   });
 }
 function showRecipesAdapt() {
   axiosCardInstance.getCardData().then(data => {
+
     refs.gallery.insertAdjacentHTML(
       'beforeend',
       createGalleryCard(data.results)
     );
+
+    results = data.results
+    console.log('Обрані рецепти', data)
+    arayRecept = data.results
+    totalPages = data.totalPages
+    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
+
   });
 }
 
@@ -340,4 +393,12 @@ function createGalleryCard(searchResults) {
       })
       .join('');
   }
+
 }
+
+      }
+
+
+
+ 
+

@@ -1,3 +1,4 @@
+
 .left-collumn {
   display: flex;
   flex-direction: column;
@@ -133,7 +134,7 @@
 @media screen and (min-width: 768px) {
   .btn-all-categories {
     margin-bottom: 30px;
-  }
+
   .scrollable-list {
     height: 416px;
   }
@@ -143,6 +144,11 @@
   .select-text {
     font-size: 14px;
     line-height: 1.3;
+
+    font-family: Inter;
+    color: var(--grey);
+    margin-bottom: 8px;
+
   }
 
   .select-container .input-filter {
