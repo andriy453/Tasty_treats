@@ -2,7 +2,6 @@ import { axiosRecipes } from './axiosFilters';
 import { axiosCard } from './axiosCard';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SlimSelect from 'slim-select';
-import 'slim-select/dist/slimselect.css';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 const categoriesRef = 'categories';
@@ -46,23 +45,17 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
     optionEl.textContent = area.name;
     refs.areaEl.appendChild(optionEl);
   });
-  const slimSelect = new SlimSelect({
-    select: refs.areaEl,
-  });
 });
 
-axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients => {
+axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients =>
   ingredients.forEach(ingredient => {
     const optionEl = document.createElement('option');
-    optionEl.value = ingredient._id;
+    optionEl.value = ingredient._id; //тут треба не name, а id
     optionEl.id = ingredient._id;
     optionEl.textContent = ingredient.name;
     refs.ingredientsEl.appendChild(optionEl);
-  });
-  const slimSelect = new SlimSelect({
-    select: refs.ingredientsEl,
-  });
-});
+  })
+);
 
 function selectTime() {
   for (let i = 5; i <= 120; i += 5) {
@@ -71,9 +64,6 @@ function selectTime() {
     optionEl.value = [i];
     refs.timeEl.appendChild(optionEl);
   }
-  const slimSelect = new SlimSelect({
-    select: refs.timeEl,
-  });
 }
 selectTime();
 
@@ -209,10 +199,7 @@ function showRecipesAdapt() {
 // pagination ==========================pagination=============pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
-  axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-  });
+  showRecipesAdapt();
 });
 
 refs.button2.addEventListener('click', e => {
@@ -221,10 +208,7 @@ refs.button2.addEventListener('click', e => {
   } else {
     axiosCardInstance.page = e.currentTarget.innerText;
 
-    axiosCardInstance.getCardData().then(data => {
-      console.log('це рецепти', data);
-      refs.gallery.innerHTML = createGalleryCard(data.results);
-    });
+    showRecipesAdapt();
   }
 });
 refs.button3.addEventListener('click', e => {
@@ -236,10 +220,7 @@ refs.button3.addEventListener('click', e => {
   } else {
     axiosCardInstance.page = e.currentTarget.innerText;
 
-    axiosCardInstance.getCardData().then(data => {
-      console.log('це рецепти', data);
-      refs.gallery.innerHTML = createGalleryCard(data.results);
-    });
+    showRecipesAdapt();
   }
 });
 
@@ -250,11 +231,7 @@ refs.btn_right.addEventListener('click', e => {
   console.log(totalPages);
   axiosCardInstance.page++;
   console.log(axiosCardInstance.page++);
-  axiosCardInstance.getCardData().then(data => {
-    totalPages = data.totalPages;
-    console.log('це рецепти', data);
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-  });
+  showRecipesAdapt();
 });
 refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
@@ -262,20 +239,14 @@ refs.btn_left.addEventListener('click', e => {
   }
   axiosCardInstance.page = axiosCardInstance.page--;
   console.log(axiosCardInstance.page--);
-  axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-  });
+  showRecipesAdapt();
 });
 refs.btn_end.addEventListener('click', e => {
   if (totalPages === 1) {
     console.log('dddd');
   }
   axiosCardInstance.page = totalPages;
-  axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-  });
+  showRecipesAdapt();
 });
 // pagination ==========================pagination=============pagination
 
@@ -296,9 +267,8 @@ function resetAllFilters() {
 refs.btn_all_categories.addEventListener('click', displayAllCategories);
 
 function displayAllCategories(e) {
-  activeCategories = e.target;
-  e.target.classList.add('active');
-
+  // activeCategories = e.target;
+  // e.target.classList.add('active');
   axiosCardInstance.category = '';
   axiosCardInstance.time = selectedTimeId;
   axiosCardInstance.area = selectedAreaId;

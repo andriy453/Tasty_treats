@@ -1,21 +1,32 @@
+<div class="display-filters">
+  <div class="select-container">
+    <p class="select-text">Search</p>
 
-<div class="filter-flex-full">
-    <h2 class="popular-recipes">POPULAR RECIPES</h2>
-    <div class="filter-flex-column">
-      <p class="select-text">Search</p>
-      <input type="text" class="input-filter" placeholder="Enter text" />
-      <div class="mob-time-area">
-        <div class="select-container">
-          <p class="select-text">Time</p>
-          <select class="time-select"></select>
-        </div>
-        <div class="select-container">
-          <p class="select-text">Area</p>
-          <select class="area-select"></select>
-        </div>
-      </div>
-      <p class="select-text">Ingredients</p>
-      <select class="ingredients-select"></select>
-    </div>
-    <p class="reset-filter">X Reset the filter</p>
+    <input type="text" class="input-filter" placeholder="Enter text" />
+    <svg class="icon-search-input" width="18" height="18">
+      <use href="./images/sprite.svg#icon-search-input"></use>
+    </svg>
   </div>
+
+  <div class="select-container">
+    <p class="select-text">Time</p>
+    <select class="time-select"></select>
+  </div>
+
+  <div class="select-container">
+    <p class="select-text">Area</p>
+    <select class="area-select"></select>
+  </div>
+
+  <div class="select-container">
+    <p class="select-text">Ingredients</p>
+    <select class="ingredients-select"></select>
+  </div>
+</div>
+
+<p class="reset-filter">
+  <svg class="icon icon-x-filters" width="16" height="16">
+    <use href="./images/sprite.svg#icon-x-filters"></use>
+  </svg>
+  Reset the filter
+</p>

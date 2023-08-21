@@ -1,76 +1,166 @@
-.btn-categories {
-    max-width: 176px;
-  
-    font-family: Inter;
-    font-size: 18px;
-  
-    line-height: 1.2;
-    color: rgba(5, 5, 5, 0.5);
-  
-    padding: 14px 29px;
-    border-radius: 15px;
-  
-    border-color: rgba(5, 5, 5, 0.2);
-  
-    margin-bottom: 24px;
+.left-collumn {
+  display: flex;
+  flex-direction: column;
+}
+.btn-all-categories {
+  max-width: 176px;
+
+  font-family: Inter;
+  font-size: 18px;
+
+  line-height: 1.2;
+  color: var(--primary-color-05);
+  background-color: var(--bg-main);
+
+  padding: 14px 29px;
+  border-radius: 15px;
+  border: 1px solid var(--primary-color-02);
+
+  margin-bottom: 24px;
+}
+
+.btn-all-categories:is(:hover, :focus) {
+  color: var(--bg-main);
+  background-color: var(--accent);
+  border-color: transparent;
+}
+
+.category-item {
+  cursor: pointer;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--primary-color-03);
+}
+
+.category-item:is(:hover, :focus) {
+  color: var(--accent);
+}
+
+.scrollable-list {
+  width: 100%;
+  height: 198px;
+  // border: 1px solid black;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+.popular-recipes {
+  margin-bottom: 40px;
+}
+
+.select-text {
+  font-family: Inter;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--primary-color-05);
+  margin-bottom: 8px;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.reset-filter {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+
+  color: var(--primary-color-05);
+  font-size: 12px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  margin-top: 14px;
+}
+
+.select-container .input-filter {
+  width: 335px;
+  border-radius: 15px;
+  padding: 14px 122px 14px 48px;
+  border: 1px solid var(--primary-color-02);
+  background-color: var(--bg-main);
+  color: var(--primary-color-05);
+}
+
+.icon-search-input {
+  position: absolute;
+  fill: var(--primary-color-05);
+  bottom: 16px;
+  left: 18px;
+}
+
+.select-container .area-select {
+  border-radius: 15px;
+  width: 161px;
+  padding: 14px 18px;
+  border: 1px solid var(--primary-color-02);
+  background-color: var(--bg-main);
+  color: var(--primary-color-05);
+}
+.select-container .time-select {
+  border-radius: 15px;
+  width: 160px;
+  padding: 14px 18px;
+  border: 1px solid var(--primary-color-02);
+  background-color: var(--bg-main);
+  color: var(--primary-color-05);
+}
+.select-container .ingredients-select {
+  border-radius: 15px;
+  width: 188px;
+  padding: 14px 18px;
+  border: 1px solid var(--primary-color-02);
+  background-color: var(--bg-main);
+  color: var(--primary-color-05);
+}
+@media screen and (min-width: 768px) {
+  .btn-all-categories {
+    margin-bottom: 30px;
   }
-  
-  .category-item {
-    font-family: Inter;
+  .scrollable-list {
+    height: 416px;
+  }
+  .categories-list {
+    gap: 25px;
+  }
+  .select-text {
     font-size: 14px;
     line-height: 1.3;
-    color: var(--grey);
   }
-  
-  .scrollable-list {
-    max-width: 326px;
-    height: 198px;
-    // border: 1px solid black;
-    overflow: hidden;
-    margin-bottom: 40px;
+
+  .select-container .input-filter {
+    width: 278px;
   }
-  
-  .categories-list {
+  .select-container .area-select {
+    width: 141px;
+  }
+  .select-container .time-select {
+    width: 125px;
+  }
+  .select-container .ingredients-select {
+    width: 188px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .display-filters {
     display: flex;
-    flex-direction: column;
-    gap: 18px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    height: 100%;
-    box-sizing: border-box;
-    text-align: left;
+    gap: 16px;
   }
-  .popular-recipes {
-    margin-bottom: 40px;
-  }
-  
-  .select-text {
-    font-family: Inter;
-    font-size: 12px;
-    line-height: 1.2;
-    color: rgba(5, 5, 5, 0.5);
-    margin-bottom: 8px;
-  }
-  
-  .mob-time-area {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-  }
-  @media screen and (min-width: 768px) {
-    .scrollable-list {
-      max-width: 176px;
-      height: 416px;
-    }
-    .categories-list {
-        gap:25px
-    }
-  }
-  @media screen and (min-width: 1280px) {
-    .scrollable-list {
-        max-width: 100%;
-        height: 416px;
-      }
-  }
+}
