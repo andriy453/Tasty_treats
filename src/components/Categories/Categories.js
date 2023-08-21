@@ -76,6 +76,7 @@ let selectedTimeId;
 let inputValue;
 let  totalPages = 1;
 let  arayRecept;
+let limitID;
 
 let activeCategories ;
 
@@ -170,12 +171,34 @@ axiosCardInstance.area = selectedAreaId;
 axiosCardInstance.ingredients = selectedIngredientsId;
 axiosCardInstance.query = inputValue;
 
-axiosCardInstance.getCardData().then(data => {
-  console.log('Обрані рецепти', data)
-  arayRecept = data.results
-  totalPages = data.totalPages
-  refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
-});
+ if (window.screen.width >= 1280){
+  limitID  = 9;
+  axiosCardInstance.limit = limitID ;
+  arayRecept =limitID ;
+  axiosCardInstance.getCardData().then(data => {
+    console.log('Обрані рецепти', data)
+    totalPages = data.totalPages
+    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
+  });
+}
+else if(window.screen.width >= 768){
+  limitID  = 8;
+  axiosCardInstance.limit = limitID ;
+  arayRecept =limitID ;
+  axiosCardInstance.getCardData().then(data => {
+    console.log('Обрані рецепти', data)
+    totalPages = data.totalPages
+    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
+  });
+}
+else{
+  axiosCardInstance.getCardData().then(data => {
+    console.log('Обрані рецепти', data)
+    arayRecept = data.results
+    totalPages = data.totalPages
+    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
+  });
+}
 
 
 // pagination ==========================pagination=============pagination
@@ -283,11 +306,12 @@ refs.btn_categories.addEventListener('click',(e)=>{
   if(activeCategories  === e.target){
     activeCategories.classList.remove('active')
   }
-
 activeCategories  = e.target;
 e.target.classList.add('active');
 
 })
+
+
 
 function createGalleryCard(searchResults){
   if(searchResults === []){

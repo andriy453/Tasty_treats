@@ -21,13 +21,12 @@ const markup = (data) => {
         }
     const markup = data.map((element) =>
         
-        `<div class="photo-card">
+        `<div class="photo-card_recipes">
             <img class="popular-foto" src="${element.preview}" alt="foto" width="64" height="64" " />
-            <div class="info" id="${element._id}">
+            <div class="info_recipes" id="${element._id}">
                 <h3 class="recipe-title">${element.title}</h3>
                 <div class="box">           
-                    <p class="info-item">
-                        ${element.description}
+                    <p class="info-item_recipes">${element.description}
                     </p>
                 </div>
             </div>

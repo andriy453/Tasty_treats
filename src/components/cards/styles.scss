@@ -5,6 +5,8 @@ img{
   width: 100%;
 }
 .img-card{
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
 }
 .photo-card{
@@ -23,9 +25,6 @@ img{
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
-  max-width: 375px;
-  padding-left: 20px;
-  padding-right: 20px;
   margin-left: auto; 
   margin-right: auto;
   width: 100%;
@@ -116,10 +115,6 @@ img{
 
 /* ---------------------------WIDTH 320PX------------- */
 @media screen and (min-width: 320px){
-  .container-cards{
-    padding-left: 10px;
-    padding-right: 10px;
-  }
   .photo-card{
       width: 304px;
       height: 304px;
@@ -145,9 +140,7 @@ img{
 }
 /* ---------------------------WIDTH 375PX------------- */
 @media screen and (min-width: 375px){
-.container-cards {
-  max-width: 375px;
-}
+
 .photo-card{
   width: 335px;
   height: 335px;
@@ -169,11 +162,10 @@ width: 40px;
 /* ---------------------------WIDTH 768PX------------- */
 @media screen and (min-width: 768px){
   .container-cards {
-      max-width: 550px;
       gap: 60px;
   }
   .gallery{
-      gap: 20px 20px;
+      gap: 16px;
 
     }
   .photo-card{
@@ -198,15 +190,14 @@ width: 40px;
   /* ---------------------------WIDTH 1280PX------------- */
   @media screen and (min-width: 1280px){
       .container-cards {
-          max-width: 1004px;
           gap: 64px;
       }
       .gallery{
-          gap: 32px 20px;
+          gap: 20px 16px;
       }
       .photo-card{
-       width: 294px;
-       height: 294px;
+        width: 250px;
+        height: 287px;
       }
       }
 

@@ -9,6 +9,7 @@ export class axiosCard {
   area = null;
   time = null;
   tags = null;
+  limit = 6;
 
   async getCardData() {
     try {
@@ -20,6 +21,7 @@ export class axiosCard {
           area: this.area,
           ingredient: this.ingredients,
           tags: this.tags,
+          limit:this.limit,
         },
       });
 

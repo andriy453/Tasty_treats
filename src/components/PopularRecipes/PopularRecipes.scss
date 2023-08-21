@@ -1,16 +1,11 @@
 .popular {
     width: 332px;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    gap: 20px;
     .popular-box {
       display: flex;
       flex-direction: column;
       gap: 24px;
     }
   }
-
   .popular-title {
     color: var(--black_2);
     font-size: 18px;
@@ -18,20 +13,23 @@
     line-height: 24px;
     text-transform: uppercase;
     text-align: left;
+    margin-bottom: 20px;
   }
 
-  .photo-card {
-    width: 332px;    
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 16px;
+  .photo-card_recipes{
+    width: 332px;   
+    gap: 8px;
+    width: 176px;
+    display: flex; 
   }
 
   .popular-foto {
     border-radius: 8px;
+    width: 64px;
+    height: 64px;
   }
   
-  .info {
+  .info_recipes{
     width: 252px;
   }
 
@@ -40,7 +38,7 @@
     text-align: left;
     font-size: 14px;
     font-weight: 600;
-    line-height: 18px;
+    line-height: 1.4;
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -51,12 +49,12 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
-  .info-item {
+ 
+  .info-item_recipes {
     color: rgba(5, 5, 5, 0.80);
     font-size: 12px;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1.4;
     text-align: left;
     width: 252px;
   } 
@@ -73,7 +71,7 @@
     }
   }
 
-  .photo-card {
+  .photo-card_recipes{
     width: 176px;
     display: flex;
     gap: 8px;
@@ -84,7 +82,7 @@
     height: 48px;
   }
 
-  .info {
+  .info_recipes {
     width: 120px;  
     }
 
@@ -103,9 +101,8 @@
     overflow: hidden;
   }
 
-  .info-item {
+  .info-item_recipes {
     font-size: 10px;
-    line-height: 16px;
     width: 120px;
   }
 
@@ -127,7 +124,7 @@
     line-height: 28px;    
   }
 
-  .photo-card {
+  .photo-card_recipes {
     width: 332px;
     display: flex;
     gap: 16px;
@@ -138,11 +135,11 @@
     height: 64px;    
   }
 
-  .info {
+  .info_recipes {
     width: 155px;
     }  
 
-  .info-item {
+  .info-item_recipes {
     width: 155px;
   }
 }

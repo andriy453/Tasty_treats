@@ -141,10 +141,14 @@
       padding-left: 32px;
       padding-right: 32px;
     }
+    .container-home{
+      display: flex;
+      gap:0px 32px;
+    }
   }
   @media screen and (min-width: 1280px) {
     .container {
-      max-width: 1200px;
+      max-width: 1280px;
       padding-left: 100px;
       padding-right: 100px;
     }
