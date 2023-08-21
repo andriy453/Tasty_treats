@@ -1,0 +1,141 @@
+.favorites {
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.fav-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.fav-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.fav-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.thumb {
+    border-radius: 3%;
+    overflow: hidden;
+}
+
+.block-for-empty {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    gap: 24px;
+}
+
+.message-for-empty {
+    width: 100%;
+    color: var(--txt-color);
+    font-size: 14px;
+    line-height: 1.28;
+}
+
+.fav-category-fltr-btn {
+    display: flex;
+    padding: 14px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    border-radius: 15px;
+    border: 1px solid var(--gray-color-btn);
+    color: var(--gray-color-btn);
+    background-color: var(--bg-main);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
+}
+
+.fav-category-fltr-btn:hover,
+.fav-category-fltr-btn:focus {
+    background-color: var(--accent);
+    color: var(--white_2);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.recipes-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* --------------- MOBILE ------------------ */
+@media screen and (min-width: 375px) {
+    .fav-container {
+        width: 335px;
+        padding: 0 20px;
+    }
+
+    .fav-image {
+        width: 335px;
+        height: 516px;
+    }
+
+
+    .message-for-empty {
+        width: 335px;
+    }
+}
+
+/* --------------- tABLET ----------------- */
+@media screen and (min-width: 768px) {
+    .fav-container {
+        width: 704px;
+        padding: 0 32px;
+        gap: 64px;
+    }
+
+    .fav-hero {
+        gap: 64px;
+    }
+
+    .fav-image {
+        width: 704px;
+        height: 356px;
+    }
+
+    .recipe-icon-pic {
+        width: 97px;
+        height: 83px;
+    }
+
+    .block-for-empty {
+        gap: 32px;
+    }
+
+    .message-for-empty {
+        width: 481px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .recipes-block {
+        gap: 32px;
+    }
+}
+
+/* -------------- DESCTOP ------------------ */
+@media screen and (min-width: 1280px) {
+    .fav-container {
+        width: 1080px;
+        padding: 0 100px;
+    }
+
+    .fav-image {
+        width: 1080px;
+        height: 356px;
+    }
+}
