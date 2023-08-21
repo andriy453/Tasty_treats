@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://andriy453.github.io/Tasty_treats",
+  "homepage": "https://andriy453.github.io/Tasty_treats/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html  --public-url ./Tasty_treats"
+    "build": "parcel build src/*.html --public-url /Tasty_treats/" 
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,6 @@
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
-}
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "@parcel/transformer-html": "^2.9.3"
+  }
