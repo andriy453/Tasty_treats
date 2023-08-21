@@ -56,15 +56,7 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients =>
     refs.ingredientsEl.appendChild(optionEl);
   })
 );
-function handleIngredients(e) {
-  selectedIngredientsId = e.target.value; //і тут треба змінити ._id
-  console.log(e.target.value);
-  axiosCardInstance.ingredients = selectedIngredientsId;
-  console.log('ingredientsId:', selectedIngredientsId);
-  axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
-  });
-}
+
 
 function selectTime() {
   for (let i = 5; i <= 120; i += 5) {
@@ -158,9 +150,13 @@ function handleTime(e) {
 refs.ingredientsEl.addEventListener('change', handleIngredients);
 
 function handleIngredients(e) {
-  selectedIngredientsId = e.target;
-  console.log(e.target.value)
+  selectedIngredientsId = e.target.value; //і тут треба змінити ._id
+  console.log(e.target.value);
+  axiosCardInstance.ingredients = selectedIngredientsId;
   console.log('ingredientsId:', selectedIngredientsId);
+  axiosCardInstance.getCardData().then(data => {
+    console.log('це рецепти', data);
+  });
 }
 
 
