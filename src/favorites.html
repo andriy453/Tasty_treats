@@ -3,69 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <title>Document</title>
-    <link rel="stylesheet" href='./sass/index.scss'>
+    <link rel="stylesheet" href="./sass/favorites.scss" />
+    <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <include src="./components/Header/Header.html"></include>
+    <include src="./components/Favorites/fav-header.html"></include>
     <main>
-      <section class="favorites">
-        <div class="fav-container">
-          <div class="fav-hero">
-            <div class="static-block">
-              <h1 class="visually-hidden">Favorites</h1>
-              <!-- <picture class="fav-image thumb">
-                <source
-                  srcset="
-                    ./images/card-desc-min.jpg 1x,
-                    ./images/card-desc-min-2x  2x
-                  "
-                  media="(min-width: 1280px)"
-                />
-                <source
-                  srcset="
-                    ./images/card-tab-min.jpg 1x,
-                    ./images/card-tab-min-2x  2x
-                  "
-                  media="(min-width: 768px)"
-                />
-                <source
-                  srcset="
-                    ./images/card-mob-min.jpg 1x,
-                    ./images/card-mob-min-2x  2x
-                  "
-                  media="(max-width: 767px)"
-                />
-
-              <img src="./images/card-mob-min.jpg" alt="tasty dish" />
-              </picture> -->
-            </div>
-            <div class="block-for-empty">
-              <svg class="recipe-icon-pic" width="68" height="58">
-                <use href="./images/sprite.svg#icon-elements"></use>
-              </svg>
-              <p class="message-for-empty">
-                It appears that you haven't added any recipes to your favorites
-                yet. To get started, you can add recipes that you like to your
-                favorites for easier access in the future.
-              </p>
-            </div>
-          </div>
-          <div class="recipes-block">
-            <div class="fav-category-block" id="category-filter-div">
-              <button class="fav-category-fltr-btn" type="button">
-                All categories
-              </button>
-              <ul class="fav-category-list"></ul>
-            </div>
-            <div class="list-recipes-block">
-              <ul class="fav-recipe-card-list"></ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <include src="./components/Favorites/fav-hero.html"></include>
+      <include src="./components/Favorites/fav-main.html"></include>
     </main>
-    <script type="module" src="./components/Header/header-menu.js"></script>
-    <script type="module" src="./components/Header/Header.js"></script>
+    <script type="module" src="./favorites.js"></script>
   </body>
 </html>
