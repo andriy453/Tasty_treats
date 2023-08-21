@@ -21,7 +21,7 @@ const refs = {
   btn_left: document.querySelector('.btn-left1'),
   btn_end: document.querySelector('.btn-right-end'),
   btn_categories: document.querySelector('.btn-categories'),
-  div: document.querySelector('.vas'),
+  resetFilter: document.querySelector(".reset-filter"),
 
 };
 const axiosRecipesInstance = new axiosRecipes();
@@ -48,15 +48,23 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
 });
 
 axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients =>
-
   ingredients.forEach(ingredient => {
     const optionEl = document.createElement('option');
-    optionEl.value = ingredient.name;
+    optionEl.value = ingredient._id; //тут треба не name, а id
     optionEl.id = ingredient._id;
     optionEl.textContent = ingredient.name;
     refs.ingredientsEl.appendChild(optionEl);
   })
 );
+function handleIngredients(e) {
+  selectedIngredientsId = e.target.value; //і тут треба змінити ._id
+  console.log(e.target.value);
+  axiosCardInstance.ingredients = selectedIngredientsId;
+  console.log('ingredientsId:', selectedIngredientsId);
+  axiosCardInstance.getCardData().then(data => {
+    console.log('це рецепти', data);
+  });
+}
 
 function selectTime() {
   for (let i = 5; i <= 120; i += 5) {
@@ -251,6 +259,20 @@ if(totalPages === 1){
 })
 // pagination ==========================pagination=============pagination
 
+refs.resetFilter.addEventListener('click', resetAllFilters);
+function resetAllFilters() {
+  axiosCardInstance.category = '';
+  axiosCardInstance.area = '';
+  axiosCardInstance.time = '';
+  axiosCardInstance.ingredients = '';
+  axiosCardInstance.title = '';
+  axiosCardInstance.getCardData().then(data => {
+
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
+  });
+  console.log(axiosCardInstance);
+}
 
 refs.btn_categories.addEventListener('click',(e)=>{
   activeCategories  = e.target
@@ -297,4 +319,4 @@ function createGalleryCard(searchResults){
   }
       }
 
-
+ 
