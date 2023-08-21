@@ -155,7 +155,8 @@ function handleIngredients(e) {
   axiosCardInstance.ingredients = selectedIngredientsId;
   console.log('ingredientsId:', selectedIngredientsId);
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
+    arayRecept = data.results;
+    refs.gallery.innerHTML =  createGalleryCard(data.results)
   });
 }
 
