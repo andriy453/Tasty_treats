@@ -24,7 +24,7 @@ img {
 .container-cards {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -88,8 +88,6 @@ img {
   display: flex;
   justify-content: center;
   gap: 24px;
-  width: 448px;
-  height: 49px;
   margin: 0 auto;
 }
 
@@ -159,32 +157,23 @@ img {
 //   color: var(--oragne);
 //   }
 
-.btn-heard {
-  display: block;
+.btn-heard{
+  position: relative;
+  color: transparent;
   background-color: transparent;
-  color: rgb(248, 248, 248, 0.5);
-  width: 22px;
-  height: 22px;
+  cursor: pointer;
+  border: 1px solid var(--cornflower-color);
+  -webkit-text-stroke: 1px rgb(248, 248, 248, 0.3);
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.btn-heard-color{
+  color: red;
+  -webkit-text-stroke: 1px red;
 }
 
-.btn-heard:hover .btn-heard:focus {
-  color: red;
-}
 
-// .btn-heard:active{
-//   color: red;
-// }
-.btn-heard-color {
-  position: absolute;
-  background-color: transparent;
-  color: red;
-  width: 22px;
-  height: 22px;
-}
-
-.btn {
-  color: red;
-}
 
 /* ---------------------------RATING-------------------- */
 .rating {

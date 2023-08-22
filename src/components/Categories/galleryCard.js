@@ -36,7 +36,7 @@ export function createGalleryCard(searchResults) {
       <div class="heard-body">
       <div class="heard-active"></div>
       <div class="heard-items">
-      <button type="button" class="btn-heard" id='${_id}'>♡</button>
+      <button type="button" class="btn-heard" id='${_id}'>♥</button>
       </div>
       </div>
       </div>
@@ -72,7 +72,7 @@ export function createGalleryCard(searchResults) {
   <div class="heard-body">
   <div class="heard-active"></div>
   <div class="heard-items">
-  <button type="button" class="btn-heard" '>♡</button>
+  <button type="button" class="btn-heard">♥</button>
   </div>
   </div>
   </div>

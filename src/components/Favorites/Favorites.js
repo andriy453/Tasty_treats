@@ -17,8 +17,7 @@ function categories(categories) {
     .map(name => {
       return `
             <button class="fav-category-fltr-btn" type="button">${name}</button>`;
-    })
-    .join('');
+    }).join('');
 }
 categories(categoriesArray);
 
