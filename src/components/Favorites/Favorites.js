@@ -8,8 +8,7 @@ console.log(listFav);
 console.log(categoriesEl);
 
 const categoriesArray = favoritesRecipes.map(recipe => {
-  console.log('recipe', recipe);
-  recipe.category;
+    return recipe.category
 });
 
 createGalleryCard(favoritesRecipes, listFav);
