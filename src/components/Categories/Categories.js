@@ -22,6 +22,7 @@ const refs = {
   button1: document.querySelector('.btn-center1'),
   button2: document.querySelector('.btn-center2'),
   button3: document.querySelector('.btn-center3'),
+
   btn_right: document.querySelector('.btn-right'),
   btn_end: document.querySelector('.btn-right-end'),
 
@@ -313,10 +314,10 @@ refs.button3.addEventListener('click', e => {
 
 refs.btn_right.addEventListener('click', e => {
   console.log(totalPages)
-
-  console.log(totalPages);
+  if( totalPages === axiosCardInstance.page ){
+    return
+  }
   axiosCardInstance.page++;
-  console.log(axiosCardInstance.page+1);
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
     console.log('це рецепти', data);
@@ -401,8 +402,9 @@ function displayAllCategories(e) {
 }
 
  function createGalleryCard(searchResults) {
-
-    return searchResults
+  let markap;
+  if(searchResults.length){
+    markap = searchResults
       .map(({ preview, title, description, rating, _id }) => {
         const desktop = description.slice(0, 62);
         const mobile = description.slice(0, 97);
@@ -444,6 +446,43 @@ function displayAllCategories(e) {
       </div>`;
       })
       .join('');
+}
+else{
+  markap = `
+  <div class="photo-card">
+  <div class = "backdrop"></div>
+      <img class="img-card" src="https://c4.wallpaperflare.com/wallpaper/107/689/166/empty-black-text-wallpaper-preview.jpg" alt="not found"/>
+      <div class="info">
+      <div class="info-text">
+      <h3 class="info-item">not found</h3>
+      <p class="info-text">not found</p>
+      </div>
+  </div>
+  <button type="button" class="btn-see-recipe">See recipe</button>
+  <div class = "rating">
+  <div class="rating-value">not found</div>
+  <div class="rating-body">
+  <div class="rating-active"></div>
+  <div class="rating-items">
+  <input type = "radio" class="rating-item" value="1" name="rating" >
+  <input type = "radio" class="rating-item" value="2" name="rating" >
+  <input type = "radio" class="rating-item" value="3" name="rating" >
+  <input type = "radio" class="rating-item" value="4" name="rating" >
+  <input type = "radio" class="rating-item" value="5" name="rating" >
+  </div>
+  </div>
+  </div>
+  <div class = "heard">
+  <div class="heard-body">
+  <div class="heard-active"></div>
+  <div class="heard-items">
+  <button type="button" class="btn-heard" '>♡</button>
+  </div>
+  </div>
+  </div>
+  </div>`
+}
+return  markap;
     
 }
 
@@ -476,26 +515,46 @@ function displayAllCategories(e) {
 //   }
 
 // }
-
+let  click = 0;
+let id ;
 refs.gallery.addEventListener('click',seeRecipe)
 const settings =[]
 function seeRecipe(evt){
+  id = evt.target.id
   if(evt.target.tagName !== 'BUTTON'){
  return
   }
 
 if(evt.target.innerText === '♡'){
+  click++
 
-  fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${evt.target.id}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }      
-    return response.json();
-  }).then(res => {
-    settings.push(res)
-    localStorage.setItem('favoris',JSON.stringify(settings) )
-  })
+
+  if(click === 1){
+
+    fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${evt.target.id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }      
+      return response.json();
+    }).then(res => {
+      settings.push(res)
+      localStorage.setItem('favoris',JSON.stringify(settings) )
+    }).catch(error => {
+      console.error('Error:', error);
+    })
+  }
+    
+    if (click === 2) {
+      click = 0;
+      
+        console.log(id )
+          
+     
+      console.log(JSON.parse(localStorage.getItem('favoris')))
+    };
+  
+
 }
 
   if(evt.target.innerText === 'See recipe'){
@@ -506,8 +565,10 @@ if(evt.target.innerText === '♡'){
     throw new Error(response.status);
   }      
   return response.json();
-}).then(res => console.log(res)
-// open modal See recipe
+}).then(res => console.log(res)// open modal See recipe
+.catch(error => {
+  console.error('Error:', error);
+})
 )
   }
   evt.target.classList.toggle('bnt');
