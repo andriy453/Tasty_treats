@@ -43,6 +43,7 @@
   --border-pag: #9bb537;
   --option-color: #fff;
   --grey:rgba(5, 5, 5, 0.30);
+  --modal-bg: #fff;
 }
 
 :root[data-theme='dark'] {
@@ -67,6 +68,7 @@
   --border-pag: #9bb537;
   --option-color: #050505;
   --grey:rgba(255, 255, 255, 0.50);
+  --modal-bg: #050505;
 }
 
   body {
