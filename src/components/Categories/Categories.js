@@ -400,10 +400,8 @@ function displayAllCategories(e) {
   e.target.classList.add('active');
 }
 
-function createGalleryCard(searchResults) {
-  if (searchResults === []) {
-    console.log('fdsvds');
-  } else {
+ function createGalleryCard(searchResults) {
+
     return searchResults
       .map(({ preview, title, description, rating, _id }) => {
         const desktop = description.slice(0, 62);
@@ -421,7 +419,7 @@ function createGalleryCard(searchResults) {
           <p class="info-text">${text}</p>
           </div>
       </div>
-      <button type="button" class="btn-see-recipe">See recipe</button>
+      <button type="button" id='${_id}' class="btn-see-recipe">See recipe</button>
       <div class = "rating">
       <div class="rating-value">${rating}</div>
       <div class="rating-body">
@@ -443,12 +441,10 @@ function createGalleryCard(searchResults) {
       </div>
       </div>
       </div>
-      </div>
-
-      `;
+      </div>`;
       })
       .join('');
-    }
+    
 }
 
 
@@ -481,14 +477,39 @@ function createGalleryCard(searchResults) {
 
 // }
 
-
-
+refs.gallery.addEventListener('click',seeRecipe)
+const settings =[]
 function seeRecipe(evt){
   if(evt.target.tagName !== 'BUTTON'){
  return
   }
 
-  console.log(evt.target);
+if(evt.target.innerText === '♡'){
+
+  fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${evt.target.id}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }      
+    return response.json();
+  }).then(res => {
+    settings.push(res)
+    localStorage.setItem('favoris',JSON.stringify(settings) )
+  })
+}
+
+  if(evt.target.innerText === 'See recipe'){
+    // console.log(evt.target.id);
+    fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${evt.target.id}`)
+.then(response => {
+  if (!response.ok) {
+    throw new Error(response.status);
+  }      
+  return response.json();
+}).then(res => console.log(res)
+// open modal See recipe
+)
+  }
   evt.target.classList.toggle('bnt');
 }
 
