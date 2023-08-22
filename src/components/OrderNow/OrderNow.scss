@@ -69,7 +69,8 @@
 .modal-form-stl textarea {
   width: 100%;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--accent);
+  background-color: var(--modal-bg);
   margin-top: 8px;
   margin-bottom: 18px;
   box-sizing: border-box;
@@ -166,7 +167,7 @@
 }
 
 .modal-style-input-text {
-  color: rgba(5, 5, 5, 0.5);
+  color: var(--gray-color-btn);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
