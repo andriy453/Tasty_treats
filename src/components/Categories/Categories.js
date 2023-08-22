@@ -220,6 +220,7 @@ if (window.screen.width >= 1280) {
     console.log('це рецепти', data);
     totalPages = data.totalPages
     refs.gallery.innerHTML =  createGalleryCard(data.results)
+    // colorRating(data.results);
   });
 } else if (window.screen.width >= 768) {
   limitID = 8;
@@ -229,12 +230,14 @@ if (window.screen.width >= 1280) {
     totalPages = data.totalPages
     console.log('це рецепти', data);
     refs.gallery.innerHTML =  createGalleryCard(data.results)
+    // colorRating(data.results);
   });
 } else {
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages
     console.log('це рецепти', data);
     refs.gallery.innerHTML =  createGalleryCard(data.results)
+    // colorRating(data.results);
   });;
 
 axiosCardInstance.query = inputValue;
@@ -290,6 +293,7 @@ refs.button2.addEventListener('click', e => {
     axiosCardInstance.getCardData().then(data => {
       console.log('це рецепти', data);
       refs.gallery.innerHTML = createGalleryCard(data.results);
+
     });
   }
 });
@@ -401,7 +405,7 @@ function createGalleryCard(searchResults) {
     console.log('fdsvds');
   } else {
     return searchResults
-      .map(({ preview, title, description }) => {
+      .map(({ preview, title, description, rating, _id }) => {
         const desktop = description.slice(0, 62);
         const mobile = description.slice(0, 97);
         let text = mobile + '...';
@@ -418,10 +422,74 @@ function createGalleryCard(searchResults) {
           </div>
       </div>
       <button type="button" class="btn-see-recipe">See recipe</button>
-      </div>`;
+      <div class = "rating">
+      <div class="rating-value">${rating}</div>
+      <div class="rating-body">
+      <div class="rating-active"></div>
+      <div class="rating-items">
+      <input type = "radio" class="rating-item" value="1" name="rating" >
+      <input type = "radio" class="rating-item" value="2" name="rating" >
+      <input type = "radio" class="rating-item" value="3" name="rating" >
+      <input type = "radio" class="rating-item" value="4" name="rating" >
+      <input type = "radio" class="rating-item" value="5" name="rating" >
+      </div>
+      </div>
+      </div>
+      <div class = "heard">
+      <div class="heard-body">
+      <div class="heard-active"></div>
+      <div class="heard-items">
+      <button type="button" class="btn-heard" id='${_id}'>♡</button>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      `;
       })
       .join('');
+    }
+}
+
+
+// function colorRating (searchResults){
+//   const ratings = searchResults.flatMap(({ rating }) => rating);
+
+//   if (ratings.length > 0){
+//       initRatings();
+//    }
+
+//   function initRatings(){
+//       let ratingActive, ratingValue;
+//       for (let index = 0; index < ratings.length; index++){
+//           const rating = ratings[index];
+//           console.log(rating);
+//           initRatingVars(rating);
+//           setRatingActiveWidth(rating);
+//       }
+
+//       function initRatingVars(){
+//           ratingActive = document.querySelector('.rating-active');
+//           ratingValue = document.querySelector('.rating-value');
+//        }
+
+//        function setRatingActiveWidth(rating){
+//           const ratingActiveWidth = rating / 0.05;
+//           ratingActive.style.width = `${ratingActiveWidth}%`;
+//        }
+//   }
+
+// }
+
+
+
+function seeRecipe(evt){
+  if(evt.target.tagName !== 'BUTTON'){
+ return
   }
+
+  console.log(evt.target);
+  evt.target.classList.toggle('bnt');
 }
 
       
