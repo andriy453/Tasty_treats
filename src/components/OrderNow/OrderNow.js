@@ -8,9 +8,9 @@ const okButton = document.getElementById('okButton');
 const thanksBox = document.getElementById('thanksBox');
 const closeThanksButton = document.getElementById('closeThanksButton');
 
-btn.onclick = function () {
-  modal.style.display = 'block';
-};
+btn.addEventListener('click',(()=>
+modal.style.display = 'block'
+)) 
 
 closeBtn.onclick = function () {
   modal.style.display = 'none';

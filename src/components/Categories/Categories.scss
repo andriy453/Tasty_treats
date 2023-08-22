@@ -25,7 +25,14 @@
   background-color: var(--accent);
   border-color: transparent;
 }
-
+.active_all-categories{
+  color: var(--bg-main);
+  background-color: var(--accent);
+  border-color: #0000;
+}
+.active{
+  color: var(--accent);
+}
 .category-item {
   cursor: pointer;
   font-family: Inter;

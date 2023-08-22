@@ -1,12 +1,11 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 @import '../components/PopularRecipes/PopularRecipes.scss';
-
-
 @import '../components/cards/styles.scss';
 @import '../components/Header/Header.scss';
 @import '../components/Categories/Categories.scss';
 @import '../components/Hero/Hero.scss';
+@import '../components/OrderNow/OrderNow.scss';
 
 @font-face {
     font-family: Inter-Regular;
@@ -44,6 +43,7 @@
   --border-pag: #9bb537;
   --option-color: #fff;
   --grey:rgba(5, 5, 5, 0.30);
+  --modal-bg: #fff;
 }
 
 :root[data-theme='dark'] {
@@ -68,6 +68,7 @@
   --border-pag: #9bb537;
   --option-color: #050505;
   --grey:rgba(255, 255, 255, 0.50);
+  --modal-bg: #050505;
 }
 
   body {
@@ -149,7 +150,7 @@
   }
   @media screen and (min-width: 1280px) {
     .container {
-      max-width: 1280px;
+      max-width: 1400px;
       padding-left: 100px;
       padding-right: 100px;
     }

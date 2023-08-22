@@ -15,11 +15,14 @@ function murkap(mar) {
     .map(mar => {
         return `
         <swiper-slide  class="slide">
-        <div class='slider_img1'> <img class="img_imgUrl" src="${mar.cook.imgUrl}" alt=""></div>
+        <div class='slider_img1'> <img class="img_imgUrl" src="${mar.cook.imgUrl}" alt=""> 
+        <h2 class='slider_area'>${mar.topic.area}</h2>
+        <p class='slider_text'>${mar.topic.name}</p>
+        </div>
         <div class='slider_img2'><img class="img_previewUrl" src="${mar.topic.previewUrl}" alt=""></div>
         <div class='slider_img3'><img class="img_imgWebpUrl" src="${mar.topic.imgWebpUrl}" alt=""></div>
       </swiper-slide>`;
       })
       .join('')
   );
-}
+}   

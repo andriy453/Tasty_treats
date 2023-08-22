@@ -2,7 +2,7 @@ import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
-} from '../../../node_modules/boolbase/index.js';
+} from 'body-scroll-lock';
 
 (() => {
   const mobileMenu = document.querySelector('.js-menu-container');
@@ -16,7 +16,8 @@ import {
     mobileMenu.classList.toggle('is-open');
 
     const scrollLockMethod = !isOpenMenu ? disableBodyScroll : enableBodyScroll;
-    // scrollLockMethod(document.body);
+    scrollLockMethod(document.body);
+    disableBodyScroll(document.body)
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -26,6 +27,6 @@ import {
     if (!evt.matches) return;
     mobileMenu.classList.remove('is-open');
     openMenuBtn.setAttribute('aria-expanded', false);
-    // enableBodyScroll(document.body);
+    disableBodyScroll(document.body)
   });
 })();

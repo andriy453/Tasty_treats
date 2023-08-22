@@ -1,4 +1,3 @@
-<button class="roz style-btn-site" id="openModal">Order Now</button>
 
 <div id="myModal" class="modal">
   <div class="modal-content">
@@ -31,7 +30,7 @@
                 name="user_phone"
                 minlength="11"
                 maxlength="17"
-                pattern="[+0-9]{3} [0-9]{3} [0-9]{7}"
+                pattern="+000000000000"
                 title="+xx xxx xxxxxxx"
                 required
               />
@@ -71,6 +70,7 @@
 </div>
 
 <div id="thanksBox" class="message-box">
-  <p>Thank you for your order, we will contact you shortly!</p>
+  <p id="messageText" >Thank you for your order, we will contact you shortly!</p>
   <button class="closeThanksBtn" id="closeThanksButton">ОК</button>
 </div>
+

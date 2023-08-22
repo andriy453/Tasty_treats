@@ -1,10 +1,10 @@
-import { debounce } from "lodash";
-
-import { axiosRecipes } from './axiosFilters';
-import { axiosCard } from './axiosCard';
-import Notify  from 'notiflix/build/notiflix-notify-aio';
+import { debounce } from 'lodash';
+import Notiflix from 'notiflix';
 import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
-import   'slim-select/dist/slimselect.css'; 
+import 'slim-select/dist/slimselect.css';
+import { createGalleryCard } from './galleryCard';
+import { axiosRecipes } from './axiosRecipes';
+import { axiosCard } from './axiosCategories';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 const categoriesRef = 'categories';
@@ -21,9 +21,13 @@ const refs = {
   button1: document.querySelector('.btn-center1'),
   button2: document.querySelector('.btn-center2'),
   button3: document.querySelector('.btn-center3'),
+
   btn_right: document.querySelector('.btn-right'),
-  btn_left: document.querySelector('.btn-left1'),
   btn_end: document.querySelector('.btn-right-end'),
+
+  btn_start: document.querySelector('.btn-left'),
+  btn_left: document.querySelector('.btn-left1'),
+
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
 };
@@ -88,7 +92,7 @@ let inputValue;
 let totalPages = 1;
 let arayRecept;
 let limitID;
-let results =[];
+let results = [];
 
 let activeCategories;
 
@@ -96,9 +100,11 @@ refs.categoriesEl.addEventListener('click', handleCategory);
 const axiosCardInstance = new axiosCard();
 function handleCategory(e) {
   if (e.target.classList.contains('category-item')) {
+    refs.btn_all_categories.classList.remove('active_all-categories');
     selectedCategoryId = e.target.getAttribute('value');
     axiosCardInstance.category = selectedCategoryId;
     axiosCardInstance.page = 1;
+
     showRecipes();
 
     if (activeCategories !== undefined) {
@@ -109,7 +115,7 @@ function handleCategory(e) {
   e.target.classList.add('active');
 }
 
-refs.inputEl.addEventListener('input', debounce(handleInputEl, 300));
+refs.inputEl.addEventListener('input', handleInputEl, 300);
 
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
@@ -117,32 +123,7 @@ function handleInputEl(e) {
   console.log(inputValue);
 
   showRecipes();
-  const dec = debounce(()=>  axiosCardInstance.getCardData().then(data => {
-    let filter = results.filter(value => value.title.toLowerCase().includes(inputValue.toLowerCase()) );
-    console.log('це рецепти', filter );
-    refs.gallery.innerHTML =  createGalleryCard(filter)
-  }),300)
-  dec()
-
 }
-
-// refs.inputEl.addEventListener('input', handleInputEl);
-
-// function handleInputEl(e) {
-//   inputValue = e.target.value;
-//   axiosCardInstance.query = inputValue;
-//   console.log(inputValue);
-//   let filter = arayRecept.filter(value =>
-//     value.title.toLowerCase().includes(inputValue.toLowerCase())
-//   );
-//   axiosCardInstance.getCardData().then(data => {
-//     console.log('це рецепти', filter);
-//     if (filter.length === 0) {
-//       return console.log('njilj');
-//     }
-//     refs.gallery.innerHTML = createGalleryCard(filter);
-//   });
-// }
 
 refs.areaEl.addEventListener('change', handleArea);
 
@@ -153,17 +134,6 @@ function handleArea(e) {
   console.log('areaId:', selectedAreaId);
 
   showRecipes();
-
-  axiosCardInstance.getCardData().then(data => {
-      if(!data.results){
-      console.log('jjjjjjjj')
-      refs.gallery.innerHTML =  MarkapCard()
-    }
-    console.log('це рецепти', data);
-    arayRecept = data.results;
-    refs.gallery.innerHTML =  createGalleryCard(data.results)
-  });
-
 }
 
 refs.timeEl.addEventListener('change', handleTime);
@@ -172,40 +142,21 @@ function handleTime(e) {
   selectedTimeId = e.target.value;
   axiosCardInstance.time = selectedTimeId;
   arayRecept = selectedTimeId;
-  console.log('timeId:', selectedTimeId);
-
+  //console.log('timeId:', selectedTimeId);
   showRecipes();
-
-  axiosCardInstance.getCardData().then(data => {
-    if(!data.result){
-      console.log('jjjjjjjj')
-      refs.gallery.innerHTML =  MarkapCard()
-    }
-    console.log('це рецепти', data);
-    arayRecept = data.results;
-    refs.gallery.innerHTML =  createGalleryCard(data.results)
-  });
 }
 
 refs.ingredientsEl.addEventListener('change', handleIngredients);
 
 function handleIngredients(e) {
-  selectedIngredientsId = e.target.value; //і тут треба змінити ._id
+  selectedIngredientsId = e.target.value;
   console.log(e.target.value);
   axiosCardInstance.ingredients = selectedIngredientsId;
   console.log('ingredientsId:', selectedIngredientsId);
   showRecipes();
 }
 
-//Вибір рецепту по фільтрам
-axiosCardInstance.category = selectedCategoryId;
-axiosCardInstance.page = 1;
-axiosCardInstance.totalPages = totalPages;
-axiosCardInstance.time = selectedTimeId;
-axiosCardInstance.area = selectedAreaId;
-axiosCardInstance.ingredients = selectedIngredientsId;
-
-axiosCardInstance.title = inputValue;
+//Адаптив
 
 if (window.screen.width >= 1280) {
   limitID = 9;
@@ -219,47 +170,33 @@ if (window.screen.width >= 1280) {
   showRecipesAdapt();
 } else {
   showRecipesAdapt();
-
-axiosCardInstance.query = inputValue;
 }
 
 //Якщо рецептів не знайдено, або показати рецепти
 function showRecipes() {
   axiosCardInstance.getCardData().then(data => {
-
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-
-    const totalPages = data.totalPages;
+    totalPages = data.totalPages;
     if (totalPages === null) {
-      Notify.info("😪 We don't have recipes for your request!");
+      Notiflix.Notify.info("😪 We don't have recipes for your request!");
     }
-    results = data.results
-    console.log('Обрані рецепти', data)
-    totalPages = data.totalPages
-    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
-
+    // results = data.results
+    console.log('Обрані рецепти', data);
+    totalPages = data.totalPages;
+    refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 }
 function showRecipesAdapt() {
   axiosCardInstance.getCardData().then(data => {
-
-    refs.gallery.insertAdjacentHTML(
-      'beforeend',
-      createGalleryCard(data.results)
-    );
-
-    results = data.results
-    console.log('Обрані рецепти', data)
-    arayRecept = data.results
-    totalPages = data.totalPages
-    refs.gallery.insertAdjacentHTML("beforeend", createGalleryCard(data.results))
-
+    console.log('це рецепти', data);
+    totalPages = data.totalPages;
+    refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 }
 
 // pagination ==========================pagination=============pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
+  console.log('fffff');
   axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
@@ -267,7 +204,8 @@ refs.button1.addEventListener('click', e => {
 });
 
 refs.button2.addEventListener('click', e => {
-  if (totalPages === 1) {
+  console.log(totalPages);
+  if (totalPages === 2) {
     return;
   } else {
     axiosCardInstance.page = e.currentTarget.innerText;
@@ -280,29 +218,34 @@ refs.button2.addEventListener('click', e => {
 });
 refs.button3.addEventListener('click', e => {
   console.log(totalPages);
-  if (totalPages === 1) {
+  if (totalPages === 3) {
     return;
-  } else if (totalPages === 2) {
-    return;
-  } else {
-    axiosCardInstance.page = e.currentTarget.innerText;
-
-    axiosCardInstance.getCardData().then(data => {
-      console.log('це рецепти', data);
-      refs.gallery.innerHTML = createGalleryCard(data.results);
-    });
   }
+  axiosCardInstance.page = e.currentTarget.innerText;
+
+  axiosCardInstance.getCardData().then(data => {
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML = createGalleryCard(data.results);
+  });
 });
 
 refs.btn_right.addEventListener('click', e => {
-  if (axiosCardInstance.page === totalPages) {
+  console.log(totalPages);
+  if (totalPages === axiosCardInstance.page) {
     return;
   }
-  console.log(totalPages);
   axiosCardInstance.page++;
-  console.log(axiosCardInstance.page++);
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML = createGalleryCard(data.results);
+  });
+});
+refs.btn_end.addEventListener('click', e => {
+  console.log(totalPages);
+
+  axiosCardInstance.page = totalPages;
+  axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
@@ -318,16 +261,16 @@ refs.btn_left.addEventListener('click', e => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
-refs.btn_end.addEventListener('click', e => {
-  if (totalPages === 1) {
-    console.log('dddd');
-  }
-  axiosCardInstance.page = totalPages;
+
+refs.btn_start.addEventListener('click', e => {
+  axiosCardInstance.page = 1;
+  console.log(axiosCardInstance.page);
   axiosCardInstance.getCardData().then(data => {
     console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
+
 // pagination ==========================pagination=============pagination
 
 //Cкинути фільтри
@@ -335,12 +278,11 @@ refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
   axiosCardInstance.category = selectedCategoryId;
-  axiosCardInstance.area = '';
-  axiosCardInstance.time = '';
-  axiosCardInstance.ingredients = '';
-  axiosCardInstance.title = '';
-  console.log(axiosCardInstance);
-
+  axiosCardInstance.area = null;
+  axiosCardInstance.time = null;
+  axiosCardInstance.ingredients = null;
+  axiosCardInstance.title = null;
+  console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
 }
 
@@ -349,15 +291,13 @@ refs.btn_all_categories.addEventListener('click', displayAllCategories);
 function displayAllCategories(e) {
   activeCategories = e.target;
   e.target.classList.add('active');
-
-  axiosCardInstance.category = '';
+  axiosCardInstance.category = null;
   axiosCardInstance.time = selectedTimeId;
   axiosCardInstance.area = selectedAreaId;
   axiosCardInstance.ingredients = selectedIngredientsId;
   axiosCardInstance.title = inputValue;
-  console.log(axiosCardInstance);
+  console.log('displayAllCategories:', axiosCardInstance);
   showRecipesAdapt();
-
   if (activeCategories === e.target) {
     activeCategories.classList.remove('active');
   }
@@ -365,37 +305,101 @@ function displayAllCategories(e) {
   e.target.classList.add('active');
 }
 
-function createGalleryCard(searchResults) {
-  if (searchResults === []) {
-    console.log('fdsvds');
-  } else {
-    return searchResults
-      .map(({ preview, title, description }) => {
-        const desktop = description.slice(0, 62);
-        const mobile = description.slice(0, 97);
-        let text = mobile + '...';
-        if (window.screen.width >= 768) {
-          text = desktop + '...';
-        }
-        return `<div class="photo-card">
-      <div class = "backdrop"></div>
-          <img class="img-card" src="${preview}" alt="${title}"/>
-          <div class="info">
-          <div class="info-text">
-          <h3 class="info-item">${title}</h3>
-          <p class="info-text">${text}</p>
-          </div>
-      </div>
-      <button type="button" class="btn-see-recipe">See recipe</button>
-      </div>`;
-      })
-      .join('');
+// function colorRating (searchResults){
+//   const ratings = searchResults.flatMap(({ rating }) => rating);
+
+//   if (ratings.length > 0){
+//       initRatings();
+//    }
+
+//   function initRatings(){
+//       let ratingActive, ratingValue;
+//       for (let index = 0; index < ratings.length; index++){
+//           const rating = ratings[index];
+//           console.log(rating);
+//           initRatingVars(rating);
+//           setRatingActiveWidth(rating);
+//       }
+
+//       function initRatingVars(){
+//           ratingActive = document.querySelector('.rating-active');
+//           ratingValue = document.querySelector('.rating-value');
+//        }
+
+//        function setRatingActiveWidth(rating){
+//           const ratingActiveWidth = rating / 0.05;
+//           ratingActive.style.width = `${ratingActiveWidth}%`;
+//        }
+//   }
+
+// }
+
+const KEY_FAVORITE = 'favorite';
+let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+
+function fetchRecipeById(recipeId) {
+  return fetch(
+    `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+}
+
+refs.gallery.addEventListener('click', addFavorite);
+
+async function addFavorite(e) {
+  console.log(e.target);
+  if (e.target.tagName !== 'BUTTON') {
+    return;
+  }
+  if (e.target.classList.contains('btn-heard')) {
+    console.log('Add to favorites');
+    const recipeId = e.target.id;
+    console.log('recipeId:', recipeId);
+
+    const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
+    if (inStorage) {
+      favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
+      e.target.classList.remove('heart-icon-active');
+      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+      console.log('Updated Favorite Array:', favoriteArr);
+
+      return;
+    }
+    try {
+      const recipe = await fetchRecipeById(recipeId);
+
+      favoriteArr.push(recipe);
+
+      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+
+      console.log('Favorite Array:', favoriteArr);
+      e.target.classList.add('heart-icon-active');
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 }
 
-      
+refs.gallery.addEventListener('click', seeRecipe);
 
-
-
- 
-
+function seeRecipe(evt) {
+  if (evt.target.tagName !== 'BUTTON') {
+    return;
+  }
+  if (evt.target.innerText === 'See recipe') {
+    const recipeId = evt.target.id;
+    // console.log(evt.target.id);
+    fetchRecipeById(recipeId)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
+  evt.target.classList.toggle('bnt');
+}
