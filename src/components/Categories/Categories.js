@@ -401,7 +401,7 @@ function createGalleryCard(searchResults) {
     console.log('fdsvds');
   } else {
     return searchResults
-      .map(({ preview, title, description }) => {
+      .map(({ preview, title, description, rating, _id }) => {
         const desktop = description.slice(0, 62);
         const mobile = description.slice(0, 97);
         let text = mobile + '...';
@@ -418,7 +418,30 @@ function createGalleryCard(searchResults) {
           </div>
       </div>
       <button type="button" class="btn-see-recipe">See recipe</button>
-      </div>`;
+      </div>
+      <div class = "rating">
+      <div class="rating-value">${rating}</div>
+      <div class="rating-body">
+      <div class="rating-active"></div>
+      <div class="rating-items">
+      <input type = "radio" class="rating-item" value="1" name="rating" >
+      <input type = "radio" class="rating-item" value="2" name="rating" >
+      <input type = "radio" class="rating-item" value="3" name="rating" >
+      <input type = "radio" class="rating-item" value="4" name="rating" >
+      <input type = "radio" class="rating-item" value="5" name="rating" >
+      </div>
+      </div>
+      </div>
+      <div class = "heard">
+      <div class="heard-body">
+      <div class="heard-active"></div>
+      <div class="heard-items">
+      <button type="button" class="btn-heard" id='${_id}'>♡</button>
+  
+      </div>
+      </div>
+      </div>
+      `;
       })
       .join('');
   }
