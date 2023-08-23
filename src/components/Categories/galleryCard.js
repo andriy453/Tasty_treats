@@ -14,7 +14,7 @@ export function createGalleryCard(searchResults) {
           <img class="img-card" src="${preview}" alt="${title}"/>
           <div class="info">
           <div class="info-text">
-          <h3 class="info-item">${title}</h3>
+          <h3 class="text-title">${title}</h3>
           <p class="info-text">${text}</p>
           </div>
       </div>
