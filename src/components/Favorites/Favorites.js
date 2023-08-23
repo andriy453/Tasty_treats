@@ -6,10 +6,10 @@ const btn_all_categories = document.querySelector('.btn-all-categori')
 const KEY_FAVORITE = 'favorite';
 const favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
-
+   
 
 const categoriesArray = favoritesRxecipes.map(recipe => {
-  
+
     return recipe.category
 });
 
@@ -17,12 +17,13 @@ createGalleryCard(favoritesRxecipes, listFav);
 function categories(categories) {
     const SetCategories  = [...new Set(categories)];
 
+    categoriesConteiner.insertAdjacentHTML('afterbegin','<button class="btn-all-categori  active_all-categories" type="button">All categories</button>')
     categoriesConteiner.insertAdjacentHTML('beforeend', SetCategories.map(name => {
     return `
           <button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`;
   }).join('')) 
 }
-categories(categoriesArray);
+categories(categoriesArray)
 
 listFav.addEventListener('click', remoteFavRecipe);
 function remoteFavRecipe(e) {
@@ -48,14 +49,11 @@ categoriesConteiner.addEventListener('click',(e)=>{
     if (e.target.classList.contains('fav-category-fltr-btn')) {
         createGalleryCard(favoritesRxecipes.filter((res)=>res.category === e.target.id),listFav)
     }
+    if (e.target.classList.contains('btn-all-categori')) {
+        createGalleryCard(favoritesRxecipes, listFav)
+    }
 
 })
-
-btn_all_categories.addEventListener('click',(e)=>{
-    console.log(favoritesRxecipes)
-    createGalleryCard(favoritesRxecipes, listFav)
-})
-
 
 listFav.addEventListener('click', seeRecipe);
 function seeRecipe(evt) {

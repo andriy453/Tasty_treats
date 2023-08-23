@@ -20,7 +20,7 @@
 }
 
 .hero-title-green {
-  color: var(--accent);
+  color: var(--green);
   font-style: italic;
   font-weight: 400;
 }
@@ -33,9 +33,8 @@
 
 .btnOrderNow {
   cursor: pointer;
-  border: 1px solid var(--accent);
-  background-color: var(--bg-main);
-  color: var(--txt-color);
+  border: 1px solid var(--green);
+  background-color: white;
   border-radius: 15px;
   padding: 10px 20px;
   font-size: 14px;
@@ -46,9 +45,9 @@
 }
 
 .btnOrderNow:hover {
-  border: 1px solid var(--accent);
-  background-color: var(--accent);
-  color: var(--bg-main);
+  border: 1px solid var(--green);
+  background-color: var(--green);
+  color: var(--white);
 }
 
 
@@ -136,6 +135,9 @@
   }
   .btnOrderNow{
     margin-bottom: 0px;
+  }
+  .hero-wrap{
+    display: flex;
   }
 }
 
@@ -238,52 +240,6 @@ span.swiper-pagination-bullet {
 }
 
 span.swiper-pagination-bullet-active {
-
-  background-color: var(--green);
-  opacity: 1;
-}
-
-.hero-text-wrapper {
-  text-align: left;
-}
-
-@layer components {
-  :root {
-    --swiper-pagination-color: var(--green);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .hero-text-wrapper {
-    text-align: left;
-    width: 446px;
-    margin-bottom: 64px;
-    margin-right: 32px;
-  }
-  .btnOrderNow {
-    margin-bottom: 64px;
-  }
-  .hero-title {
-    width: 446px;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 600;
-  }
-  .hero-title-green {
-    color: var(--green);
-    font-style: italic;
-    font-weight: 400;
-  }
-  .hero-text {
-    width: 408px;
-    margin: 16px 0 32px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .btnOrderNow {
-    padding: 14px 28px;
-  }
-
   background: #9bb537;
   opacity: 1;
 }
@@ -293,7 +249,6 @@ span.swiper-pagination-bullet-active {
 .mini-picture {
   margin-bottom: 60px;
 }
-
   .case {
     width: 889px;
   }
@@ -331,11 +286,12 @@ span.swiper-pagination-bullet-active {
 }
 
 @media screen and (min-width: 1280px) {
-  .title-wrap {
-    padding-top: 45px;
-  }
-
-
   .hero {
     overflow: hidden;
   }
+  .hero-wrap {
+    display: flex;
+   }
+}
+
+
