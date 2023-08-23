@@ -1,19 +1,4 @@
-/* Mobile fersion */
-@media screen and (min-width: 375px) {
-    .modal-content {
-      width: 335px;
-      height: 632px;
-    }
-  }
-  
-  /* Tablet version */
-  @media screen and (min-width: 768px) {
-    .modal-content {
-      width: 440px;
-      height: 582px;
-    }
-  }
-  
+
   .roz {
     margin-top: 199px;
     margin-left: 199px;
@@ -36,11 +21,11 @@
     background-color: var(--option-color);
     padding: 40px;
     border: 1px solid #888;
-    width: 440px;
+    width: 310px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 632px;
+    height: 582px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -79,7 +64,7 @@
   .modal-btn-modal-form {
     background-color: #9bb537;
     color: #f8f8f8;
-    padding: 14px 164px;
+    padding: 14px 94px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -215,3 +200,26 @@
   #messageText{
 margin-bottom: 10px;
   }
+
+  /* Mobile fersion */
+@media screen and (min-width: 375px) {
+  .modal-content {
+      width: 335px;
+    }
+    .modal-btn-modal-form {
+      padding: 14px 107px;
+    }
+  }
+  
+  /* Tablet version */
+  @media screen and (min-width: 768px) {
+    .modal-content {
+      width: 440px;
+      height: 632px;
+    }
+    .modal-btn-modal-form {
+      padding: 14px 164px;
+    }
+    
+  }
+  

@@ -2,6 +2,7 @@ import { debounce } from 'lodash';
 import Notiflix from 'notiflix';
 import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
 import 'slim-select/dist/slimselect.css';
+
 import { createGalleryCard } from './galleryCard';
 import { axiosRecipes } from './axiosRecipes';
 import { axiosCard } from './axiosCategories';
@@ -12,11 +13,13 @@ const areaRef = 'areas';
 const ingredientsRef = 'ingredients';
 
 const refs = {
+  form: document.querySelector('.myForm'),
   categoriesEl: document.querySelector('.categories-list'),
   inputEl: document.querySelector('.input-filter'),
   timeEl: document.querySelector('.time-select'),
   areaEl: document.querySelector('.area-select'),
   ingredientsEl: document.querySelector('.ingredients-select'),
+  ratingBackdrop: document.querySelector('.rating-backdrop'),
   gallery: document.querySelector('.gallery'),
   button1: document.querySelector('.btn-center1'),
   button2: document.querySelector('.btn-center2'),
@@ -25,14 +28,14 @@ const refs = {
   btn_right: document.querySelector('.btn-right'),
   btn_end: document.querySelector('.btn-right-end'),
 
-  btn_start: document.querySelector('.btn-left'),
-  btn_left: document.querySelector('.btn-left1'),
+  btn_start: document.querySelector('.btn-left1'),
+  btn_left: document.querySelector('.btn-left'),
 
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
 };
 const axiosRecipesInstance = new axiosRecipes();
-// Додаємо option
+///////////////////////////// Додаємо option
 
 axiosRecipesInstance.getFilteredData(categoriesRef).then(categories => {
   categories.forEach(category => {
@@ -83,7 +86,7 @@ function selectTime() {
 }
 selectTime();
 
-//Отримуємо обрані значення
+/////////////////////////Отримуємо обрані значення
 let selectedCategoryId;
 let selectedAreaId;
 let selectedIngredientsId;
@@ -115,7 +118,8 @@ function handleCategory(e) {
   e.target.classList.add('active');
 }
 
-refs.inputEl.addEventListener('input', handleInputEl, 300);
+
+refs.inputEl.addEventListener('input',debounce(handleInputEl,300) );
 
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
@@ -156,7 +160,7 @@ function handleIngredients(e) {
   showRecipes();
 }
 
-//Адаптив
+/////////////////////////////Адаптив
 
 if (window.screen.width >= 1280) {
   limitID = 9;
@@ -172,7 +176,7 @@ if (window.screen.width >= 1280) {
   showRecipesAdapt();
 }
 
-//Якщо рецептів не знайдено, або показати рецепти
+//////////////////////////Якщо рецептів не знайдено, або показати рецепти
 function showRecipes() {
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
@@ -193,7 +197,7 @@ function showRecipesAdapt() {
   });
 }
 
-// pagination ==========================pagination=============pagination
+// pagination /////////////////////////// pagination/////////////////////////// pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
   console.log('fffff');
@@ -254,6 +258,7 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
+  console.log('ffff')
   axiosCardInstance.page = axiosCardInstance.page--;
   console.log(axiosCardInstance.page--);
   axiosCardInstance.getCardData().then(data => {
@@ -271,9 +276,9 @@ refs.btn_start.addEventListener('click', e => {
   });
 });
 
-// pagination ==========================pagination=============pagination
+// pagination/////////////////////////// pagination/////////////////////////// pagination
 
-//Cкинути фільтри
+/////////////////////////////Cкинути фільтри
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
@@ -282,6 +287,8 @@ function resetAllFilters() {
   axiosCardInstance.time = null;
   axiosCardInstance.ingredients = null;
   axiosCardInstance.title = null;
+
+
   console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
 }
@@ -334,6 +341,10 @@ function displayAllCategories(e) {
 
 // }
 
+
+
+
+///////////////////////////  ADD TO  FAVORITE ///////////////
 const KEY_FAVORITE = 'favorite';
 let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
@@ -345,13 +356,13 @@ function fetchRecipeById(recipeId) {
       throw new Error(response.status);
     }
     return response.json();
-  });
+  }).catch (error=>  console.error('Error:', error))
+
 }
 
 refs.gallery.addEventListener('click', addFavorite);
 
 async function addFavorite(e) {
-  console.log(e.target);
   if (e.target.tagName !== 'BUTTON') {
     return;
   }
@@ -392,14 +403,15 @@ function seeRecipe(evt) {
   }
   if (evt.target.innerText === 'See recipe') {
     const recipeId = evt.target.id;
-    // console.log(evt.target.id);
     fetchRecipeById(recipeId)
       .then(res => {
         console.log(res);
+        refs.ratingBackdrop.classList.toggle('visible');
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
-  evt.target.classList.toggle('bnt');
-}
+
+}  
+
