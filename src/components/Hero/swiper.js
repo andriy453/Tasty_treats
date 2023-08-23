@@ -2,6 +2,17 @@ import Swiper from 'swiper';
 import { Pagination, Navigation, Autoplay, Parallax } from 'swiper/modules';
 import 'swiper/swiper-bundle.min.css';
 
+
+const progressCircle = document.querySelector('.autoplay-progress svg');
+const progressContent = document.querySelector('.autoplay-progress span');
+
+const swiperEl = document.querySelector('swiper-container');
+swiperEl.addEventListener('autoplaytimeleft', e => {
+  const [swiper, time, progress] = e.detail;
+  // progressCircle.style.setProperty("--progress", 1 - progress);
+  // progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+});
+
 const sliderContainer = document.querySelector('.events');
 
 function events() {
