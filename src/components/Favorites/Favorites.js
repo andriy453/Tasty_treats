@@ -121,11 +121,11 @@ refs.button3.addEventListener('click', e => {
 refs.btn_right.addEventListener('click', e => {
   prev_state+=12
   step_state+=12
-  if( favoritesRxecipes.length  < step_state){
+  if(    step_state > favoritesRxecipes.length+11 ){
     prev_state-=12
     step_state-=12
     return
-      }
+  }
   limit = favoritesRxecipes.slice(prev_state, step_state) 
   createGalleryCard(limit, listFav)
 });
