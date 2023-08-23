@@ -27,6 +27,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    padding-bottom: 100px;
 }
 
 .fav-hero {
@@ -222,9 +223,12 @@
 @media screen and (min-width: 1280px) {
     .fav-container {
         max-width: 1280px;
-        padding: 0 100px;
+        padding: 100px;
+        padding-top: 0px;
     }
-
+    div.cart-favorite {
+        width: 258px;
+    }
     .fav-image {
         width: 1080px;
         height: 356px;
