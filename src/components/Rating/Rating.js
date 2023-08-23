@@ -1,4 +1,4 @@
-import { addARating } from '../Rating/rating_request.js';
+import { addARating } from './Rating_request.js';
 
 const RatingAdd = new addARating();
 
