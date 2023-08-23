@@ -12,6 +12,10 @@
     overflow: hidden;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 .favorites {
     width: 100%;
     margin: 0 auto;
@@ -89,12 +93,24 @@
 display: flex;
 gap: 0px 15px;
 }
-
+.btn-all-categori {
+    max-width: 176px;
+  
+    font-family: Inter;
+    font-size: 18px;
+  
+    line-height: 1.2;
+    color: var(--primary-color-05);
+    background-color: var(--bg-main);
+  
+    padding: 14px 29px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color-02);
+  }
 /* --------------- MOBILE ------------------ */
 @media screen and (min-width: 375px) {
     .fav-container {
         width: 335px;
-        padding: 0 20px;
     }
 
     .fav-image {
@@ -112,7 +128,6 @@ gap: 0px 15px;
 @media screen and (min-width: 768px) {
     .fav-container {
         width: 704px;
-        padding: 0 32px;
         gap: 64px;
     }
 

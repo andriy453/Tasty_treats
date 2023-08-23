@@ -1,5 +1,5 @@
 .popular {
-    width: 332px;
+    width: 310px;
     .popular-box {
       display: flex;
       flex-direction: column;
@@ -33,7 +33,7 @@
 
 
 .info_recipes {
-  width: 252px;
+  width: 240px;
 }
   .recipe-title {
     color: var(--txt-color);
@@ -61,6 +61,16 @@
     width: 252px;
   } 
 
+
+//--------------------------375px------------
+@media screen and (min-width: 375px) {
+  .popular {
+    width: 332px;
+  }
+  .info_recipes {
+    width: 252px;
+  }
+}
 
 //--------------------------768px------------
 
