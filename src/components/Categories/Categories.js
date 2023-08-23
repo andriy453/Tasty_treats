@@ -351,7 +351,8 @@ function fetchRecipeById(recipeId) {
       throw new Error(response.status);
     }
     return response.json();
-  });
+  }).catch (error=>  console.error('Error:', error))
+
 }
 
 refs.gallery.addEventListener('click', addFavorite);
