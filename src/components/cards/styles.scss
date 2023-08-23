@@ -35,7 +35,7 @@ img {
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
-  padding-top: 24px;
+
   margin: 0 auto;
 }
 .info {
@@ -62,7 +62,6 @@ img {
 .info-text {
   font-size: 12px;
   color: var(--white);
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -150,7 +149,7 @@ img {
   font-size: 22px;
   font-weight: 500;
   line-height: calc(18 / 16);
-  top:0px;
+  top: 0px;
   right: 0px;
 }
 
@@ -167,7 +166,7 @@ img {
   overflow: hidden;
 }
 
-.btn-heard{
+.btn-heard {
   position: relative;
   color: transparent;
   background-color: transparent;
@@ -175,8 +174,6 @@ img {
   border: 1px solid var(--cornflower-color);
   -webkit-text-stroke: 1px rgb(248, 248, 248, 0.3);
   color: transparent;
-  width: 22px;
-  height: 22px;
   cursor: pointer;
   align-items: center;
   text-align: center;
@@ -184,7 +181,7 @@ img {
   padding: 16px;
 
 }
-.btn-heard-color{
+.btn-heard-color {
   color: red;
   -webkit-text-stroke: 1px red;
 }
@@ -198,10 +195,11 @@ img {
   height: 22px;
 }
 
-.btn {
-  color: red;
+.heart-icon-active{
+  color: rgb(255, 255, 255);
   -webkit-text-stroke: 1px rgb(248, 248, 248, 0.3);
 }
+
 
 
 /* ---------------------------RATING-------------------- */

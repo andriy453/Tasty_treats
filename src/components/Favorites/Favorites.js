@@ -1,15 +1,17 @@
 import { createGalleryCard } from './createGalleryCard.js';
 const listFav = document.querySelector('.fav-recipe-card-list');
 const categoriesConteiner = document.querySelector('.fav-category-block')
-const btn_all_categories = document.querySelector('.btn-all-categori')
+
 const btn_heard = document.querySelector('.btn-heard')
 
 const btn_conteiner_pagination = document.querySelector('.button-style-favorites')
 
 const  refs =  {
+  all_categorie: document.querySelector('.btn-all-categori'),
   button1: document.querySelector('.btn-center1'),
   button2: document.querySelector('.btn-center2'),
   button3: document.querySelector('.btn-center3'),
+  categories_btn: document.querySelector('fav-category-fltr-btn'),
 
   btn_right: document.querySelector('.btn-right'),
   btn_end: document.querySelector('.btn-right-end'),
@@ -20,7 +22,6 @@ const  refs =  {
 const KEY_FAVORITE = 'favorite';
 const favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
-   
 
 const categoriesArray = favoritesRxecipes.map(recipe => {
 
@@ -30,12 +31,14 @@ const categoriesArray = favoritesRxecipes.map(recipe => {
 createGalleryCard(favoritesRxecipes, listFav);
 function categories(categories) {
     const SetCategories  = [...new Set(categories)];
-
-    categoriesConteiner.insertAdjacentHTML('afterbegin','<button class="btn-all-categori  active_all-categories" type="button">All categories</button>')
+  
+    // categoriesConteiner.insertAdjacentHTML('afterbegin','')
     categoriesConteiner.insertAdjacentHTML('beforeend', SetCategories.map(name => {
+      
     return `
           <button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`;
   }).join('')) 
+
 }
 categories(categoriesArray)
 
@@ -61,16 +64,27 @@ function remoteFavRecipe(e) {
 
   }
 }
-
+let activeCategories;
 categoriesConteiner.addEventListener('click',(e)=>{
 
     if (e.target.classList.contains('fav-category-fltr-btn')) {
+      document.querySelector('.btn-all-categori ').classList.remove('active_all-categories')
         createGalleryCard(favoritesRxecipes.filter((res)=>res.category === e.target.id),listFav)
+         
+        if (activeCategories !== undefined) {
+          activeCategories.classList.remove('active_btn');
+        }
+        activeCategories = e.target;
+        e.target.classList.add('active_btn');
     }
     if (e.target.classList.contains('btn-all-categori')) {
         createGalleryCard(favoritesRxecipes, listFav)
     }
 
+})
+document.querySelector('.btn-all-categori ').addEventListener('click',(e)=>{
+  e.target.classList.add('active_all-categories')
+  activeCategories.classList.remove('active_btn');
 })
 
 
@@ -156,3 +170,9 @@ refs.btn_start.addEventListener('click', e => {
 
 // pagination/////////////////////////// pagination/////////////////////////// pagination
 }
+refs.all_categorie.style.display = 'none';
+if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
+  refs.all_categorie.style.display ='block';
+ }
+
+ 
