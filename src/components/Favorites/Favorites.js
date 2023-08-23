@@ -68,9 +68,7 @@ let activeCategories;
 categoriesConteiner.addEventListener('click',(e)=>{
 
     if (e.target.classList.contains('fav-category-fltr-btn')) {
-      console.log()
- 
-  
+      document.querySelector('.btn-all-categori ').classList.remove('active_all-categories')
         createGalleryCard(favoritesRxecipes.filter((res)=>res.category === e.target.id),listFav)
          
         if (activeCategories !== undefined) {
@@ -84,8 +82,9 @@ categoriesConteiner.addEventListener('click',(e)=>{
     }
 
 })
-refs.all_categorie('click',()=>{
-  activeCategories.classList.remove('active');
+document.querySelector('.btn-all-categori ').addEventListener('click',(e)=>{
+  e.target.classList.add('active_all-categories')
+  activeCategories.classList.remove('active_btn');
 })
 
 
