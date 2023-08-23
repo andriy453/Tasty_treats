@@ -167,6 +167,14 @@ span.swiper-pagination-bullet-active {
   }
   .btnOrderNow {
     margin-bottom: 64px;
+    border: 1px solid var(--green);
+    background-color: var(--bg-main);
+    color: var(--txt-color);
+  }
+  .btnOrderNow:hover {
+    border: 1px solid var(--green);
+    background-color: var(--green);
+    color: var(--white);
   }
   .hero-title {
     width: 446px;
@@ -241,7 +249,15 @@ span.swiper-pagination-bullet-active {
   }
   .btnOrderNow {
     margin-bottom: 0px;
+    border: 1px solid var(--green);
+    background-color: var(--bg-main);
+    color: var(--txt-color);
   }
+}
+.btnOrderNow:hover {
+  border: 1px solid var(--green);
+  background-color: var(--green);
+  color: var(--white);
 }
 
 swiper-container {
