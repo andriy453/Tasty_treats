@@ -43,16 +43,25 @@ img {
   bottom: 63px;
   left: 16px;
 }
+.text-title{
+  color: var(--white);
+  font-size: 13.5px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: calc(18 / 13);
+  text-transform: uppercase;
+  text-align: left;
+}
+
 .info-item {
   margin-left: 0px;
   margin-bottom: 8px;
   font-size: 14px;
   text-transform: uppercase;
-  color: rgba(248, 248, 248, 1);
 }
 .info-text {
   font-size: 12px;
-  color: white;
+  color: var(--white);
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -62,26 +71,31 @@ img {
 }
 .btn-see-recipe {
   position: absolute;
-  right: 0;
+  font-family: Inter;
   bottom: 12px;
-  display: flex;
   align-items: center;
   justify-content: center;
   right: 16px;
   width: 93px;
   height: 31px;
-  background-color: rgba(155, 181, 55, 1);
+  background-color: var( --green);
   border-radius: 8px;
-  color: rgba(248, 248, 248, 1);
+  color: var(--white);
   border-color: transparent;
 }
 
 .load-more {
   display: block;
-  width: 44px;
-  height: 44px;
-  color: aliceblue;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+}
+
+.load-more:hover,
+.load-more:focus{
+    color: black;
+    background-color: var(--green);
+    border-color: transparent;
 }
 
 .button-style {
@@ -98,19 +112,29 @@ img {
   gap: 8px;
 }
 .btn-left {
-  width: 40px;
+  width: 35px;
   background-color: rgba(5, 5, 5, 1);
   border: 1px solid rgba(5, 5, 5, 1);
+  fill:rgb(248, 248, 248, 0.5);
+  padding: 7px 12px 13px 4px;
 }
 .btn-center {
-  width: 40px;
+  width: 38px;
+  height: 38px;
   color: var(--txt-color);
-  border: 1px solid rgba(5, 5, 5, 0.3);
+  border: 1px solid var( --gray-color-btn);
+  background-color: var(--modal-bg);
 }
+
 .btn-right {
-  background-color: rgba(155, 181, 55, 1);
-  border: 1px solid rgba(155, 181, 55, 1);
-  width: 40px;
+  background-color: var(--green);
+  border: 1px solid var( --green);
+  width: 35px;
+  padding: 7px 8px 13px 9px;
+}
+.pagination-number:hover,
+.pagination-button:focus {
+  background-color:var( --green);
 }
 
 /* ---------------------------HEARD-------------------- */
@@ -129,10 +153,7 @@ img {
 .heard-body {
   position: relative;
 }
-// .heard-body::before{
-//   content: '♡';
-//   display: block;
-// }
+
 .heard-active {
   position: absolute;
   width: 0%;
@@ -141,28 +162,13 @@ img {
   left: 0;
   overflow: hidden;
 }
-// .heard-active:hover{
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-//   color: var(--oragne);
-// }
-// .heard-active::before:hover{
-//   content: '♡';
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   top: 0;
-//   left: 0;
-//   color: var(--oragne);
-//   }
 
 .btn-heard {
   display: block;
   background-color: transparent;
-  color: rgb(248, 248, 248, 0.5);
+  border: 1px solid var(--cornflower-color);
+  -webkit-text-stroke: 1px rgb(248, 248, 248, 0.3);
+  color: transparent;
   width: 22px;
   height: 22px;
 }
@@ -171,9 +177,6 @@ img {
   color: red;
 }
 
-// .btn-heard:active{
-//   color: red;
-// }
 .btn-heard-color {
   position: absolute;
   background-color: transparent;
@@ -184,6 +187,7 @@ img {
 
 .btn {
   color: red;
+  -webkit-text-stroke: 1px rgb(248, 248, 248, 0.3);
 }
 
 /* ---------------------------RATING-------------------- */
@@ -258,15 +262,7 @@ img {
 .btn-center3 {
   display: none;
 }
-.btn-left {
-  width: 35px;
-}
-.btn-center {
-  width: 35px;
-}
-.btn-right {
-  width: 35px;
-}
+
 /* ---------------------------WIDTH 375PX------------- */
 @media screen and (min-width: 375px) {
   .photo-card {
@@ -278,12 +274,11 @@ img {
   }
   .btn-left {
     width: 40px;
-  }
-  .btn-center {
-    width: 40px;
+    padding: 8px 10px 9px 8px;
   }
   .btn-right {
     width: 40px;
+    padding: 9px 9px 9px 9px;
   }
 }
 
@@ -308,11 +303,14 @@ img {
   .btn-right {
     width: 44px;
   }
-  .btn-center3 {
-    display: block;
-    color: rgba(5, 5, 5, 1);
-    border: 1px solid rgba(5, 5, 5, 0.3);
-  }
+ .btn-center3{
+  display: block;
+ }
+  
+.load-more {
+  width: 44px;
+  height: 44px;
+}
 }
 /* ---------------------------WIDTH 1280PX------------- */
 @media screen and (min-width: 1280px) {
@@ -328,6 +326,3 @@ img {
   }
 }
 
-.heart-icon-active {
-  color: red;
-}
