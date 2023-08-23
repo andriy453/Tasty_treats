@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    flex-direction: column;
 }
 
 .fav-image {
@@ -107,7 +108,7 @@
 /* --------------- MOBILE ------------------ */
 @media screen and (min-width: 375px) {
     .fav-container {
-        width: 335px;
+        max-width: 335px;
     }
 
     .fav-image {
@@ -173,15 +174,23 @@
     gap: 24px;
     margin: 0 auto;
    }
+   .img-favorites{
+    margin-bottom: 64px;
+   }
 /* --------------- tABLET ----------------- */
 @media screen and (min-width: 768px) {
     .fav-container {
-        width: 704px;
         gap: 64px;
+            max-width: 768px;
+            padding-left: 32px;
+            padding-right: 32px;
     }
 
     .fav-hero {
         gap: 64px;
+    }
+    div.cart-favorite{
+        width: 224px ;
     }
 
     .fav-image {
@@ -212,7 +221,7 @@
 /* -------------- DESCTOP ------------------ */
 @media screen and (min-width: 1280px) {
     .fav-container {
-        width: 1280px;
+        max-width: 1280px;
         padding: 0 100px;
     }
 

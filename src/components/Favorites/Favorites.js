@@ -94,7 +94,7 @@ console.log(favoritesRxecipes.length)
   createGalleryCard(limit, listFav)
 } else {
 
-  limit = favoritesRxecipes.slice(1, 10)
+  limit = favoritesRxecipes.slice(0, 9)
   createGalleryCard(limit, listFav)
 }
 
@@ -104,7 +104,7 @@ btn_conteiner_pagination.style.display = 'flex';
 let prev_state = 0;
 let step_state = 12;
 refs.button1.addEventListener('click', e => {
-  limit = favoritesRxecipes.slice(0, 12) 
+  limit
   createGalleryCard(limit, listFav)
 });
 
@@ -130,13 +130,12 @@ refs.btn_right.addEventListener('click', e => {
   createGalleryCard(limit, listFav)
 });
 refs.btn_end.addEventListener('click', e => {
-  console.log(totalPages);
-
-  axiosCardInstance.page = totalPages;
-  axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
-    refs.gallery.innerHTML = createGalleryCard(data.results);
-  });
+  console.log(favoritesRxecipes.length)
+  console.log(favoritesRxecipes.length-12)
+  prev_state=favoritesRxecipes.length-12;
+  step_state=favoritesRxecipes.length
+  limit = favoritesRxecipes.slice(prev_state, step_state) 
+  createGalleryCard(limit, listFav)
 });
 refs.btn_left.addEventListener('click', e => {
   if( prev_state === 0){
