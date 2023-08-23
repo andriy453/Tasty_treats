@@ -30,8 +30,8 @@ const refs = {
   btn_right: document.querySelector('.btn-right'),
   btn_end: document.querySelector('.btn-right-end'),
 
-  btn_start: document.querySelector('.btn-left'),
-  btn_left: document.querySelector('.btn-left1'),
+  btn_start: document.querySelector('.btn-left1'),
+  btn_left: document.querySelector('.btn-left'),
 
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
@@ -310,6 +310,7 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
+  console.log('ffff')
   axiosCardInstance.page = axiosCardInstance.page--;
   console.log(axiosCardInstance.page--);
   axiosCardInstance.getCardData().then(data => {
@@ -347,6 +348,7 @@ function resetAllFilters() {
 refs.btn_all_categories.addEventListener('click', displayAllCategories);
 
 function displayAllCategories(e) {
+  activeCategories.classList.remove('active');
   activeCategories = e.target;
   e.target.classList.add('active');
   axiosCardInstance.category = null;
@@ -354,8 +356,9 @@ function displayAllCategories(e) {
   axiosCardInstance.area = selectedAreaId;
   axiosCardInstance.ingredients = selectedIngredientsId;
   axiosCardInstance.title = inputValue;
-  console.log('displayAllCategories:', axiosCardInstance);
+
   showRecipesAdapt();
+
   if (activeCategories === e.target) {
     activeCategories.classList.remove('active');
   }
@@ -461,4 +464,8 @@ function seeRecipe(evt) {
         console.error('Error:', error);
       });
   }
+
 }
+
+
+

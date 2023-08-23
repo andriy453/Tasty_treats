@@ -21,7 +21,7 @@
 }
 
 .btn-all-categories:is(:hover, :focus) {
-  color: var(--bg-main);
+  color: var(--bg-main) !important;
   background-color: var(--accent);
   border-color: transparent;
 }
@@ -31,7 +31,7 @@
   border-color: #0000;
 }
 .active {
-  color: var(--accent);
+  color: var(--accent) !important;
 }
 
 .category-item {
