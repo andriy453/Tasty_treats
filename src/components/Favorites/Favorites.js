@@ -23,7 +23,6 @@ const KEY_FAVORITE = 'favorite';
 const favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
    
-
 const categoriesArray = favoritesRxecipes.map(recipe => {
 
     return recipe.category
@@ -33,8 +32,9 @@ createGalleryCard(favoritesRxecipes, listFav);
 function categories(categories) {
     const SetCategories  = [...new Set(categories)];
 
-    categoriesConteiner.insertAdjacentHTML('afterbegin','<button class="btn-all-categori  active_all-categories" type="button">All categories</button>')
+    categoriesConteiner.insertAdjacentHTML('afterbegin','<button class="btn-all-categori  active_all-categories activff" type="button">All categories</button>')
     categoriesConteiner.insertAdjacentHTML('beforeend', SetCategories.map(name => {
+      document.querySelector('.btn-all-categori').style.display = 'block';
     return `
           <button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`;
   }).join('')) 
@@ -170,3 +170,4 @@ refs.btn_start.addEventListener('click', e => {
 
 // pagination/////////////////////////// pagination/////////////////////////// pagination
 }
+document.querySelector('.btn-all-categori').style.display = 'none';
