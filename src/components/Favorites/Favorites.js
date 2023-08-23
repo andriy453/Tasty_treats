@@ -1,15 +1,17 @@
 import { createGalleryCard } from './createGalleryCard.js';
 const listFav = document.querySelector('.fav-recipe-card-list');
 const categoriesConteiner = document.querySelector('.fav-category-block')
-const btn_all_categories = document.querySelector('.btn-all-categori')
+
 const btn_heard = document.querySelector('.btn-heard')
 
 const btn_conteiner_pagination = document.querySelector('.button-style-favorites')
 
 const  refs =  {
+  all_categorie: document.querySelector('.btn-all-categori'),
   button1: document.querySelector('.btn-center1'),
   button2: document.querySelector('.btn-center2'),
   button3: document.querySelector('.btn-center3'),
+  categories_btn: document.querySelector('fav-category-fltr-btn'),
 
   btn_right: document.querySelector('.btn-right'),
   btn_end: document.querySelector('.btn-right-end'),
@@ -36,6 +38,7 @@ function categories(categories) {
     return `
           <button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`;
   }).join('')) 
+
 }
 categories(categoriesArray)
 
@@ -61,16 +64,28 @@ function remoteFavRecipe(e) {
 
   }
 }
-
+let activeCategories;
 categoriesConteiner.addEventListener('click',(e)=>{
 
     if (e.target.classList.contains('fav-category-fltr-btn')) {
+      console.log()
+ 
+  
         createGalleryCard(favoritesRxecipes.filter((res)=>res.category === e.target.id),listFav)
+         
+        if (activeCategories !== undefined) {
+          activeCategories.classList.remove('active_btn');
+        }
+        activeCategories = e.target;
+        e.target.classList.add('active_btn');
     }
     if (e.target.classList.contains('btn-all-categori')) {
         createGalleryCard(favoritesRxecipes, listFav)
     }
 
+})
+refs.all_categorie('click',()=>{
+  activeCategories.classList.remove('active');
 })
 
 

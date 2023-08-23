@@ -296,6 +296,7 @@ function resetAllFilters() {
 refs.btn_all_categories.addEventListener('click', displayAllCategories);
 
 function displayAllCategories(e) {
+  activeCategories.classList.remove('active');
   activeCategories = e.target;
   e.target.classList.add('active');
   axiosCardInstance.category = null;
@@ -303,8 +304,9 @@ function displayAllCategories(e) {
   axiosCardInstance.area = selectedAreaId;
   axiosCardInstance.ingredients = selectedIngredientsId;
   axiosCardInstance.title = inputValue;
-  console.log('displayAllCategories:', axiosCardInstance);
+
   showRecipesAdapt();
+
   if (activeCategories === e.target) {
     activeCategories.classList.remove('active');
   }
