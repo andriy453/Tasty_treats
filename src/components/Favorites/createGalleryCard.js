@@ -9,7 +9,7 @@ export function createGalleryCard(searchResults, listFav) {
         if (window.screen.width >= 768) {
           text = desktop + '...';
         }
-        return `<div class="photo-card">
+        return `<div class="photo-card cart-favorite">
         <div class = "backdrop"></div>
             <img class="img-card" src="${preview}" alt="${title}"/>
             <div class="info">
@@ -36,7 +36,7 @@ export function createGalleryCard(searchResults, listFav) {
         <div class="heard-body">
         <div class="heard-active"></div>
         <div class="heard-items">
-        <button type="button" class="btn-heard" id='${_id}'>♡</button>
+        <button type="button" class="btn-heard" id='${_id}'>♥</button>
         </div>
         </div>
         </div>

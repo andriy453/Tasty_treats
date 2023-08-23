@@ -99,7 +99,7 @@
 }
 
 .select-container .input-filter {
-  width: 335px;
+  width: 310px;
   border-radius: 15px;
   padding: 14px 122px 14px 48px;
   border: 1px solid var(--primary-color-02);
@@ -171,6 +171,12 @@
     width: 188px;
   }
 }
+@media screen and (min-width: 375px) {
+  .select-container .input-filter{
+    width: 335px;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .display-filters {
     display: flex;

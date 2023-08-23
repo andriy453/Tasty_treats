@@ -1,5 +1,6 @@
 const modal = document.getElementById('myModal');
 const btn = document.getElementById('openModal');
+const btnOrderNow = document.querySelector('.btnOrderNow')
 const closeBtn = document.getElementsByClassName('close')[0];
 const form = document.querySelector('.modal-form-stl');
 const messageBox = document.getElementById('messageBox');
@@ -11,6 +12,11 @@ const closeThanksButton = document.getElementById('closeThanksButton');
 btn.addEventListener('click',(()=>
 modal.style.display = 'block'
 )) 
+if(btnOrderNow){
+  btnOrderNow.addEventListener('click',(()=>
+  modal.style.display = 'block'
+  )) 
+}
 
 closeBtn.onclick = function () {
   modal.style.display = 'none';
@@ -42,3 +48,6 @@ closeThanksButton.onclick = function () {
 
   form.reset();
 };
+
+
+
