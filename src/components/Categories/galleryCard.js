@@ -1,6 +1,6 @@
 export function createGalleryCard(searchResults) {
   let markap;
-  if (searchResults.length) {
+  if(searchResults.length) {
     markap = searchResults
       .map(({ preview, title, description, rating, _id }) => {
         const desktop = description.slice(0, 62);
@@ -54,7 +54,7 @@ export function createGalleryCard(searchResults) {
       <p class="info-text">not found</p>
       </div>
   </div>
-  <button type="button" class="btn-see-recipe">See recipe</button>
+  <button type="button" class="btn-see-recipe" disabled>See recipe</button>
   <div class = "rating">
   <div class="rating-value">not found</div>
   <div class="rating-body">
@@ -72,7 +72,7 @@ export function createGalleryCard(searchResults) {
   <div class="heard-body">
   <div class="heard-active"></div>
   <div class="heard-items">
-  <button type="button" class="btn-heard">♥</button>
+  <button type="button" class="btn-heard" disabled>♥</button>
   </div>
   </div>
   </div>

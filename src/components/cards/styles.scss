@@ -120,8 +120,8 @@ img {
   font-size: 22px;
   font-weight: 500;
   line-height: calc(18 / 16);
-  top: 16px;
-  right: 16px;
+  top:0px;
+  right: 0px;
 }
 
 .heard-body {
@@ -167,6 +167,7 @@ img {
   align-items: center;
   text-align: center;
   justify-content: center;
+  padding: 16px;
 }
 .btn-heard-color{
   color: red;
