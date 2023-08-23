@@ -8,11 +8,11 @@
 }
 
 .hero-text-wrapper {
-  //margin-bottom: 48px;
+  margin-bottom: 48px;
 }
 
 .hero-title {
-  min-width: 335px;
+  min-width: 310px;
   text-transform: uppercase;
   font-size: 26px;
   font-weight: 600;
@@ -51,21 +51,19 @@
 
 }
 
+
 .hero-text-wrapper {
   text-align: left;
 }
 
 @media screen and (min-width: 768px) {
-  .container .hero-container {
-    margin-bottom: 40px !important;
-  }
   .hero-text-wrapper {
     text-align: left;
     width: 446px;
-    // margin-bottom: 64px;
+    margin-bottom: 64px;
     margin-right: 32px;
   }
-  .btnOrderNow {
+  .btnOrderNow{
     margin-bottom: 64px;
   }
   .hero-title {
@@ -124,7 +122,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .title-wrap {
+  .title-wrap{
     padding-top: 45px;
   }
 
@@ -136,14 +134,17 @@
     display: flex;
     overflow: visible;
   }
-  .btnOrderNow {
+  .btnOrderNow{
     margin-bottom: 0px;
   }
-  .hero-wrap {
+  .hero-wrap{
     display: flex;
   }
 
 }
+
+
+
 
 // ========= swiper ===============
 .events,
@@ -203,6 +204,7 @@
   background-size: cover;
   border-radius: 15px;
   display: block;
+
 }
 
 .dish-name {
@@ -244,15 +246,13 @@ span.swiper-pagination-bullet-active {
   opacity: 1;
 }
 
-@media screen and (min-width: 768px) {
-
-  .mini-picture {
-    margin-bottom: 60px;
-  }
-
+@media screen and (min-width: 375px) {
 
 .mini-picture {
   margin-bottom: 60px;
+}
+.hero-title {
+  min-width: 335px;
 }
 
 }
@@ -294,7 +294,6 @@ span.swiper-pagination-bullet-active {
   .btnOrderNow {
     padding: 14px 28px;
   }
-
 
   .case {
     width: 889px;
@@ -360,6 +359,8 @@ swiper-container {
   }
   .hero-wrap {
     display: flex;
+   }
+
   }
-}
+
 

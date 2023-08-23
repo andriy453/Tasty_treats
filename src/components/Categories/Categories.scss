@@ -71,7 +71,7 @@
 
 .filter-time-area-mob {
   display: flex;
-  gap: 14px;
+  gap: 5px;
   margin-bottom: 14px;
 }
 .select-text {
@@ -124,7 +124,7 @@
 
 .select-container-mob .area-select-mob {
   border-radius: 15px;
-  width: 161px;
+  width: 150px;
   padding: 14px 18px;
   border: 1px solid var(--primary-color-02);
   background-color: var(--bg-main);
@@ -133,7 +133,7 @@
 
 .select-container-mob .time-select-mob {
   border-radius: 15px;
-  width: 160px;
+  width: 150px;
   padding: 14px 18px;
   border: 1px solid var(--primary-color-02);
   background-color: var(--bg-main);
@@ -169,6 +169,22 @@
   align-items: center;
 }
 //Медіа запити
+
+@media screen and (min-width: 375px) {
+  .filter-time-area-mob {
+    gap: 5px;
+  }
+  .select-container-mob .area-select-mob {
+    width: 160px;
+  }
+  
+  .select-container-mob .time-select-mob {
+    width: 160px;
+  }
+  .filter-time-area-mob {
+    gap: 14px;
+}
+}
 @media screen and (min-width: 768px) {
   //Categories
   .btn-all-categories {
