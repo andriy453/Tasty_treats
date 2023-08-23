@@ -9,6 +9,7 @@
 @import '../components/Categories/Categories.scss';
 @import '../components/Hero/Hero.scss';
 @import '../components/OrderNow/OrderNow.scss';
+@import '../components/scroll-to-top/scrollTop.scss';
 
 @font-face {
     font-family: Inter-Regular;
@@ -74,6 +75,9 @@
   --modal-bg: #050505;
 }
 
+  html {
+    scroll-behavior: smooth;
+}
   body {
     font-family: 'Inter', sans-serif;
     background-color:var(--bg-main);

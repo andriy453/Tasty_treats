@@ -9,6 +9,6 @@ import './components/Categories/Categories.js'
 import './components/Hero/swiper.js'
 import './components/OrderNow/OrderNow.js'
 import './components/Rating/Rating.js'
-
+import './components/scroll-to-top/scrollTop.js'
 
 
