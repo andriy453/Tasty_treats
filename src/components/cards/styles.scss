@@ -116,6 +116,12 @@ img {
   fill:rgb(248, 248, 248, 0.5);
   padding: 7px 12px 13px 4px;
 }
+.btn_start{
+  width: 35px;
+  background-color: rgba(5, 5, 5, 1);
+  border: 1px solid rgba(5, 5, 5, 1);
+  fill:rgb(248, 248, 248, 0.5);
+}
 .btn-center {
   width: 38px;
   height: 38px;
@@ -203,6 +209,7 @@ img {
   position: absolute;
   display: flex;
   align-items: flex-end;
+  align-items: center;
   color: var(--white);
   font-family: Inter;
   font-size: 14px;
@@ -215,10 +222,7 @@ img {
 .rating-body {
   position: relative;
 }
-.rating-body::before {
-  content: '✰✰✰✰✰';
-  display: block;
-}
+
 .rating-active {
   position: absolute;
   width: 80%;
