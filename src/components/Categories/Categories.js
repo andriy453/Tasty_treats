@@ -13,6 +13,7 @@ const areaRef = 'areas';
 const ingredientsRef = 'ingredients';
 
 const refs = {
+  form: document.querySelector('.myForm'),
   categoriesEl: document.querySelector('.categories-list'),
   inputEl: document.querySelector('.input-filter'),
   timeEl: document.querySelector('.time-select'),
@@ -116,6 +117,7 @@ function handleCategory(e) {
   activeCategories = e.target;
   e.target.classList.add('active');
 }
+
 
 refs.inputEl.addEventListener('input',debounce(handleInputEl,300) );
 
@@ -275,7 +277,7 @@ refs.btn_start.addEventListener('click', e => {
 
 // pagination/////////////////////////// pagination/////////////////////////// pagination
 
-//Cкинути фільтри
+/////////////////////////////Cкинути фільтри
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
@@ -284,6 +286,8 @@ function resetAllFilters() {
   axiosCardInstance.time = null;
   axiosCardInstance.ingredients = null;
   axiosCardInstance.title = null;
+
+
   console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
 }

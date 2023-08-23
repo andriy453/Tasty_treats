@@ -4,6 +4,19 @@ const categoriesConteiner = document.querySelector('.fav-category-block')
 const btn_all_categories = document.querySelector('.btn-all-categori')
 const btn_heard = document.querySelector('.btn-heard')
 
+const btn_conteiner_pagination = document.querySelector('.button-style-favorites')
+
+const  refs =  {
+  button1: document.querySelector('.btn-center1'),
+  button2: document.querySelector('.btn-center2'),
+  button3: document.querySelector('.btn-center3'),
+
+  btn_right: document.querySelector('.btn-right'),
+  btn_end: document.querySelector('.btn-right-end'),
+
+  btn_start: document.querySelector('.btn-left'),
+  btn_left: document.querySelector('.btn-left1'),
+}
 const KEY_FAVORITE = 'favorite';
 const favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
@@ -76,11 +89,71 @@ function seeRecipe(evt) {
 /////////////////////////////Адаптив
 let limit;
  if (window.screen.width >= 768) {
-
-  limit = favoritesRxecipes.slice(1, 13) 
+console.log(favoritesRxecipes.length)
+  limit = favoritesRxecipes.slice(0, 12) 
   createGalleryCard(limit, listFav)
 } else {
 
   limit = favoritesRxecipes.slice(1, 10)
   createGalleryCard(limit, listFav)
+}
+
+if(  favoritesRxecipes.length >= 12){
+btn_conteiner_pagination.style.display = 'flex';
+// pagination /////////////////////////// pagination/////////////////////////// pagination
+let prev_state = 0;
+let step_state = 12;
+refs.button1.addEventListener('click', e => {
+  limit = favoritesRxecipes.slice(0, 12) 
+  createGalleryCard(limit, listFav)
+});
+
+refs.button2.addEventListener('click', e => {
+    limit = favoritesRxecipes.slice(12, 24) 
+    createGalleryCard(limit, listFav)
+  
+});
+refs.button3.addEventListener('click', e => {
+  limit = favoritesRxecipes.slice(24,36) 
+  createGalleryCard(limit, listFav)
+});
+
+refs.btn_right.addEventListener('click', e => {
+  prev_state+=12
+  step_state+=12
+  if( favoritesRxecipes.length  < step_state){
+    prev_state-=12
+    step_state-=12
+    return
+      }
+  limit = favoritesRxecipes.slice(prev_state, step_state) 
+  createGalleryCard(limit, listFav)
+});
+refs.btn_end.addEventListener('click', e => {
+  console.log(totalPages);
+
+  axiosCardInstance.page = totalPages;
+  axiosCardInstance.getCardData().then(data => {
+    console.log('це рецепти', data);
+    refs.gallery.innerHTML = createGalleryCard(data.results);
+  });
+});
+refs.btn_left.addEventListener('click', e => {
+  if( prev_state === 0){
+return
+  }
+  prev_state-=12
+  step_state-=12
+  limit = favoritesRxecipes.slice(prev_state, step_state) 
+  createGalleryCard(limit, listFav)
+});
+
+refs.btn_start.addEventListener('click', e => {
+  prev_state = 0
+  step_state = 12
+  limit = favoritesRxecipes.slice(prev_state, step_state) 
+  createGalleryCard(limit, listFav)
+});
+
+// pagination/////////////////////////// pagination/////////////////////////// pagination
 }
