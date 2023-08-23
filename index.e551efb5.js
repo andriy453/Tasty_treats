@@ -48,7 +48,7 @@
       <p class="info-text">not found</p>
       </div>
   </div>
-  <button type="button" class="btn-see-recipe">See recipe</button>
+  <button type="button" class="btn-see-recipe" disabled>See recipe</button>
   <div class = "rating">
   <div class="rating-value">not found</div>
   <div class="rating-body">
@@ -66,7 +66,7 @@
   <div class="heard-body">
   <div class="heard-active"></div>
   <div class="heard-items">
-  <button type="button" class="btn-heard">♥</button>
+  <button type="button" class="btn-heard" disabled>♥</button>
   </div>
   </div>
   </div>
@@ -87,4 +87,4 @@
     </div>
   </div>
 </div>`}).join("");i4.insertAdjacentHTML("beforeend",e)})(t),new iQ(".swiper",{modules:[i6,i1,i3,i5],allowSlideNext:!0,pagination:{el:".slider-pagination",clickable:!0},autoplay:{delay:2500},parallax:!0,speed:1e3,loop:!0})}).catch(t=>console.error("Error:",t));let i8=document.getElementById("myModal"),i9=document.getElementById("openModal"),i7=document.getElementsByClassName("close")[0],nt=document.querySelector(".modal-form-stl"),ne=document.getElementById("messageBox");document.getElementById("messageText");let ni=document.getElementById("okButton"),nn=document.getElementById("thanksBox"),nr=document.getElementById("closeThanksButton");i9.addEventListener("click",()=>i8.style.display="block"),i7.onclick=function(){i8.style.display="none",ne.style.display="none",nn.style.display="none"},window.onclick=function(t){t.target==i8&&(i8.style.display="none",ne.style.display="none",nn.style.display="none")},nt.addEventListener("submit",function(t){t.preventDefault(),i8.style.display="none",nn.style.display="block"}),ni.onclick=function(){ne.style.display="none"},nr.onclick=function(){nn.style.display="none",nt.reset()}}();
-//# sourceMappingURL=index.ed337327.js.map
+//# sourceMappingURL=index.e551efb5.js.map
