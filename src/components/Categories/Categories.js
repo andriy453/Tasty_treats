@@ -59,6 +59,7 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
     optionEl.id = area._id;
     optionEl.value = area.name;
     optionEl.textContent = area.name;
+    optionEl.classList.add('option-text');
     refs.areaMob.appendChild(optionEl);
   });
   const slimSelect = new SlimSelect({
@@ -72,6 +73,7 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
     optionEl.id = area._id;
     optionEl.value = area.name;
     optionEl.textContent = area.name;
+    optionEl.classList.add('option-text');
     refs.areaEl.appendChild(optionEl);
   });
   const slimSelect = new SlimSelect({
@@ -85,6 +87,7 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients => {
     optionEl.value = ingredient._id;
     optionEl.id = ingredient._id;
     optionEl.textContent = ingredient.name;
+    optionEl.classList.add('option-text');
     refs.ingredientsEl.appendChild(optionEl);
   });
   const slimSelect = new SlimSelect({
@@ -97,6 +100,8 @@ function selectTime() {
     const optionEl = document.createElement('option');
     optionEl.textContent = [i] + ' min';
     optionEl.value = [i];
+    optionEl.classList.add('option-text');
+
     refs.timeEl.appendChild(optionEl);
   }
 
@@ -112,6 +117,9 @@ function selectTimeMob() {
     const optionEl = document.createElement('option');
     optionEl.textContent = [i] + ' min';
     optionEl.value = [i];
+    optionEl.classList.add('option-text');
+    optionEl.style.backgroundColor = 'var(--option-color)';
+    optionEl.style.color = 'var(--primary-color-03)';
     refs.timeMob.appendChild(optionEl);
   }
 
@@ -310,7 +318,7 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
-  console.log('ffff')
+  console.log('ffff');
   axiosCardInstance.page = axiosCardInstance.page--;
   console.log(axiosCardInstance.page--);
   axiosCardInstance.getCardData().then(data => {
@@ -341,6 +349,9 @@ function resetAllFilters() {
   axiosCardInstance.title = null;
   refs.inputEl.value = '';
 
+  //refs.areaEl.firstElementChild.textContent;//як повернути 1 option при скиданні фільтрів
+
+  console.log(refs.areaEl.firstElementChild.textContent);
   console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
 }
@@ -464,8 +475,4 @@ function seeRecipe(evt) {
         console.error('Error:', error);
       });
   }
-
 }
-
-
-
