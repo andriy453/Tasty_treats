@@ -8,7 +8,7 @@ import './components/Header/header-menu.js'
 import './components/Categories/Categories.js'
 import './components/Hero/swiper.js'
 import './components/OrderNow/OrderNow.js'
-import './components/rating/rating.js'
+import './components/Rating/Rating.js'
 
 
 
