@@ -124,6 +124,10 @@
   
   h1,h2, h3, h4, h5, h6{font-style: inherit; font-weight: 400;}
 
+.no-scroll {
+  overflow: hidden;
+}
+
   .container {
     width: 100%;
     padding-left: 5px;
