@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff">
-    <title>Page title</title>
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <link rel="icon" type="favicon" href="./images/favicon.png" sizes="16x16" />
+    <title>Tasty Treats</title>
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
-    <header>
-    </header>
-    <main> 
-      <include src="./components/cards/cards.html"></include>
-      <include src="./components/rating/rating.html"></include>
+
+    <main>
+      <include src="./components/Header/Header.html"></include>
+      <include src="./components/Hero/Hero.html"></include>
+
+      <div class="container-home container">
+        <div>
+          <include src="./components/Categories/Categories.html"></include>
+          <include
+            src="./components/PopularRecipes/PopularRecipes.html"
+          ></include>
+        </div>
+        <div>
+          <include
+            src="./components/categoriesFilter/categoriesFilter.html"
+          ></include>
+          <include src="./components/cards/cards.html"></include>
+          <include src="./components/OrderNow/OrderNow.html"></include>
+           <include src="./components/rating/rating.html"></include>
+        </div>
+      </div>
     </main>
-    <footer>
-    </footer>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

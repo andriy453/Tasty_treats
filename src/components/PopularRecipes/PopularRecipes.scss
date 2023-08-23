@@ -1,0 +1,154 @@
+.popular {
+    width: 310px;
+    .popular-box {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+  .popular-title {
+    color: var(--txt-color);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+
+
+.photo-card_recipes {
+  width: 332px;
+  gap: 8px;
+  width: 176px;
+  display: flex;
+}
+
+.popular-foto {
+  border-radius: 8px;
+  width: 64px;
+  height: 64px;
+}
+
+
+.info_recipes {
+  width: 240px;
+}
+  .recipe-title {
+    color: var(--txt-color);
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .box {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+ 
+  .info-item_recipes {
+    color:var(--txt-color);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+    width: 252px;
+  } 
+
+
+//--------------------------375px------------
+@media screen and (min-width: 375px) {
+  .popular {
+    width: 332px;
+  }
+  .info_recipes {
+    width: 252px;
+  }
+}
+
+//--------------------------768px------------
+
+@media screen and (min-width: 768px) {
+  .popular {
+    width: 176px;
+    gap: 32px;
+    .popular-box {
+      gap: 16px;
+    }
+  }
+
+  .photo-card_recipes {
+    width: 176px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .popular-foto {
+    width: 48px;
+    height: 48px;
+  }
+
+  .info_recipes {
+    width: 120px;
+  }
+
+  .recipe-title {
+    width: 91px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .box {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .info-item_recipes {
+    font-size: 10px;
+    width: 120px;
+  }
+}
+//-----------------------1280--------------------
+
+@media screen and (min-width: 1280px) {
+  .popular {
+    width: 235px;
+    gap: 32px;
+    .popular-box {
+      gap: 32px;
+    }
+  }
+
+  .popular-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .photo-card_recipes {
+    width: 332px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .popular-foto {
+    width: 64px;
+    height: 64px;
+  }
+
+  .info_recipes {
+    width: 155px;
+  }
+
+  .info-item_recipes {
+    width: 155px;
+  }
+}
