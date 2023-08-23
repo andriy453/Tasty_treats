@@ -18,6 +18,8 @@ const refs = {
   inputEl: document.querySelector('.input-filter'),
   timeEl: document.querySelector('.time-select'),
   areaEl: document.querySelector('.area-select'),
+  timeMob: document.querySelector('.time-select-mob'),
+  areaMob: document.querySelector('.area-select-mob'),
   ingredientsEl: document.querySelector('.ingredients-select'),
   ratingBackdrop: document.querySelector('.rating-backdrop'),
   gallery: document.querySelector('.gallery'),
@@ -34,7 +36,11 @@ const refs = {
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
 };
+console.log(refs.timeMob);
+console.log(refs.areaMob);
+
 const axiosRecipesInstance = new axiosRecipes();
+
 ///////////////////////////// Додаємо option
 
 axiosRecipesInstance.getFilteredData(categoriesRef).then(categories => {
@@ -44,6 +50,19 @@ axiosRecipesInstance.getFilteredData(categoriesRef).then(categories => {
     liEl.setAttribute('value', category.name);
     liEl.classList.add('category-item');
     refs.categoriesEl.append(liEl);
+  });
+});
+
+axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
+  areas.forEach(area => {
+    const optionEl = document.createElement('option');
+    optionEl.id = area._id;
+    optionEl.value = area.name;
+    optionEl.textContent = area.name;
+    refs.areaMob.appendChild(optionEl);
+  });
+  const slimSelect = new SlimSelect({
+    select: refs.areaMob,
   });
 });
 
@@ -72,19 +91,34 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients => {
     select: refs.ingredientsEl,
   });
 });
-
+selectTime();
 function selectTime() {
   for (let i = 5; i <= 120; i += 5) {
     const optionEl = document.createElement('option');
-    optionEl.textContent = [i];
+    optionEl.textContent = [i] + ' min';
     optionEl.value = [i];
     refs.timeEl.appendChild(optionEl);
   }
-  const slimSelect = new SlimSelect({
+
+  const slimSelectEl = new SlimSelect({
     select: refs.timeEl,
   });
 }
-selectTime();
+
+selectTimeMob();
+
+function selectTimeMob() {
+  for (let i = 5; i <= 120; i += 5) {
+    const optionEl = document.createElement('option');
+    optionEl.textContent = [i] + ' min';
+    optionEl.value = [i];
+    refs.timeMob.appendChild(optionEl);
+  }
+
+  const slimSelectEl = new SlimSelect({
+    select: refs.timeMob,
+  });
+}
 
 /////////////////////////Отримуємо обрані значення
 let selectedCategoryId;
@@ -118,8 +152,7 @@ function handleCategory(e) {
   e.target.classList.add('active');
 }
 
-
-refs.inputEl.addEventListener('input',debounce(handleInputEl,300) );
+refs.inputEl.addEventListener('input', debounce(handleInputEl, 300));
 
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
@@ -129,6 +162,15 @@ function handleInputEl(e) {
   showRecipes();
 }
 
+refs.areaMob.addEventListener('change', handleAreaMob);
+function handleAreaMob(e) {
+  selectedAreaId = e.target.value;
+  axiosCardInstance.area = selectedAreaId;
+
+  console.log('areaId:', selectedAreaId);
+
+  showRecipes();
+}
 refs.areaEl.addEventListener('change', handleArea);
 
 function handleArea(e) {
@@ -137,6 +179,16 @@ function handleArea(e) {
 
   console.log('areaId:', selectedAreaId);
 
+  showRecipes();
+}
+
+refs.timeMob.addEventListener('change', handleTimeMob);
+
+function handleTimeMob(e) {
+  selectedTimeId = e.target.value;
+  axiosCardInstance.time = selectedTimeId;
+  arayRecept = selectedTimeId;
+  //console.log('timeId:', selectedTimeId);
   showRecipes();
 }
 
@@ -286,7 +338,7 @@ function resetAllFilters() {
   axiosCardInstance.time = null;
   axiosCardInstance.ingredients = null;
   axiosCardInstance.title = null;
-
+  refs.inputEl.value = '';
 
   console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
@@ -340,9 +392,6 @@ function displayAllCategories(e) {
 
 // }
 
-
-
-
 ///////////////////////////  ADD TO  FAVORITE ///////////////
 const KEY_FAVORITE = 'favorite';
 let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
@@ -350,13 +399,14 @@ let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 function fetchRecipeById(recipeId) {
   return fetch(
     `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  }).catch (error=>  console.error('Error:', error))
-
+  )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 refs.gallery.addEventListener('click', addFavorite);
@@ -411,5 +461,4 @@ function seeRecipe(evt) {
         console.error('Error:', error);
       });
   }
-
-}  
+}

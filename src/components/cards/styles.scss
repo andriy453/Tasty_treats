@@ -35,7 +35,7 @@ img {
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
-  padding-top: 24px;
+
   margin: 0 auto;
 }
 .info {
@@ -120,7 +120,7 @@ img {
   font-size: 22px;
   font-weight: 500;
   line-height: calc(18 / 16);
-  top:0px;
+  top: 0px;
   right: 0px;
 }
 
@@ -157,7 +157,7 @@ img {
 //   color: var(--oragne);
 //   }
 
-.btn-heard{
+.btn-heard {
   position: relative;
   color: transparent;
   background-color: transparent;
@@ -169,12 +169,10 @@ img {
   justify-content: center;
   padding: 16px;
 }
-.btn-heard-color{
+.btn-heard-color {
   color: red;
   -webkit-text-stroke: 1px red;
 }
-
-
 
 /* ---------------------------RATING-------------------- */
 .rating {

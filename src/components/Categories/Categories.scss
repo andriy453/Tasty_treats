@@ -1,4 +1,4 @@
-
+//Categories
 .left-collumn {
   display: flex;
   flex-direction: column;
@@ -25,14 +25,15 @@
   background-color: var(--accent);
   border-color: transparent;
 }
-.active_all-categories{
+.active_all-categories {
   color: var(--bg-main);
   background-color: var(--accent);
   border-color: #0000;
 }
-.active{
+.active {
   color: var(--accent);
 }
+
 .category-item {
   cursor: pointer;
   font-family: Inter;
@@ -65,12 +66,22 @@
   box-sizing: border-box;
   text-align: left;
 }
-.popular-recipes {
-  margin-bottom: 40px;
+
+//Filters
+
+.filter-time-area-mob {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.select-text {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--primary-color-05);
+  margin-bottom: 8px;
 }
 
-.select-text {
-  font-family: Inter;
+.select-text-mob {
   font-size: 12px;
   line-height: 1.2;
   color: var(--primary-color-05);
@@ -84,18 +95,15 @@
   margin-bottom: 14px;
   position: relative;
 }
-
-.reset-filter {
-  cursor: pointer;
+.select-container-tabl {
+  display: none;
+}
+.select-container-mob {
   display: flex;
-  justify-content: flex-end;
-  gap: 4px;
-
-  color: var(--primary-color-05);
-  font-size: 12px;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  margin-top: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  // margin-bottom: 14px;
+  position: relative;
 }
 
 .select-container .input-filter {
@@ -114,7 +122,7 @@
   left: 18px;
 }
 
-.select-container .area-select {
+.select-container-mob .area-select-mob {
   border-radius: 15px;
   width: 161px;
   padding: 14px 18px;
@@ -122,7 +130,8 @@
   background-color: var(--bg-main);
   color: var(--primary-color-05);
 }
-.select-container .time-select {
+
+.select-container-mob .time-select-mob {
   border-radius: 15px;
   width: 160px;
   padding: 14px 18px;
@@ -130,6 +139,7 @@
   background-color: var(--bg-main);
   color: var(--primary-color-05);
 }
+
 .select-container .ingredients-select {
   border-radius: 15px;
   width: 188px;
@@ -138,49 +148,113 @@
   background-color: var(--bg-main);
   color: var(--primary-color-05);
 }
+
+.reset-filter {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 4px;
+  color: var(--primary-color-05);
+  font-size: 12px;
+  line-height: 1.3;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+.right-collumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+//Медіа запити
 @media screen and (min-width: 768px) {
+  //Categories
   .btn-all-categories {
     margin-bottom: 30px;
+  }
 
   .scrollable-list {
     height: 416px;
   }
   .categories-list {
-    gap: 25px;
+    gap: 24px;
   }
+
+  // Filters
+  .filter-time-area-mob {
+    display: none;
+  }
+  .container-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .select-container-tabl {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
   .select-text {
     font-size: 14px;
     line-height: 1.3;
-
-    font-family: Inter;
-    color: var(--grey);
+  }
+  .select-text-tabl {
+    color: var(--primary-color-05);
     margin-bottom: 8px;
-
+    font-size: 14px;
+    line-height: 1.3;
   }
 
   .select-container .input-filter {
     width: 278px;
   }
-  .select-container .area-select {
+
+  .select-container-tabl .area-select {
+    border-radius: 15px;
+    padding: 14px 18px;
+    border: 1px solid var(--primary-color-02);
+    background-color: var(--bg-main);
+    color: var(--primary-color-05);
     width: 141px;
   }
-  .select-container .time-select {
+
+  .select-container-tabl .time-select {
     width: 125px;
+    padding: 14px 18px;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color-02);
+    background-color: var(--bg-main);
+    color: var(--primary-color-05);
   }
+
   .select-container .ingredients-select {
     width: 188px;
   }
-}
-@media screen and (min-width: 375px) {
-  .select-container .input-filter{
-    width: 335px;
+
+  .reset-filter {
+    // padding-right: 0px;
+    margin-bottom: 14px;
+  }
+
+  .reset-filter {
+    margin-bottom: 14px;
   }
 }
-
 @media screen and (min-width: 1280px) {
-  .display-filters {
+  .btn-all-categories {
+    margin-bottom: 42px;
+  }
+  .scrollable-list {
+    margin-bottom: 64px;
+  }
+  .container-filters {
     display: flex;
     gap: 16px;
   }
-}
 }
