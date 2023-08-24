@@ -132,7 +132,6 @@
   .hero-container {
     align-items: center;
     display: flex;
-    overflow: visible;
   }
   .btnOrderNow{
     margin-bottom: 0px;
@@ -332,13 +331,10 @@ span.swiper-pagination-bullet-active {
 }
 
 @media screen and (min-width: 1280px) {
-  .hero {
-    overflow: hidden;
-  }
+
   .hero-container {
     align-items: center;
     display: flex;
-    overflow: visible;
   }
 
 swiper-container {

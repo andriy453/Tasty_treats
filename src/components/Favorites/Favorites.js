@@ -20,11 +20,13 @@ const refs = {
   btn_left: document.querySelector('.btn-left1'),
 };
 const KEY_FAVORITE = 'favorite';
+
 const favoritesRecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 const categoriesArray = favoritesRecipes.map(recipe => {
   return recipe.category;
 });
+
 
 createGalleryCard(favoritesRecipes, listFav);
 
@@ -124,6 +126,7 @@ if (window.screen.width >= 768) {
   createGalleryCard(limit, listFav);
 }
 
+
 if (favoritesRecipes.length >= 12) {
   btn_conteiner_pagination.style.display = 'flex';
   // pagination /////////////////////////// pagination/////////////////////////// pagination
@@ -181,3 +184,14 @@ if (favoritesRecipes.length >= 12) {
 
   // pagination/////////////////////////// pagination/////////////////////////// pagination
 }
+
+document.querySelector('.scrollable-list-fav').style.display = 'none';
+if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
+  document.querySelector('.scrollable-list-fav').style.display ='block';
+ }
+  if ( favoritesRxecipes === undefined) {
+   console.log( JSON.parse(localStorage.getItem(KEY_FAVORITE)))
+ }
+
+ 
+

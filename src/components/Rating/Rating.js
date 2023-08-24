@@ -1,4 +1,4 @@
-import  addARating  from './RatingRequest.js';
+import  addARating from './Rating_request.js';
 
 const RatingAdd = new addARating();
 
@@ -93,16 +93,18 @@ const emailInput = document.querySelector('.rating-form-input');
 const ratingInputs = document.querySelectorAll('.star-input');
 const submitButton = document.querySelector('.rating-email-btn');
 
-function modalRatingOpCl(giveRating, modalRecipeBackDrop) {
+
+export function  modalRatingOpCl(giveRating, modalRecipeBackDrop) {
+
   const ratingBackdrop = document.querySelector('.rating-backdrop');
 
-  giveRating.addEventListener('click', () => {
-    ratingEmailBtn.id = giveRating.id;
-
+  giveRating.addEventListener('click', (e) => {
+    submitButton.id = e.target.id;
     ratingBackdrop.classList.remove('visible');
-    modalRecipeBackDrop.classList.add('visible');
+    // modalRecipeBackDrop.classList.add('visible');
   });
 }
+
 
 // MODAL-VALIDATION //
 

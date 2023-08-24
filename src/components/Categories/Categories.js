@@ -458,6 +458,7 @@ async function addFavorite(e) {
   }
 }
 
+
 refs.gallery.addEventListener('click', seeRecipe);
 
 function seeRecipe(evt) {
@@ -476,3 +477,4 @@ function seeRecipe(evt) {
       });
   }
 }
+
