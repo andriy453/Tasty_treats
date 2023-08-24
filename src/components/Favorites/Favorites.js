@@ -20,7 +20,7 @@ const  refs =  {
   btn_left: document.querySelector('.btn-left1'),
 }
 const KEY_FAVORITE = 'favorite';
-const favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+let  favoritesRxecipes = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
 
 const categoriesArray = favoritesRxecipes.map(recipe => {
@@ -170,9 +170,13 @@ refs.btn_start.addEventListener('click', e => {
 
 // pagination/////////////////////////// pagination/////////////////////////// pagination
 }
-refs.all_categorie.style.display = 'none';
+
+document.querySelector('.scrollable-list-fav').style.display = 'none';
 if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
-  refs.all_categorie.style.display ='block';
+  document.querySelector('.scrollable-list-fav').style.display ='block';
+ }
+  if ( favoritesRxecipes === undefined) {
+   console.log( JSON.parse(localStorage.getItem(KEY_FAVORITE)))
  }
 
  

@@ -447,25 +447,6 @@ async function addFavorite(e) {
   }
 }
 
-refs.gallery.addEventListener('click', seeRecipe);
-
-function seeRecipe(evt) {
-  if (evt.target.tagName !== 'BUTTON') {
-    return;
-  }
-  if (evt.target.innerText === 'See recipe') {
-    const recipeId = evt.target.id;
-    fetchRecipeById(recipeId)
-      .then(res => {
-        console.log(res);
-        refs.ratingBackdrop.classList.toggle('visible');
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-
-}
 
 
 

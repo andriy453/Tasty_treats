@@ -5,7 +5,8 @@ import './components/Header/header-menu.js'
 import './components/Categories/Categories.js'
 import './components/Hero/swiper.js'
 import './components/OrderNow/OrderNow.js'
-import './components/Rating/Rating.js'
+import './components/ModalRecipe/ModalRecipe.js'
+// import './components/Rating/Rating.js'
 
 
 
