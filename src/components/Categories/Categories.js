@@ -342,11 +342,15 @@ refs.btn_start.addEventListener('click', e => {
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
+  // if()
+  // activeCategories.classList.remove('active') ?? null;
+  console.log(selectedCategoryId)
   axiosCardInstance.category = selectedCategoryId;
   axiosCardInstance.area = null;
   axiosCardInstance.time = null;
   axiosCardInstance.ingredients = null;
   axiosCardInstance.title = null;
+  axiosCardInstance.page = 1;
   refs.inputEl.value = '';
 
   //refs.areaEl.firstElementChild.textContent;//як повернути 1 option при скиданні фільтрів
@@ -359,14 +363,15 @@ function resetAllFilters() {
 refs.btn_all_categories.addEventListener('click', displayAllCategories);
 
 function displayAllCategories(e) {
+  selectedCategoryId = null;
   activeCategories.classList.remove('active');
   activeCategories = e.target;
   e.target.classList.add('active');
   axiosCardInstance.category = null;
-  axiosCardInstance.time = selectedTimeId;
-  axiosCardInstance.area = selectedAreaId;
-  axiosCardInstance.ingredients = selectedIngredientsId;
-  axiosCardInstance.title = inputValue;
+  // axiosCardInstance.time = selectedTimeId;
+  // axiosCardInstance.area = selectedAreaId;
+  // axiosCardInstance.ingredients = selectedIngredientsId;
+  // axiosCardInstance.title = inputValue;
 
   showRecipesAdapt();
 
