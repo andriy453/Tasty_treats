@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -20,7 +20,7 @@ ul {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: var(--color-text-light);
 }
 
@@ -38,8 +38,8 @@ body {
 .no-scroll {
   overflow: hidden;
 }
-.is-hidden{
-    display: none;
+.is-hidden {
+  display: none;
 }
 .backdrop-see {
   /* display: none; */
@@ -52,7 +52,7 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   transition: opacity var(--timing-function) 250ms,
     visibility var(--timing-function) 250ms;
-    overflow: auto;
+  overflow: auto;
 }
 
 .backdrop-see.is-hidden {
@@ -62,20 +62,20 @@ body {
 
 .modal_see {
   position: absolute;
-  top:320px;
+  top: 500px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 310px;
-  background-color: #ffffff;
-  padding:  40px 20px;
+  background-color: var(--modal-bg);
+  padding: 40px 20px;
   border-radius: 15px;
-  max-height: 600px;
+  // max-height: 900px;
   overflow: auto;
 }
 
 .modal__title {
   text-align: left;
-  color: #050505;
+  color: --txt-color;
   font-family: Inter;
   font-size: 18px;
   font-weight: 600;
@@ -129,12 +129,11 @@ body {
 
 .tag-item {
   border-radius: 35px;
-  border: 1px solid rgba(5, 5, 5, 0.2);
+  border: 1px solid var(--gray);
   padding: 8px 16px;
-  color: #050505;
+  color: var(--txt-color);
   font-family: Inter;
   font-size: 12px;
-  font-style: normal;
   font-weight: 500;
   line-height: 14px; /* 116.667% */
 }
@@ -147,6 +146,10 @@ body {
 
 .rating-value {
   margin-right: 6px;
+  color: var(--gray);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .rating-body {
@@ -154,7 +157,6 @@ body {
   position: relative;
   margin-right: 8px;
 }
-
 
 .rating-items {
   display: flex;
@@ -172,10 +174,26 @@ body {
 }
 
 .time {
-  color: rgba(5, 5, 5, 0.5);
-  font-size: 16px;
+  color: var(--gray);
+  font-size: 14px;
   font-weight: 500;
   line-height: 18px; /* 128.571% */
+}
+
+.ingredient-name {
+  color: var(--txt-color);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.ingredient-value {
+  color: var(--gray);
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .ingredient-list {
@@ -197,11 +215,9 @@ body {
 }
 
 .instructions {
-  color: rgba(5, 5, 5, 0.8);
-  font-size: 16px;
-  font-style: normal;
+  color: var(--primary-color-08);
+  font-size: 14px;
   line-height: 18px; /* 128.571% */
-  margin-bottom: 32px;
   max-height: 162px;
   overflow: auto;
 }
@@ -216,21 +232,23 @@ body {
 }
 
 .modal-button {
-  padding: 12px 15px;
+  display: inline-flex;
+  padding: 12px 12px;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  cursor: pointer;
   border-radius: 15px;
   border: 1px solid #9bb537;
-  background: transparent;
-  color: #050505;
+  color: var(--white);
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  cursor: pointer;
+  width: 148px;
 }
-.recipe{
-margin-bottom: 40px;
+
+.recipe {
+  margin-bottom: 40px;
+  text-align: left;
 }
 .modal-button.color {
   background: #9bb537;
@@ -249,6 +267,69 @@ margin-bottom: 40px;
 }
 
 .icon-close {
-  fill: #050505;
+  fill: var(--txt-color);
 }
 
+@media screen and (min-width: 375px) {
+  .modal_see {
+    width: 335px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .modal__title {
+    line-height: 24px;
+    margin-bottom: 14px;
+  }
+  .rating-body {
+    margin-right: 16px;
+  }
+  .ingredient-list {
+    margin-bottom: 40px;
+    height: 224px;
+    width: 295px;
+  }
+  .ingredient-item {
+    padding: 14px 0 6px 0;
+  }
+  .info-bar {
+    margin-bottom: 24px;
+  }
+  .recipe {
+    width: 295px;
+    flex-shrink: 0;
+  }
+  .modal-buttons {
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .modal_see {
+    width: 531px;
+    gap: 905px;
+    padding: 32px;
+  }
+  .modal__title {
+    line-height: 24px;
+    margin-bottom: 14px;
+  }
+  .rating-body {
+    margin-right: 16px;
+  }
+  .rating-modal-re {
+    margin-bottom: 32px;
+  }
+  .ingredient-list {
+    margin-bottom: 32px;
+    height: 204px;
+    width: 467px;
+  }
+  .ingredient-item {
+    padding: 10px 0 6px 0;
+  }
+  .recipe {
+    width: 467px;
+    flex-shrink: 0;
+    margin-bottom: 32px;
+    overflow: scroll-none;
+  }
+}
