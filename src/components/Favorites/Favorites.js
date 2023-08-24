@@ -63,9 +63,9 @@ function remoteFavRecipe(e) {
     // Видаляємо рецепт з масиву favoritesRecipes
     const Updated =  favoritesRecipes.filter(recipe => recipe._id !== recipeId);
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(Updated))
-    // createGalleryCard(Updated, listFav)
+    createGalleryCard(Updated, listFav)
 
-    refreshPage();
+    // refreshPage();
   }
   
 }
