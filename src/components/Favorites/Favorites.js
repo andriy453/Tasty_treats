@@ -57,18 +57,17 @@ function remoteFavRecipe(e) {
   if (e.target.classList.contains('btn-heard')) {
     e.target.classList.remove('btn-heard');
     e.target.classList.add('btn-heard-noactiv');
+    console.log('ffff')
     const recipeId = e.target.id;
 
     // Видаляємо рецепт з масиву favoritesRecipes
+    const Updated =  favoritesRecipes.filter(recipe => recipe._id !== recipeId);
+    localStorage.setItem(KEY_FAVORITE, JSON.stringify(Updated))
+    // createGalleryCard(Updated, listFav)
 
-    const updatedRecipes = favoritesRecipes.filter(
-      recipe => recipe._id !== recipeId
-    );
-
-    localStorage.setItem(KEY_FAVORITE, JSON.stringify(updatedRecipes));
-    console.log(updatedRecipes);
     refreshPage();
   }
+  
 }
 
 //оновлювати сторінку кожен раз, щоб видалялись рецепти з favorites
@@ -133,15 +132,19 @@ if (favoritesRecipes.length >= 12) {
   let prev_state = 0;
   let step_state = 12;
   refs.button1.addEventListener('click', e => {
-    limit;
+    limit = favoritesRecipes.slice(0, 12);
     createGalleryCard(limit, listFav);
   });
 
   refs.button2.addEventListener('click', e => {
+    prev_state = 12;
+    step_state = 24;
     limit = favoritesRecipes.slice(12, 24);
     createGalleryCard(limit, listFav);
   });
   refs.button3.addEventListener('click', e => {
+    prev_state = 24;
+    step_state = 36;
     limit = favoritesRecipes.slice(24, 36);
     createGalleryCard(limit, listFav);
   });
@@ -164,6 +167,7 @@ if (favoritesRecipes.length >= 12) {
     step_state = favoritesRecipes.length;
     limit = favoritesRecipes.slice(prev_state, step_state);
     createGalleryCard(limit, listFav);
+
   });
   refs.btn_left.addEventListener('click', e => {
     if (prev_state === 0) {
@@ -178,7 +182,7 @@ if (favoritesRecipes.length >= 12) {
   refs.btn_start.addEventListener('click', e => {
     prev_state = 0;
     step_state = 12;
-    limit = favoritesRecipes.slice(prev_state, step_state);
+    limit = favoritesRecipes.slice(0, 12);
     createGalleryCard(limit, listFav);
   });
 
