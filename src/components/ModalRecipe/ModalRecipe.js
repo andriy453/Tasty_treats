@@ -1,3 +1,5 @@
+import {modalRatingOpCl} from '../Rating/Rating.js'
+
 const BASE_URL = "https://tasty-treats-backend.p.goit.global/api/recipes/";
 
 function fetchRecipe(id) {
@@ -33,6 +35,7 @@ function seeRecipe(evt) {
       closeModalBtn.addEventListener("click", closeModal);
       document.addEventListener("keydown", closoOnBackdrop);
       const favoriteBtn = document.querySelector(".js-favorite") 
+      const RatingeBtn = document.querySelector(".js-rating") 
     
       if (
         JSON.parse(
@@ -43,6 +46,7 @@ function seeRecipe(evt) {
         favoriteBtn.textContent = "Remove from favorites";
       }
       favoriteBtn.addEventListener("click", addFavorite);
+      modalRatingOpCl(RatingeBtn)
     })
 
   }
@@ -50,6 +54,11 @@ function seeRecipe(evt) {
 
 }
 
+function openModalRating(){
+  backdropEl.classList.add("is-hidden");
+  document.body.classList.remove("no-scroll");
+  document.removeEventListener("keydown", closoOnBackdrop);
+}
 function closeModal() {
   
     backdropEl.classList.add("is-hidden");
@@ -129,7 +138,7 @@ function closeModal() {
               </div>
               <div class="modal-buttons">
                   <button type="button" class="modal-button color js-favorite " id=${_id}>Add to favorite</button>
-                  <button type="button" class="modal-button js-rating">Give a rating</button>
+                  <button type="button" class="modal-button js-rating" id=${_id}>Give a rating</button>
               </div>`;
   }
   

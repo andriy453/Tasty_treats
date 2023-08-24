@@ -111,7 +111,7 @@ body {
     transition: opacity var(--trns-modal), visibility var(--trns-modal);
 }
 
-.rating-backdrop.visible {
+.visible {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

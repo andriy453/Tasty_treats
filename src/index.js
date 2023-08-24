@@ -7,6 +7,6 @@ import './components/Hero/swiper.js'
 import './components/OrderNow/OrderNow.js'
 import './components/ModalRecipe/ModalRecipe.js'
 import './components/scroll-to-top/scrollTop.js'
-// import './components/Rating/Rating.js'
+import './components/Rating/Rating.js'
 
 
