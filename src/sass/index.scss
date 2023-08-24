@@ -11,9 +11,9 @@
 @import '../components/OrderNow/OrderNow.scss';
 
 @font-face {
-    font-family: Inter-Regular;
-    src: url(../../Fonts/Inter-Regular.ttf);
-  }
+  font-family: Inter-Regular;
+  src: url(../../Fonts/Inter-Regular.ttf);
+}
 
 :root {
   --white: #F8F8F8;
@@ -45,7 +45,7 @@
   --primary-raiting: #fff;
   --border-pag: #9bb537;
   --option-color: #fff;
-  --grey:rgba(5, 5, 5, 0.30);
+  --grey: rgba(5, 5, 5, 0.30);
   --modal-bg: #fff;
 }
 
@@ -70,108 +70,144 @@
   --primary-raiting: #1e1e1e;
   --border-pag: #9bb537;
   --option-color: #050505;
-  --grey:rgba(255, 255, 255, 0.50);
+  --grey: rgba(255, 255, 255, 0.50);
   --modal-bg: #050505;
+  --gray-star-modal: #D9D9D9;
 }
 
-  body {
-    font-family: Inter-Regular, sans-serif;
-    background-color:var(--bg-main);
-    color: var(--txt-color);
-    text-align: center;
-  }
-  *{
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
-  
-  *, *:before, *:after{
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  :focus, :active{outline: none;}
-  a:focus, a:active{outline: none;}
+body {
+  font-family: Inter-Regular, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--txt-color);
+  text-align: center;
+}
 
-  nav,footer,header,aside{display: block;}
-  
-  html, body{
-  
-    height: 100%;
-    width: 100%;
-    font-style: 100%;
-    line-height: 1;
-    font-style: 14px;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-  }
-  
-  input, button, textarea{font-family: inherit;}
-  
-  input::-ms-clear{display:none;}
-  
-  button{cursor: pointer;}
-  
-  button::-moz-focus-inner{padding: 0;border: 0;}
-  
-  a, a:visited{text-decoration: none;}
-  
-  a:hover{text-decoration: none;}
-  
-  ul li{list-style-type: none;}
-  
-  img{vertical-align: top;}
-  
-  h1,h2, h3, h4, h5, h6{font-style: inherit; font-weight: 400;}
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+
+  height: 100%;
+  width: 100%;
+  font-style: 100%;
+  line-height: 1;
+  font-style: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-style: inherit;
+  font-weight: 400;
+}
 
 .no-scroll {
   overflow: hidden;
 }
 
+.container {
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 375px) {
   .container {
-    width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 0 auto;
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  @media screen and (min-width: 375px) {
-    .container {
-      max-width: 375px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  }
-  @media screen and (min-width: 768px) {
-    .container {
-      max-width: 768px;
-      padding-left: 32px;
-      padding-right: 32px;
-    }
-    .container-home{
-      display: flex;
-      gap:0px 32px;
-    }
-  }
-  @media screen and (min-width: 1280px) {
-    .container {
-      max-width: 1400px;
-      padding-left: 100px;
-      padding-right: 100px;
-    }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
+  .container-home {
+    display: flex;
+    gap: 0px 32px;
+  }
+}
 
-
-
-
-
-
-  
-
-
-
-
-
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1400px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
