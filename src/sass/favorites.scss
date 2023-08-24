@@ -42,7 +42,7 @@
 }
 
 .thumb {
-  border-radius: 3%;
+  border-radius: 4%;
   overflow: hidden;
 }
 
@@ -188,9 +188,7 @@ border: 1px solid #050505;
   gap: 24px;
   margin: 0 auto;
 }
-.img-favorites {
-  margin-bottom: 64px;
-}
+
 /* --------------- tABLET ----------------- */
 @media screen and (min-width: 768px) {
   .fav-container {
