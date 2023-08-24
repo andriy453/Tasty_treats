@@ -32,9 +32,21 @@ function seeRecipe(evt) {
       document.body.classList.add("no-scroll");
       closeModalBtn.addEventListener("click", closeModal);
       document.addEventListener("keydown", closoOnBackdrop);
-      const favoriteBtn = document.querySelector(".js-favorite") })
+      const favoriteBtn = document.querySelector(".js-favorite") 
+    
+      if (
+        JSON.parse(
+          localStorage.getItem("favorite") &&
+            JSON.parse(localStorage.getItem("favorite")).includes(id)
+        )
+      ) {
+        favoriteBtn.textContent = "Remove from favorites";
+      }
+      favoriteBtn.addEventListener("click", addFavorite);
+    })
 
   }
+  
 
 }
 
@@ -116,7 +128,7 @@ function closeModal() {
                   </p>
               </div>
               <div class="modal-buttons">
-                  <button type="button" class="modal-button color js-favorite " data-id=${_id}>Add to favorite</button>
+                  <button type="button" class="modal-button color js-favorite " id=${_id}>Add to favorite</button>
                   <button type="button" class="modal-button js-rating">Give a rating</button>
               </div>`;
   }
@@ -143,4 +155,53 @@ function closeModal() {
       .join("");
   }
   
+
+
+  const KEY_FAVORITE = 'favorite';
+let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
+
+
+
+function fetchRecipeById(recipeId) {
+  return fetch(
+    `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+
+async function addFavorite(e) {
+    e.target.textContent = "Add to favorite";
+    const recipeId = e.target.id;
+    console.log('recipeId:', recipeId);
+
+    const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
+    if (inStorage) {
+      favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
+      e.target.classList.remove('heart-icon-active');
+      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+      console.log('Updated Favorite Array:', favoriteArr);
+
+      return;
+    }
+    try {
+      const recipe = await fetchRecipeById(recipeId);
+
+      favoriteArr.push(recipe);
+
+      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+
+      console.log('Favorite Array:', favoriteArr);
+      e.target.classList.add('heart-icon-active');
+    } catch (error) {
+      console.error('Error:', error);
+  }
+}
+
 
