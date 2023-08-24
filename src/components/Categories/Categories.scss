@@ -177,13 +177,21 @@
   .select-container-mob .area-select-mob {
     width: 160px;
   }
-  
+
   .select-container-mob .time-select-mob {
     width: 160px;
   }
   .filter-time-area-mob {
     gap: 14px;
+  }
 }
+.option-text {
+  background-color: var(--option-color);
+  color: var(--primary-color-03);
+}
+
+.option-text:is(:hover, :focus) {
+  color: --txt-color;
 }
 @media screen and (min-width: 768px) {
   //Categories
