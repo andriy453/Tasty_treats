@@ -342,6 +342,12 @@ refs.btn_start.addEventListener('click', e => {
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
+
+  refs.timeEl.value = '';
+  refs.areaEl.value = '';
+  refs.timeMob.value = '';
+  refs.areaMob.value = '';
+  refs.ingredientsEl.value = '';
   // if()
   // activeCategories.classList.remove('active') ?? null;
   console.log(selectedCategoryId)

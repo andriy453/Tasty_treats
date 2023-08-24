@@ -56,10 +56,13 @@ function seeRecipe(evt) {
 const popular  = document.querySelector('.popular')
 popular.addEventListener('click',(e)=>{
   console.log(e.target)
+if(e.target.value === 'recipe-title'){
+  console.log('ggg')
+}
 
-  if(e.target.classList.contains('photo-card_recipes')){
-console.log('ggg')
-  }
+//   if(e.target.classList.contains('photo-card_recipes')){
+// console.log('ggg')
+//   }
 })
 
 
