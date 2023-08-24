@@ -189,7 +189,7 @@ document.querySelector('.scrollable-list-fav').style.display = 'none';
 if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
   document.querySelector('.scrollable-list-fav').style.display ='block';
  }
-  if ( favoritesRxecipes === undefined) {
+  if ( favoritesRecipes === undefined) {
    console.log( JSON.parse(localStorage.getItem(KEY_FAVORITE)))
  }
 

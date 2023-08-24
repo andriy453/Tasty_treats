@@ -53,6 +53,15 @@ function seeRecipe(evt) {
   
 
 }
+const popular  = document.querySelector('.popular')
+popular.addEventListener('click',(e)=>{
+  console.log(e.target)
+
+  if(e.target.classList.contains('photo-card_recipes')){
+console.log('ggg')
+  }
+})
+
 
 function openModalRating(){
   backdropEl.classList.add("is-hidden");
