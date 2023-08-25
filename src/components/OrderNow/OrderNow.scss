@@ -88,7 +88,7 @@
   
   .close:hover,
   .close:focus {
-    color: black;
+    color:var(--txt-color);
     text-decoration: none;
     cursor: pointer;
   }

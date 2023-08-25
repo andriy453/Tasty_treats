@@ -126,11 +126,10 @@ function renderRecipe({
 }) {
   return `
       <button type="button" class="close-modal">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <svg class="close-sv_g" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#eea10c">
       <path d="M15 5L5 15" stroke="#050505" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M5 5L15 15" stroke="#050505" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-                  
               </button>
               <div class="modal__video">
               <iframe poster="https://images.pexels.com/photos/595804/pexels-photo-595804.jpeg?w=640" class="frame-video" width="100%" height="100%" src="https://www.youtube.com/embed/${youtube.slice(

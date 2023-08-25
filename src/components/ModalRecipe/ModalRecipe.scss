@@ -278,9 +278,10 @@ body {
   color: #050505;
 }
 
-.icon-close {
-  fill: var(--txt-color);
+.close-sv_g path{
+  stroke:var(  --txt-color);
 }
+
 
 @media screen and (min-width: 375px) {
   .modal_see {
