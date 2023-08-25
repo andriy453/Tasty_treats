@@ -102,6 +102,10 @@ categoriesConteiner.addEventListener('click', e => {
 
         if( favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12).length <= 12){
           btn_conteiner_pagination.style.display = 'none';
+        } if  ( favoritesRecipes.filter(res => res.category === e.target.id).length > 12){
+          btn_conteiner_pagination.style.display = 'block';
+          array =  favoritesRecipes.filter(res => res.category === e.target.id)
+          console.log( favoritesRecipes.filter(res => res.category === e.target.id))
         }
       
     createGalleryCard(favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12),listFav);
@@ -116,7 +120,7 @@ categoriesConteiner.addEventListener('click', e => {
 
     if( favoritesRecipes.length <= 12){
       btn_conteiner_pagination.style.display = 'block';
-      
+      array = favoritesRecipes;
     }
     refreshPage();
     createGalleryCard( favoritesRecipes.slice(0, 12),listFav, listFav);
@@ -142,50 +146,50 @@ function seeRecipe(evt) {
 
 /////////////////////////////Адаптив
 let limit;
-
+let array;
+array = favoritesRecipes;
 if (window.screen.width >= 768) {
-  console.log(favoritesRecipes.length);
-  limit = favoritesRecipes.slice(0, 12);
-  if (favoritesRecipes.length >= 12) {
+  limit = array.slice(0, 12);
+  if (array.length >= 12) {
     btn_conteiner_pagination.style.display = 'flex';
     // pagination /////////////////////////// pagination/////////////////////////// pagination
     let prev_state = 0;
     let step_state = 12;
     refs.button1.addEventListener('click', e => {
-      limit = favoritesRecipes.slice(0, 12);
+      limit = array.slice(0, 12);
       createGalleryCard(limit, listFav);
     });
   
     refs.button2.addEventListener('click', e => {
       prev_state = 12;
       step_state = 24;
-      limit = favoritesRecipes.slice(12, 24);
+      limit = array.slice(12, 24);
       createGalleryCard(limit, listFav);
     });
     refs.button3.addEventListener('click', e => {
       prev_state = 24;
       step_state = 36;
-      limit = favoritesRecipes.slice(24, 36);
+      limit = array.slice(24, 36);
       createGalleryCard(limit, listFav);
     });
   
     refs.btn_right.addEventListener('click', e => {
       prev_state += 12;
       step_state += 12;
-      if (step_state > favoritesRecipes.length + 11) {
+      if (step_state > array.length + 11) {
         prev_state -= 12;
         step_state -= 12;
         return;
       }
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
     });
     refs.btn_end.addEventListener('click', e => {
-      console.log(favoritesRecipes.length);
-      console.log(favoritesRecipes.length - 12);
-      prev_state = favoritesRecipes.length - 12;
-      step_state = favoritesRecipes.length;
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      console.log(array.length);
+      console.log(array.length - 12);
+      prev_state = array.length - 12;
+      step_state = array.length;
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
   
     });
@@ -195,62 +199,62 @@ if (window.screen.width >= 768) {
       }
       prev_state -= 12;
       step_state -= 12;
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
     });
   
     refs.btn_start.addEventListener('click', e => {
       prev_state = 0;
       step_state = 12;
-      limit = favoritesRecipes.slice(0, 12);
+      limit = array.slice(0, 12);
       createGalleryCard(limit, listFav);
     });
   }
 
   createGalleryCard(limit, listFav);
 } else {
-  limit = favoritesRecipes.slice(0, 9);
-  if (favoritesRecipes.length >= 9) {
+  limit = array.slice(0, 9);
+  if (array.length >= 9) {
     btn_conteiner_pagination.style.display = 'flex';
 
 
     let prev_state = 0;
     let step_state = 9;
     refs.button1.addEventListener('click', e => {
-      limit = favoritesRecipes.slice(0, 9);
+      limit = array.slice(0, 9);
       createGalleryCard(limit, listFav);
     });
   
     refs.button2.addEventListener('click', e => {
       prev_state = 18;
       step_state = 27;
-      limit = favoritesRecipes.slice(12, 24);
+      limit = array.slice(12, 24);
       createGalleryCard(limit, listFav);
     });
     refs.button3.addEventListener('click', e => {
       prev_state = 36;
       step_state = 45;
-      limit = favoritesRecipes.slice(24, 36);
+      limit = array.slice(24, 36);
       createGalleryCard(limit, listFav);
     });
   
     refs.btn_right.addEventListener('click', e => {
       prev_state += 9;
       step_state +=9;
-      if (step_state > favoritesRecipes.length + 8) {
+      if (step_state > array.length + 8) {
         prev_state -= 9;
         step_state -= 9;
         return;
       }
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
     });
     refs.btn_end.addEventListener('click', e => {
-      console.log(favoritesRecipes.length);
-      console.log(favoritesRecipes.length - 9);
-      prev_state = favoritesRecipes.length - 9;
-      step_state = favoritesRecipes.length;
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      console.log(array.length);
+      console.log(array.length - 9);
+      prev_state = array.length - 9;
+      step_state = array.length;
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
   
     });
@@ -260,14 +264,14 @@ if (window.screen.width >= 768) {
       }
       prev_state -= 9;
       step_state -= 9;
-      limit = favoritesRecipes.slice(prev_state, step_state);
+      limit = array.slice(prev_state, step_state);
       createGalleryCard(limit, listFav);
     });
   
     refs.btn_start.addEventListener('click', e => {
       prev_state = 0;
       step_state = 9;
-      limit = favoritesRecipes.slice(0, 9);
+      limit = array.slice(0, 9);
       createGalleryCard(limit, listFav);
     });
   }
