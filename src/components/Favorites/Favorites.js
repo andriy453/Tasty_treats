@@ -3,6 +3,7 @@ import {addFavorite}  from '../ModalRecipe/ModalRecipe.js'
 import {closeModal}  from '../ModalRecipe/ModalRecipe.js'
 import {closoOnBackdrop}  from '../ModalRecipe/ModalRecipe.js'
 import { modalRatingOpCl } from '../Rating/Rating.js';
+
 // import  fetchRecipe  from '../Rating/Rating.js';
 import { renderRecipe } from '../Rating/Rating.js';
 
@@ -331,7 +332,7 @@ function seeRecipe(evt) {
       }
       favoriteBtn.addEventListener('click', addFavorite);
       createGalleryCard( JSON.parse(localStorage.getItem('favorite')), listFav);
-      modalRatingOpCl(RatingeBtn);
+      // modalRatingOpCl(RatingeBtn);
     });
   }
 }
