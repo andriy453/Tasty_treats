@@ -1,9 +1,9 @@
-import {modalRatingOpCl} from '../Rating/Rating.js'
+import { modalRatingOpCl } from '../Rating/Rating.js';
 
-const BASE_URL = "https://tasty-treats-backend.p.goit.global/api/recipes/";
+const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/';
 
 function fetchRecipe(id) {
-  return fetch(`${BASE_URL}${id}`).then((response) => {
+  return fetch(`${BASE_URL}${id}`).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
     }
@@ -12,14 +12,13 @@ function fetchRecipe(id) {
 }
 let favorites = [];
 
-const backdropEl = document.querySelector(".backdrop-see");
-const modalEl = document.querySelector(".modal_see");
- const gallery =  document.querySelector('.gallery');
+const backdropEl = document.querySelector('.backdrop-see');
+const modalEl = document.querySelector('.modal_see');
+const gallery = document.querySelector('.gallery');
 
 gallery.addEventListener('click', seeRecipe);
 
 function seeRecipe(evt) {
-
   if (evt.target.tagName !== 'BUTTON') {
     return;
   }
@@ -27,98 +26,90 @@ function seeRecipe(evt) {
   if (evt.target.innerText === 'See recipe') {
     let id = evt.target.id;
 
-    fetchRecipe(id).then((obj) => {
+    fetchRecipe(id).then(obj => {
       modalEl.innerHTML = renderRecipe(obj);
-      const closeModalBtn = document.querySelector(".close-modal");
-      backdropEl.classList.remove("is-hidden");
-      document.body.classList.add("no-scroll");
-      closeModalBtn.addEventListener("click", closeModal);
-      document.addEventListener("keydown", closoOnBackdrop);
-      const favoriteBtn = document.querySelector(".js-favorite") 
-      const RatingeBtn = document.querySelector(".js-rating") 
-    
+      const closeModalBtn = document.querySelector('.close-modal');
+      backdropEl.classList.remove('is-hidden');
+      document.body.classList.add('no-scroll');
+      closeModalBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', closoOnBackdrop);
+      const favoriteBtn = document.querySelector('.js-favorite');
+      const RatingeBtn = document.querySelector('.js-rating');
+
       if (
         JSON.parse(
-          localStorage.getItem("favorite") &&
-            JSON.parse(localStorage.getItem("favorite")).includes(id)
+          localStorage.getItem('favorite') &&
+            JSON.parse(localStorage.getItem('favorite')).includes(id)
         )
       ) {
-        favoriteBtn.textContent = "Remove from favorites";
+        favoriteBtn.textContent = 'Remove from favorites';
       }
-      favoriteBtn.addEventListener("click", addFavorite);
-      modalRatingOpCl(RatingeBtn)
-    })
-
+      favoriteBtn.addEventListener('click', addFavorite);
+      modalRatingOpCl(RatingeBtn);
+    });
   }
-  
-
-}
-let bnt_Popular = document.querySelectorAll('.photo-card_recipes')
-
-setTimeout(()=>{console.log(bnt_Popular)},300)
-const popular  = document.querySelector('.popular')
-popular.addEventListener('click',(e)=>{
-  console.log(e.target)
-if(e.target.value === 'recipe-title'){
-  console.log('ggg')
 }
 
-//   if(e.target.classList.contains('photo-card_recipes')){
-// console.log('ggg')
-//   }
-})
+const popular = document.querySelector('.popular');
+popular.addEventListener('click', e => {
+  console.log(e.target);
+
+  if (e.target.classList.contains('photo-card_recipes')) {
+    console.log('ggg');
+  }
+});
 
 
-function openModalRating(){
-  backdropEl.classList.add("is-hidden");
-  document.body.classList.remove("no-scroll");
-  document.removeEventListener("keydown", closoOnBackdrop);
+function openModalRating() {
+  backdropEl.classList.add('is-hidden');
+  document.body.classList.remove('no-scroll');
+  document.removeEventListener('keydown', closoOnBackdrop);
 }
 function closeModal() {
-  
-    backdropEl.classList.add("is-hidden");
-    document.body.classList.remove("no-scroll");
-    document.removeEventListener("keydown", closoOnBackdrop);
-    document
-      .getElementById("v1")
-      .contentWindow.postMessage(
-        '{"event":"command","func":"stopVideo","args":""}',
-        "*"
-      );
+  backdropEl.classList.add('is-hidden');
+  document.body.classList.remove('no-scroll');
+  document.removeEventListener('keydown', closoOnBackdrop);
+  document
+    .getElementById('v1')
+    .contentWindow.postMessage(
+      '{"event":"command","func":"stopVideo","args":""}',
+      '*'
+    );
+}
+
+window.onclick = function (event) {
+  if (event.target === backdropEl) {
+    backdropEl.classList.add('is-hidden');
+    document.body.classList.remove('no-scroll');
   }
-  
-  window.onclick = function (event) {
-    if (event.target === backdropEl) {
-      backdropEl.classList.add("is-hidden");
-      document.body.classList.remove("no-scroll");
-    }
-  };
-  
-  function closoOnBackdrop(e) {
-    if (e.code === "Escape") {
-      closeModal();
-    }
+};
+
+function closoOnBackdrop(e) {
+  if (e.code === 'Escape') {
+    closeModal();
   }
-  
-  function renderRecipe({
-    _id,
-    title,
-    rating,
-    time,
-    instructions,
-    youtube,
-    tags,
-    ingredients,
-  }) {
-    return `
+}
+
+function renderRecipe({
+  _id,
+  title,
+  rating,
+  time,
+  instructions,
+  youtube,
+  tags,
+  ingredients,
+}) {
+  return `
       <button type="button" class="close-modal">
                   <svg class="icon-close" width="12px" height="12px">
-                      <use href="/img/symbol-defs.svg#icon-close-modal"></use>
+                      <use href="../images/sprite.svg#icon-x"> </use>
                   </svg>
+                  
               </button>
               <div class="modal__video">
               <iframe poster="https://images.pexels.com/photos/595804/pexels-photo-595804.jpeg?w=640" class="frame-video" width="100%" height="100%" src="https://www.youtube.com/embed/${youtube.slice(
-                youtube.lastIndexOf("=") + 1
+                youtube.lastIndexOf('=') + 1
               )}?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id='v1'></iframe></div>
               <h2 class="modal__title">${title}</h2>
               <div class="rating-modal-re">
@@ -138,14 +129,16 @@ function closeModal() {
               </div>
               <p class="time">${time} min</p>
           </div>
+              <ul class="ingredient-list">
+              ${markupIngredientList(ingredients)}
+              </ul>
               <div class="info-bar">
                   <ul class="tag-list">
                   ${markupTags(tags)}
                   </ul>
               </div>
-              <ul class="ingredient-list">
-              ${markupIngredientList(ingredients)}
-              </ul>
+
+
               <div class="recipe">
                   <p class="instructions">
                   ${instructions}
@@ -155,40 +148,37 @@ function closeModal() {
                   <button type="button" class="modal-button color js-favorite " id=${_id}>Add to favorite</button>
                   <button type="button" class="modal-button js-rating" id=${_id}>Give a rating</button>
               </div>`;
-  }
-  
-  function markupTags(arr) {
-    if (arr.length) {
-      return arr
-        .map((item) => {
-          return `<li class="tag-item">#${item}</li>`;
-        })
-        .join("");
-    }
-    return;
-  }
-  
-  function markupIngredientList(arr) {
+}
+
+function markupTags(arr) {
+  if (arr.length) {
     return arr
-      .map(({ name, measure }) => {
-        return `<li class="ingredient-item">
+      .map(item => {
+        return `<li class="tag-item">#${item}</li>`;
+      })
+      .join('');
+  }
+  return;
+}
+
+function markupIngredientList(arr) {
+  return arr
+    .map(({ name, measure }) => {
+      return `<li class="ingredient-item">
             <p class="ingredient-name">${name}</p>
             <p class="ingredient-value">${measure}</p>
           </li>`;
-      })
-      .join("");
-  }
-  
+    })
+    .join('');
+}
 
-
-  const KEY_FAVORITE = 'favorite';
+const KEY_FAVORITE = 'favorite';
 let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
-
-
 
 function fetchRecipeById(recipeId) {
   return fetch(
-    `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`)
+    `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`
+  )
     .then(response => {
       if (!response.ok) {
         throw new Error(response.status);
@@ -198,34 +188,30 @@ function fetchRecipeById(recipeId) {
     .catch(error => console.error('Error:', error));
 }
 
-
-
 async function addFavorite(e) {
-    e.target.textContent = "Add to favorite";
-    const recipeId = e.target.id;
-    console.log('recipeId:', recipeId);
+  e.target.textContent = 'Add to favorite';
+  const recipeId = e.target.id;
+  console.log('recipeId:', recipeId);
 
-    const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
-    if (inStorage) {
-      favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
-      e.target.classList.remove('heart-icon-active');
-      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-      console.log('Updated Favorite Array:', favoriteArr);
+  const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
+  if (inStorage) {
+    favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
+    e.target.classList.remove('heart-icon-active');
+    localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+    console.log('Updated Favorite Array:', favoriteArr);
 
-      return;
-    }
-    try {
-      const recipe = await fetchRecipeById(recipeId);
+    return;
+  }
+  try {
+    const recipe = await fetchRecipeById(recipeId);
 
-      favoriteArr.push(recipe);
+    favoriteArr.push(recipe);
 
-      localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+    localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
 
-      console.log('Favorite Array:', favoriteArr);
-      e.target.classList.add('heart-icon-active');
-    } catch (error) {
-      console.error('Error:', error);
+    console.log('Favorite Array:', favoriteArr);
+    e.target.classList.add('heart-icon-active');
+  } catch (error) {
+    console.error('Error:', error);
   }
 }
-
-
