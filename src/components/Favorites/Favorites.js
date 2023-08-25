@@ -123,75 +123,139 @@ let limit;
 if (window.screen.width >= 768) {
   console.log(favoritesRecipes.length);
   limit = favoritesRecipes.slice(0, 12);
+  if (favoritesRecipes.length >= 12) {
+    btn_conteiner_pagination.style.display = 'flex';
+    // pagination /////////////////////////// pagination/////////////////////////// pagination
+    let prev_state = 0;
+    let step_state = 12;
+    refs.button1.addEventListener('click', e => {
+      limit = favoritesRecipes.slice(0, 12);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.button2.addEventListener('click', e => {
+      prev_state = 12;
+      step_state = 24;
+      limit = favoritesRecipes.slice(12, 24);
+      createGalleryCard(limit, listFav);
+    });
+    refs.button3.addEventListener('click', e => {
+      prev_state = 24;
+      step_state = 36;
+      limit = favoritesRecipes.slice(24, 36);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.btn_right.addEventListener('click', e => {
+      prev_state += 12;
+      step_state += 12;
+      if (step_state > favoritesRecipes.length + 11) {
+        prev_state -= 12;
+        step_state -= 12;
+        return;
+      }
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+    });
+    refs.btn_end.addEventListener('click', e => {
+      console.log(favoritesRecipes.length);
+      console.log(favoritesRecipes.length - 12);
+      prev_state = favoritesRecipes.length - 12;
+      step_state = favoritesRecipes.length;
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+  
+    });
+    refs.btn_left.addEventListener('click', e => {
+      if (prev_state === 0) {
+        return;
+      }
+      prev_state -= 12;
+      step_state -= 12;
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.btn_start.addEventListener('click', e => {
+      prev_state = 0;
+      step_state = 12;
+      limit = favoritesRecipes.slice(0, 12);
+      createGalleryCard(limit, listFav);
+    });
+  }
+
   createGalleryCard(limit, listFav);
 } else {
   limit = favoritesRecipes.slice(0, 9);
+  if (favoritesRecipes.length >= 9) {
+    btn_conteiner_pagination.style.display = 'flex';
+
+
+    let prev_state = 0;
+    let step_state = 9;
+    refs.button1.addEventListener('click', e => {
+      limit = favoritesRecipes.slice(0, 9);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.button2.addEventListener('click', e => {
+      prev_state = 18;
+      step_state = 27;
+      limit = favoritesRecipes.slice(12, 24);
+      createGalleryCard(limit, listFav);
+    });
+    refs.button3.addEventListener('click', e => {
+      prev_state = 36;
+      step_state = 45;
+      limit = favoritesRecipes.slice(24, 36);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.btn_right.addEventListener('click', e => {
+      prev_state += 9;
+      step_state +=9;
+      if (step_state > favoritesRecipes.length + 8) {
+        prev_state -= 9;
+        step_state -= 9;
+        return;
+      }
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+    });
+    refs.btn_end.addEventListener('click', e => {
+      console.log(favoritesRecipes.length);
+      console.log(favoritesRecipes.length - 9);
+      prev_state = favoritesRecipes.length - 9;
+      step_state = favoritesRecipes.length;
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+  
+    });
+    refs.btn_left.addEventListener('click', e => {
+      if (prev_state === 0) {
+        return;
+      }
+      prev_state -= 9;
+      step_state -= 9;
+      limit = favoritesRecipes.slice(prev_state, step_state);
+      createGalleryCard(limit, listFav);
+    });
+  
+    refs.btn_start.addEventListener('click', e => {
+      prev_state = 0;
+      step_state = 9;
+      limit = favoritesRecipes.slice(0, 9);
+      createGalleryCard(limit, listFav);
+    });
+  }
+
   createGalleryCard(limit, listFav);
 }
 
 
-if (favoritesRecipes.length >= 12) {
-  btn_conteiner_pagination.style.display = 'flex';
-  // pagination /////////////////////////// pagination/////////////////////////// pagination
-  let prev_state = 0;
-  let step_state = 12;
-  refs.button1.addEventListener('click', e => {
-    limit = favoritesRecipes.slice(0, 12);
-    createGalleryCard(limit, listFav);
-  });
-
-  refs.button2.addEventListener('click', e => {
-    prev_state = 12;
-    step_state = 24;
-    limit = favoritesRecipes.slice(12, 24);
-    createGalleryCard(limit, listFav);
-  });
-  refs.button3.addEventListener('click', e => {
-    prev_state = 24;
-    step_state = 36;
-    limit = favoritesRecipes.slice(24, 36);
-    createGalleryCard(limit, listFav);
-  });
-
-  refs.btn_right.addEventListener('click', e => {
-    prev_state += 12;
-    step_state += 12;
-    if (step_state > favoritesRecipes.length + 11) {
-      prev_state -= 12;
-      step_state -= 12;
-      return;
-    }
-    limit = favoritesRecipes.slice(prev_state, step_state);
-    createGalleryCard(limit, listFav);
-  });
-  refs.btn_end.addEventListener('click', e => {
-    console.log(favoritesRecipes.length);
-    console.log(favoritesRecipes.length - 12);
-    prev_state = favoritesRecipes.length - 12;
-    step_state = favoritesRecipes.length;
-    limit = favoritesRecipes.slice(prev_state, step_state);
-    createGalleryCard(limit, listFav);
-
-  });
-  refs.btn_left.addEventListener('click', e => {
-    if (prev_state === 0) {
-      return;
-    }
-    prev_state -= 12;
-    step_state -= 12;
-    limit = favoritesRecipes.slice(prev_state, step_state);
-    createGalleryCard(limit, listFav);
-  });
-
-  refs.btn_start.addEventListener('click', e => {
-    prev_state = 0;
-    step_state = 12;
-    limit = favoritesRecipes.slice(0, 12);
-    createGalleryCard(limit, listFav);
-  });
 
   // pagination/////////////////////////// pagination/////////////////////////// pagination
-}
+
 
 document.querySelector('.scrollable-list-fav').style.display = 'none';
 if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
