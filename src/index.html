@@ -11,29 +11,31 @@
   </head>
   <body>
     <main>
-      <include src="./components/Header/Header.html"></include>
+        <include src="./components/Header/Header.html"></include>
       <include src="./components/Hero/Hero.html"></include>
 
-      <div class="container-home container">
-        <div>
-          <include src="./components/Categories/Categories.html"></include>
-          <include
-            src="./components/PopularRecipes/PopularRecipes.html"
-          ></include>
+      <section class="Home">
+        <div class="container-home container">
+          <div>
+            <include src="./components/Categories/Categories.html"></include>
+            <include
+              src="./components/PopularRecipes/PopularRecipes.html"
+            ></include>
+          </div>
+  
+          <div class="home-conteiner">  
+            <include src="./components/scroll-to-top/scrollTop.html"></include>
+  
+            <include
+              src="./components/categoriesFilter/categoriesFilter.html"
+            ></include>
+            <include src="./components/cards/cards.html"></include>
+             <include src="./components/Rating/Rating.html"></include>
+            <include src="./components/OrderNow/OrderNow.html"></include> 
+            <include src="./components/ModalRecipe/ModalRecipe.html"></include>
+          </div>
         </div>
-
-        <div class="home-conteiner">  
-          <include src="./components/scroll-to-top/scrollTop.html"></include>
-
-          <include
-            src="./components/categoriesFilter/categoriesFilter.html"
-          ></include>
-          <include src="./components/cards/cards.html"></include>
-           <include src="./components/Rating/Rating.html"></include>
-          <include src="./components/OrderNow/OrderNow.html"></include> 
-          <include src="./components/ModalRecipe/ModalRecipe.html"></include>
-        </div>
-      </div>
+      </section>
     </main>
     <script type="module" src="./index.js"></script>
   </body>

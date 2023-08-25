@@ -18,6 +18,8 @@
 .favorites {
   width: 100%;
   margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 .fav-container {
@@ -25,7 +27,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-bottom: 100px;
 }
 
 .fav-hero {
@@ -197,6 +198,9 @@ border: 1px solid #050505;
     padding-left: 32px;
     padding-right: 32px;
   }
+  .favorites {
+    padding-bottom: 100px;
+  }
 
   .fav-hero {
     gap: 64px;
@@ -234,11 +238,15 @@ border: 1px solid #050505;
 @media screen and (min-width: 1280px) {
   .fav-container {
     max-width: 1280px;
-    padding: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
     padding-top: 0px;
   }
   div.cart-favorite {
     width: 258px;
+  }
+  .favorites {
+    padding-top: 40px;
   }
   .fav-image {
     width: 1080px;

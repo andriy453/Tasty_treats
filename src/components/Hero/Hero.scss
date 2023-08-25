@@ -1,14 +1,14 @@
 .hero-container {
   overflow: hidden;
-  padding-top: 91px;
 }
 
 .hero {
-  padding-top: 91px;
+  padding-top: 90px;
+  padding-bottom: 80px;
 }
 
-.hero-text-wrapper {
-  margin-bottom: 48px;
+.Home{
+  padding-bottom: 80px;
 }
 
 .hero-title {
@@ -58,10 +58,12 @@
 }
 
 @media screen and (min-width: 768px) {
+  .Home{
+    padding-bottom: 100px;
+  }
   .hero-text-wrapper {
     text-align: left;
     width: 446px;
-    margin-bottom: 64px;
     margin-right: 32px;
   }
   .btnOrderNow{
@@ -260,7 +262,6 @@ span.swiper-pagination-bullet-active {
   .hero-text-wrapper {
     text-align: left;
     width: 446px;
-    margin-bottom: 64px;
     margin-right: 32px;
   }
   .btnOrderNow {
@@ -332,7 +333,9 @@ span.swiper-pagination-bullet-active {
 }
 
 @media screen and (min-width: 1280px) {
-
+  .hero {
+    padding-bottom: 100px;
+  }
   .hero-container {
     align-items: center;
     display: flex;
