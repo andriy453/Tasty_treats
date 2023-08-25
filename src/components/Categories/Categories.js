@@ -296,7 +296,7 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
-  axiosCardInstance.page = axiosCardInstance.page--;
+  axiosCardInstance.page--;
   axiosCardInstance.getCardData().then(data => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
