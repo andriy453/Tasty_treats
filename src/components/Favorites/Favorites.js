@@ -27,7 +27,6 @@ const categoriesArray = favoritesRecipes.map(recipe => {
   return recipe.category;
 });
 
-
 createGalleryCard(favoritesRecipes, listFav);
 
 function categories(categories) {
@@ -65,10 +64,24 @@ function remoteFavRecipe(e) {
     console.log(Updated)
     favoritesRecipes.splice(Updated,1)
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoritesRecipes))
-    createGalleryCard(favoritesRecipes, listFav)
+
 
 
     categories(favoritesRecipes.map(recipe => {return recipe.category;}));
+
+    if (window.screen.width >= 768) {
+      createGalleryCard(favoritesRecipes.slice(0, 12), listFav)
+      if( favoritesRecipes.length <= 12){
+        btn_conteiner_pagination.style.display = 'none';
+      }
+    }else{
+      if( favoritesRecipes.length <= 9){
+        createGalleryCard(favoritesRecipes.slice(0, 9), listFav)
+        btn_conteiner_pagination.style.display = 'none';
+      }
+    }
+
+ 
     // refreshPage();
   }
   
@@ -85,10 +98,8 @@ categoriesConteiner.addEventListener('click', e => {
     document
       .querySelector('.btn-all-categori ')
       .classList.remove('active_all-categories');
-    createGalleryCard(
-      favoritesRecipes.filter(res => res.category === e.target.id),
-      listFav
-    );
+
+    createGalleryCard(favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12),listFav);
 
     if (activeCategories !== undefined) {
       activeCategories.classList.remove('active_btn');
@@ -97,11 +108,11 @@ categoriesConteiner.addEventListener('click', e => {
     e.target.classList.add('active_btn');
   }
   if (e.target.classList.contains('btn-all-categori')) {
-    createGalleryCard(favoritesRecipes, listFav);
+    createGalleryCard(  createGalleryCard(favoritesRecipes.slice(0, 12),listFav), listFav);
   }
 });
 
-document.querySelector('.btn-all-categori ').addEventListener('click', e => {
+document.querySelector('.btn-all-categori').addEventListener('click', e => {
   e.target.classList.add('active_all-categories');
   activeCategories.classList.remove('active_btn');
 });
@@ -120,6 +131,7 @@ function seeRecipe(evt) {
 
 /////////////////////////////Адаптив
 let limit;
+
 if (window.screen.width >= 768) {
   console.log(favoritesRecipes.length);
   limit = favoritesRecipes.slice(0, 12);
