@@ -99,6 +99,11 @@ categoriesConteiner.addEventListener('click', e => {
       .querySelector('.btn-all-categori ')
       .classList.remove('active_all-categories');
 
+
+        if( favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12).length <= 12){
+          btn_conteiner_pagination.style.display = 'none';
+        }
+      
     createGalleryCard(favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12),listFav);
 
     if (activeCategories !== undefined) {
@@ -108,7 +113,13 @@ categoriesConteiner.addEventListener('click', e => {
     e.target.classList.add('active_btn');
   }
   if (e.target.classList.contains('btn-all-categori')) {
-    createGalleryCard(  createGalleryCard(favoritesRecipes.slice(0, 12),listFav), listFav);
+
+    if( favoritesRecipes.length <= 12){
+      btn_conteiner_pagination.style.display = 'block';
+      
+    }
+    refreshPage();
+    createGalleryCard( favoritesRecipes.slice(0, 12),listFav, listFav);
   }
 });
 

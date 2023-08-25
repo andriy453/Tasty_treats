@@ -144,6 +144,7 @@ let activeCategories;
 refs.categoriesEl.addEventListener('click', handleCategory);
 const axiosCardInstance = new axiosCard();
 function handleCategory(e) {
+  
   if (e.target.classList.contains('category-item')) {
     refs.btn_all_categories.classList.remove('active_all-categories');
     selectedCategoryId = e.target.getAttribute('value');
