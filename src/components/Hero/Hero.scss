@@ -42,6 +42,7 @@
   transition-property: color, background-color;
   transition-duration: 200ms;
   margin-bottom: 48px;
+  transition: all 500ms;
 }
 
 .btnOrderNow:hover {

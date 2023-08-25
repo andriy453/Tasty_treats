@@ -13,6 +13,7 @@ btn.addEventListener('click',(()=>{
 modal.style.display = 'block';
 window.addEventListener('click',closemod)
 }
+
 )) 
 if(btnOrderNow){
   btnOrderNow.addEventListener('click',(()=>{

@@ -49,6 +49,7 @@ function seeRecipe(evt) {
     });
   }
 }
+
 const popular = document.querySelector('.popular');
 popular.addEventListener('click', e => {
   console.log(e.target);
@@ -57,6 +58,7 @@ popular.addEventListener('click', e => {
     console.log('ggg');
   }
 });
+
 
 function openModalRating() {
   backdropEl.classList.add('is-hidden');
