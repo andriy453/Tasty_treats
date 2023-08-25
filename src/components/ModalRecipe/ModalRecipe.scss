@@ -39,10 +39,14 @@ body {
   overflow: hidden;
 }
 .is-hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-delay: 0ms;
 }
 .backdrop-see {
   /* display: none; */
+  transition: opacity 300ms , visibility 300ms ;
   position: fixed;
   top: 0;
   left: 0;
@@ -51,14 +55,20 @@ body {
   z-index: 3;
   background-color: rgba(0, 0, 0, 0.2);
   transition: opacity var(--timing-function) 250ms,
-    visibility var(--timing-function) 250ms;
+  visibility var(--timing-function) 250ms;
   overflow: auto;
 }
 
 .backdrop-see.is-hidden {
   opacity: 0;
   pointer-events: none;
+
 }
+.backdrop-see.is-hidden .modal_see {
+  transform: scale(0.75) translate(-65%, -65%);
+  transition-delay: ms;
+}
+
 
 .modal_see {
   position: absolute;
@@ -69,6 +79,8 @@ body {
   background-color: var(--modal-bg);
   padding: 40px 20px;
   border-radius: 15px;
+  transition: all 500ms ;
+  transition-delay:300ms;
   // max-height: 900px;
   overflow: auto;
 }
@@ -85,12 +97,12 @@ body {
 }
 
 .close-modal {
+  transition: 500ms cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
   top: 16px;
   right: 16px;
   width: 24px;
   height: 24px;
-  display: block;
   background-color: transparent;
   border: none;
   cursor: pointer;
