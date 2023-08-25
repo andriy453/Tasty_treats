@@ -1,33 +1,55 @@
-<div class="display-filters">
+<div class="container-filters">
   <div class="select-container">
     <p class="select-text">Search</p>
-
     <input type="text" class="input-filter" placeholder="Enter text" />
+
     <svg class="icon-search-input" width="18" height="18">
       <use href="./images/sprite.svg#icon-search-input"></use>
     </svg>
-
   </div>
 
-  <div class="select-container">
-    <p class="select-text">Time</p>
-    <select class="time-select"></select>
+  <div class="select-container-tabl">
+    <p class="select-text-tabl">Time</p>
+    <select class="time-select">
+      <option value="">Time</option>
+    </select>
   </div>
 
-  <div class="select-container">
-    <p class="select-text">Area</p>
-    <select class="area-select"></select>
+  <div class="select-container-tabl">
+    <p class="select-text-tabl">Area</p>
+    <select class="area-select">
+      <option value="" selected>Area</option>
+    </select>
   </div>
+  <!-- Для мобільної версії -->
+  <div class="filter-time-area-mob">
+    <div class="select-container-mob">
+      <p class="select-text-mob">Time</p>
+      <select class="time-select-mob">
+        <option value="">Time</option>
+      </select>
+    </div>
+
+    <div class="select-container-mob">
+      <p class="select-text-mob">Area</p>
+      <select class="area-select-mob">
+        <option value="">Area</option>
+      </select>
+    </div>
+  </div>
+  <!-- для моб версії -->
 
   <div class="select-container">
     <p class="select-text">Ingredients</p>
-    <select class="ingredients-select"></select>
+    <select class="ingredients-select">
+      <option value="">Ingredients</option>
+    </select>
   </div>
 </div>
 
-<p class="reset-filter">
+<button type="button" class="reset-filter">
   <svg class="icon icon-x-filters" width="16" height="16">
     <use href="./images/sprite.svg#icon-x-filters"></use>
   </svg>
   Reset the filter
-</p>
+</button>

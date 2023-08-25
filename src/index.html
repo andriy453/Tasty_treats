@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <link rel="icon" type="favicon" href="./images/favicon.png" sizes="16x16" />
     <title>Tasty Treats</title>
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   </head>
   <body>
-
     <main>
       <include src="./components/Header/Header.html"></include>
       <include src="./components/Hero/Hero.html"></include>
@@ -22,13 +21,17 @@
             src="./components/PopularRecipes/PopularRecipes.html"
           ></include>
         </div>
-        <div>
+
+        <div class="home-conteiner">  
+          <include src="./components/scroll-to-top/scrollTop.html"></include>
+
           <include
             src="./components/categoriesFilter/categoriesFilter.html"
           ></include>
           <include src="./components/cards/cards.html"></include>
-          <include src="./components/OrderNow/OrderNow.html"></include>
-           <include src="./components/rating/rating.html"></include>
+           <include src="./components/Rating/Rating.html"></include>
+          <include src="./components/OrderNow/OrderNow.html"></include> 
+          <include src="./components/ModalRecipe/ModalRecipe.html"></include>
         </div>
       </div>
     </main>

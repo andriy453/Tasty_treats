@@ -1,0 +1,54 @@
+.scroll-top-btn {
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    bottom: 50px;
+}
+
+.scroll-top-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--accent);
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.show-btn {
+    opacity: 1;
+    transition: 1s;
+
+    &_hide {
+        opacity: 0;
+        transition: 1s;
+    }
+}
+
+.scroll-top-icon:hover, .scroll-top-icon:focus{
+    box-shadow:  0px 0px 30px #a2ff3fca;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+@media screen and (min-width: 768px) {
+    .scroll-top-btn {
+        right: 15px;
+        bottom: 40px;
+    }
+    .scroll-top-icon {
+    width: 45px;
+    height: 45px;
+}
+
+}
+@media screen and (min-width: 1280px) {
+    .scroll-top-btn {
+        right: 40px;
+        bottom: 40px;
+    }
+    .scroll-top-icon {
+    width: 50px;
+    height: 50px;
+}
+
+}

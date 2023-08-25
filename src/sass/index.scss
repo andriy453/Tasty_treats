@@ -1,7 +1,6 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-
-@import '../components/rating/rating.scss';
+@import '../components/Rating/Rating.scss';
 
 @import '../components/PopularRecipes/PopularRecipes.scss';
 @import '../components/cards/styles.scss';
@@ -9,6 +8,10 @@
 @import '../components/Categories/Categories.scss';
 @import '../components/Hero/Hero.scss';
 @import '../components/OrderNow/OrderNow.scss';
+@import '../components/ModalRecipe/ModalRecipe.scss';
+
+@import '../components/scroll-to-top/scrollTop.scss';
+
 
 @font-face {
   font-family: Inter-Regular;
@@ -16,23 +19,23 @@
 }
 
 :root {
-  --white: #F8F8F8;
+  --white: #f8f8f8;
   --black: #161616;
   --black_2: #050505;
   --white_2: #ffffff;
-  --green: #9BB537;
-  --oragne: #EEA10C;
+  --green: #9bb537;
+  --oragne: #eea10c;
   --gray: rgb(206, 205, 205);
 }
 
 :root[data-theme='light'] {
-  --bg-main: #F8F8F8;
+  --bg-main: #f8f8f8;
   --txt-color: #050505;
-  --bg-mob-menu: #9BB537;
-  --accent: #9BB537;
+  --bg-mob-menu: #9bb537;
+  --accent: #9bb537;
   --current-mob: #ffffff;
-  --gray-color-btn: rgba(5, 5, 5, 0.30);
-  --oragne: #EEA10C;
+  --gray-color-btn: rgba(5, 5, 5, 0.3);
+  --oragne: #eea10c;
   --primary-color-08: rgba(5, 5, 5, 0.8);
   --primary-color-05: rgba(5, 5, 5, 0.5);
   --primary-color-03: rgba(5, 5, 5, 0.3);
@@ -45,6 +48,7 @@
   --primary-raiting: #fff;
   --border-pag: #9bb537;
   --option-color: #fff;
+
   --grey: rgba(5, 5, 5, 0.30);
   --modal-bg: #fff;
 }
@@ -53,10 +57,10 @@
   --bg-main: #161616;
   --txt-color: #ffffff;
   --bg-mob-menu: #050505;
-  --accent: #9BB537;
-  --current-mob: #9BB537;
+  --accent: #9bb537;
+  --current-mob: #9bb537;
   --gray-color-btn: rgba(255, 255, 255, 0.3);
-  --oragne: #EEA10C;
+  --oragne: #eea10c;
   --primary-color-08: rgba(255, 255, 255, 0.8);
   --primary-color-05: rgba(255, 255, 255, 0.5);
   --primary-color-03: rgba(255, 255, 255, 0.3);
@@ -70,10 +74,12 @@
   --primary-raiting: #1e1e1e;
   --border-pag: #9bb537;
   --option-color: #050505;
+
   --grey: rgba(255, 255, 255, 0.50);
   --modal-bg: #050505;
   --gray-star-modal: #D9D9D9;
 }
+
 
 body {
   font-family: Inter-Regular, sans-serif;
@@ -95,16 +101,48 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-:focus,
-:active {
-  outline: none;
+  html {
+    scroll-behavior: smooth;
 }
 
-a:focus,
-a:active {
-  outline: none;
+
+input,
+button,
+textarea {
+  font-family: inherit;
 }
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 0 auto;
+}
+
+  .container-home {
+    display: flex;
+    gap: 0px 32px;
+  }
+}
+
 
 nav,
 footer,
@@ -115,7 +153,6 @@ aside {
 
 html,
 body {
-
   height: 100%;
   width: 100%;
   font-style: 100%;
@@ -177,12 +214,11 @@ h6 {
 }
 
 .container {
-  width: 100%;
+  max-width: 320px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 0 auto;
 }
-
 @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
@@ -190,14 +226,12 @@ h6 {
     padding-right: 20px;
   }
 }
-
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
-
   .container-home {
     display: flex;
     gap: 0px 32px;
@@ -211,3 +245,4 @@ h6 {
     padding-right: 100px;
   }
 }
+

@@ -12,7 +12,7 @@
 }
 
 .hero-title {
-  min-width: 335px;
+  min-width: 310px;
   text-transform: uppercase;
   font-size: 26px;
   font-weight: 600;
@@ -34,20 +34,22 @@
 .btnOrderNow {
   cursor: pointer;
   border: 1px solid var(--green);
-  background-color: white;
+  color: var(--txt-color);
   border-radius: 15px;
   padding: 10px 20px;
   font-size: 14px;
   font-weight: 500;
   transition-property: color, background-color;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
   margin-bottom: 48px;
+  transition: all 500ms;
 }
 
 .btnOrderNow:hover {
   border: 1px solid var(--green);
   background-color: var(--green);
   color: var(--white);
+
 }
 
 
@@ -131,7 +133,6 @@
   .hero-container {
     align-items: center;
     display: flex;
-    overflow: visible;
   }
   .btnOrderNow{
     margin-bottom: 0px;
@@ -139,6 +140,7 @@
   .hero-wrap{
     display: flex;
   }
+
 }
 
 
@@ -244,11 +246,55 @@ span.swiper-pagination-bullet-active {
   opacity: 1;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 375px) {
 
 .mini-picture {
   margin-bottom: 60px;
 }
+.hero-title {
+  min-width: 335px;
+}
+
+}
+@media screen and (min-width: 768px) {
+  .hero-text-wrapper {
+    text-align: left;
+    width: 446px;
+    margin-bottom: 64px;
+    margin-right: 32px;
+  }
+  .btnOrderNow {
+    margin-bottom: 64px;
+    border: 1px solid var(--green);
+    background-color: var(--bg-main);
+    color: var(--txt-color);
+  }
+  .btnOrderNow:hover {
+    border: 1px solid var(--green);
+    background-color: var(--green);
+    color: var(--white);
+  }
+  .hero-title {
+    width: 446px;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .hero-title-green {
+    color: var(--green);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-text {
+    width: 408px;
+    margin: 16px 0 32px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .btnOrderNow {
+    padding: 14px 28px;
+  }
+
   .case {
     width: 889px;
   }
@@ -286,12 +332,32 @@ span.swiper-pagination-bullet-active {
 }
 
 @media screen and (min-width: 1280px) {
-  .hero {
-    overflow: hidden;
+
+  .hero-container {
+    align-items: center;
+    display: flex;
+  }
+
+swiper-container {
+  width: 355px;
+  height: 466px;
+}
+}
+@media screen and (min-width: 768px) {
+  swiper-container {
+    width: 736px;
+    height: 466px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  swiper-container {
+    width: 640px;
+    height: 466px;
   }
   .hero-wrap {
     display: flex;
    }
-}
+
+  }
 
 

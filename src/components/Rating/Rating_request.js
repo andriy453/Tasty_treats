@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 
 
 const ratingBackdrop = document.querySelector('.rating-backdrop');
-export class addARating {
+ class addARating {
   constructor() {
     this.id = '';
     this.inputValue = '';
@@ -53,3 +53,5 @@ export class addARating {
     this.id = id;
   }
 };
+
+export default addARating;
