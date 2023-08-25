@@ -36,12 +36,7 @@ function seeRecipe(evt) {
       const favoriteBtn = document.querySelector('.js-favorite');
       const RatingeBtn = document.querySelector('.js-rating');
 
-      if (
-        JSON.parse(
-          localStorage.getItem('favorite') &&
-            JSON.parse(localStorage.getItem('favorite')).includes(id)
-        )
-      ) {
+      if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(id))) {
         favoriteBtn.textContent = 'Remove from favorites';
       }
       favoriteBtn.addEventListener('click', addFavorite);
@@ -55,7 +50,6 @@ popular.addEventListener('click', e => {
   let targetEl = e.target;
   let listItem = targetEl.closest('.photo-card_recipes');
   if (listItem) {
-    console.log(listItem.id);
     fetchRecipe(listItem.id).then(obj => {
       modalEl.innerHTML = renderRecipe(obj);
       const closeModalBtn = document.querySelector('.close-modal');
@@ -66,16 +60,11 @@ popular.addEventListener('click', e => {
       const favoriteBtn = document.querySelector('.js-favorite');
       const RatingeBtn = document.querySelector('.js-rating');
       modalRatingOpCl(RatingeBtn);
-      console.log(RatingeBtn)
       RatingeBtn.addEventListener('click',()=>{
       document.querySelector('.rating-backdrop').classList.remove('visible')
   })
-      if (
-        JSON.parse(
-          localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(id) )
-      ) {
-        favoriteBtn.textContent = 'Remove from favorites';
-      }
+      if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(listItem.id) )) {
+        favoriteBtn.innerText = 'Remove from favorites'; }
       favoriteBtn.addEventListener('click', addFavorite);
     });
   
@@ -161,8 +150,6 @@ function renderRecipe({
                   ${markupTags(tags)}
                   </ul>
               </div>
-
-
               <div class="recipe">
                   <p class="instructions">
                   ${instructions}
@@ -215,25 +202,17 @@ function fetchRecipeById(recipeId) {
 async function addFavorite(e) {
   e.target.textContent = 'Add to favorite';
   const recipeId = e.target.id;
-  console.log('recipeId:', recipeId);
-
   const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
   if (inStorage) {
     favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
     e.target.classList.remove('heart-icon-active');
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-    console.log('Updated Favorite Array:', favoriteArr);
-
     return;
   }
   try {
     const recipe = await fetchRecipeById(recipeId);
-
     favoriteArr.push(recipe);
-
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-
-    console.log('Favorite Array:', favoriteArr);
     e.target.classList.add('heart-icon-active');
   } catch (error) {
     console.error('Error:', error);

@@ -37,7 +37,6 @@ function closemod (e){
     messageBox.style.display = 'none';
     thanksBox.style.display = 'none';
     window.removeEventListener('click',closemod);
-    console.log('sss')
   }
 
 }

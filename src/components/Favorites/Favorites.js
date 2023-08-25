@@ -31,8 +31,6 @@ createGalleryCard(favoritesRecipes, listFav);
 
 function categories(categories) {
   const SetCategories = [...new Set(categories)];
-
-console.log(SetCategories)
   const  UpdatedCAr = SetCategories.map(name => {return `<button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`}).join('');
   const all_categorieUpdate = () => {
     if(SetCategories.length){
@@ -55,7 +53,6 @@ function remoteFavRecipe(e) {
   if (e.target.classList.contains('btn-heard')) {
     e.target.classList.remove('btn-heard');
     e.target.classList.add('btn-heard-noactiv');
-    console.log('ffff')
     const recipeId = e.target.id;
 
     // Видаляємо рецепт з масиву favoritesRecipes
@@ -105,7 +102,6 @@ categoriesConteiner.addEventListener('click', e => {
         } if  ( favoritesRecipes.filter(res => res.category === e.target.id).length > 12){
           btn_conteiner_pagination.style.display = 'block';
           array =  favoritesRecipes.filter(res => res.category === e.target.id)
-          console.log( favoritesRecipes.filter(res => res.category === e.target.id))
         }
       
     createGalleryCard(favoritesRecipes.filter(res => res.category === e.target.id).slice(0, 12),listFav);
@@ -126,20 +122,18 @@ categoriesConteiner.addEventListener('click', e => {
     createGalleryCard( favoritesRecipes.slice(0, 12),listFav, listFav);
   }
 });
+if(refs.all_categorie){
+    refs.all_categorie.addEventListener('click', e => {
+    e.target.classList.add('active_all-categories');
+    activeCategories.classList.remove('active_btn');
+  });
+}
 
-document.querySelector('.btn-all-categori').addEventListener('click', e => {
-  e.target.classList.add('active_all-categories');
-  activeCategories.classList.remove('active_btn');
-});
 
 listFav.addEventListener('click', seeRecipe);
 function seeRecipe(evt) {
   if (evt.target.tagName !== 'BUTTON') {
     return;
-  }
-
-  if (evt.target.innerText === 'See recipe') {
-    console.log(evt.target.innerText);
   }
   evt.target.classList.toggle('bnt');
 }
@@ -185,8 +179,6 @@ if (window.screen.width >= 768) {
       createGalleryCard(limit, listFav);
     });
     refs.btn_end.addEventListener('click', e => {
-      console.log(array.length);
-      console.log(array.length - 12);
       prev_state = array.length - 12;
       step_state = array.length;
       limit = array.slice(prev_state, step_state);
@@ -250,8 +242,6 @@ if (window.screen.width >= 768) {
       createGalleryCard(limit, listFav);
     });
     refs.btn_end.addEventListener('click', e => {
-      console.log(array.length);
-      console.log(array.length - 9);
       prev_state = array.length - 9;
       step_state = array.length;
       limit = array.slice(prev_state, step_state);

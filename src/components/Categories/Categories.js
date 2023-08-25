@@ -36,8 +36,8 @@ const refs = {
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
 };
-console.log(refs.timeMob);
-console.log(refs.areaMob);
+
+console.log();
 
 const axiosRecipesInstance = new axiosRecipes();
 
@@ -166,7 +166,6 @@ refs.inputEl.addEventListener('input', debounce(handleInputEl, 300));
 function handleInputEl(e) {
   inputValue = e.target.value.trim();
   axiosCardInstance.title = inputValue;
-  console.log(inputValue);
 
   showRecipes();
 }
@@ -175,9 +174,6 @@ refs.areaMob.addEventListener('change', handleAreaMob);
 function handleAreaMob(e) {
   selectedAreaId = e.target.value;
   axiosCardInstance.area = selectedAreaId;
-
-  console.log('areaId:', selectedAreaId);
-
   showRecipes();
 }
 refs.areaEl.addEventListener('change', handleArea);
@@ -185,9 +181,6 @@ refs.areaEl.addEventListener('change', handleArea);
 function handleArea(e) {
   selectedAreaId = e.target.value;
   axiosCardInstance.area = selectedAreaId;
-
-  console.log('areaId:', selectedAreaId);
-
   showRecipes();
 }
 
@@ -197,7 +190,6 @@ function handleTimeMob(e) {
   selectedTimeId = e.target.value;
   axiosCardInstance.time = selectedTimeId;
   arayRecept = selectedTimeId;
-  //console.log('timeId:', selectedTimeId);
   showRecipes();
 }
 
@@ -207,7 +199,6 @@ function handleTime(e) {
   selectedTimeId = e.target.value;
   axiosCardInstance.time = selectedTimeId;
   arayRecept = selectedTimeId;
-  //console.log('timeId:', selectedTimeId);
   showRecipes();
 }
 
@@ -215,9 +206,7 @@ refs.ingredientsEl.addEventListener('change', handleIngredients);
 
 function handleIngredients(e) {
   selectedIngredientsId = e.target.value;
-  console.log(e.target.value);
   axiosCardInstance.ingredients = selectedIngredientsId;
-  console.log('ingredientsId:', selectedIngredientsId);
   showRecipes();
 }
 
@@ -245,14 +234,12 @@ function showRecipes() {
       Notiflix.Notify.info("😪 We don't have recipes for your request!");
     }
     // results = data.results
-    console.log('Обрані рецепти', data);
     totalPages = data.totalPages;
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 }
 function showRecipesAdapt() {
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     totalPages = data.totalPages;
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
@@ -261,57 +248,47 @@ function showRecipesAdapt() {
 // pagination /////////////////////////// pagination/////////////////////////// pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
-  console.log('fffff');
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
 
 refs.button2.addEventListener('click', e => {
-  console.log(totalPages);
   if (totalPages === 2) {
     return;
   } else {
     axiosCardInstance.page = e.currentTarget.innerText;
 
     axiosCardInstance.getCardData().then(data => {
-      console.log('це рецепти', data);
       refs.gallery.innerHTML = createGalleryCard(data.results);
     });
   }
 });
 refs.button3.addEventListener('click', e => {
-  console.log(totalPages);
   if (totalPages === 3) {
     return;
   }
   axiosCardInstance.page = e.currentTarget.innerText;
 
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
 
 refs.btn_right.addEventListener('click', e => {
-  console.log(totalPages);
   if (totalPages === axiosCardInstance.page) {
     return;
   }
   axiosCardInstance.page++;
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
 refs.btn_end.addEventListener('click', e => {
-  console.log(totalPages);
 
   axiosCardInstance.page = totalPages;
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
@@ -319,20 +296,15 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
-  console.log('ffff');
   axiosCardInstance.page = axiosCardInstance.page--;
-  console.log(axiosCardInstance.page--);
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
 
 refs.btn_start.addEventListener('click', e => {
   axiosCardInstance.page = 1;
-  console.log(axiosCardInstance.page);
   axiosCardInstance.getCardData().then(data => {
-    console.log('це рецепти', data);
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 });
@@ -343,7 +315,6 @@ refs.btn_start.addEventListener('click', e => {
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
-console.log(  refs.areaEl.value )
   refs.timeEl.value = '';
   refs.areaEl.value = '';
   refs.timeMob.value = '';
@@ -351,7 +322,6 @@ console.log(  refs.areaEl.value )
   refs.ingredientsEl.value = '';
   // if()
   // activeCategories.classList.remove('active') ?? null;
-  console.log(selectedCategoryId)
   axiosCardInstance.category = selectedCategoryId;
   axiosCardInstance.area = null;
   axiosCardInstance.time = null;
@@ -362,8 +332,6 @@ console.log(  refs.areaEl.value )
 
   //refs.areaEl.firstElementChild.textContent;//як повернути 1 option при скиданні фільтрів
 
-  console.log(refs.areaEl.firstElementChild.textContent);
-  console.log('resetAllFilters:', axiosCardInstance);
   showRecipesAdapt();
 }
 
@@ -442,27 +410,19 @@ async function addFavorite(e) {
     return;
   }
   if (e.target.classList.contains('btn-heard')) {
-    console.log('Add to favorites');
     const recipeId = e.target.id;
-    console.log('recipeId:', recipeId);
 
     const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
     if (inStorage) {
       favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
       e.target.classList.remove('heart-icon-active');
       localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-      console.log('Updated Favorite Array:', favoriteArr);
-
       return;
     }
     try {
       const recipe = await fetchRecipeById(recipeId);
-
       favoriteArr.push(recipe);
-
       localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-
-      console.log('Favorite Array:', favoriteArr);
       e.target.classList.add('heart-icon-active');
     } catch (error) {
       console.error('Error:', error);

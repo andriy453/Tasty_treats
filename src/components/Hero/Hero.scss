@@ -196,6 +196,10 @@
   align-items: center;
   margin: 0 10px;
   display: flex;
+  background-image: url(../images/slider_swedow.png);
+  border: 1px solid rgba(155,181,55,0.3);
+  background-position: center;
+  background-size: cover;
 }
 
 .mini-picture {
@@ -251,7 +255,7 @@ span.swiper-pagination-bullet-active {
 @media screen and (min-width: 375px) {
 
 .mini-picture {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 .hero-title {
   min-width: 335px;
@@ -263,6 +267,9 @@ span.swiper-pagination-bullet-active {
     text-align: left;
     width: 446px;
     margin-right: 32px;
+  }
+  .mini-picture {
+    margin-bottom: 60px;
   }
   .btnOrderNow {
     margin-bottom: 64px;

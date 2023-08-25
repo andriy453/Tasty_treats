@@ -281,6 +281,10 @@ body {
 .close-sv_g path{
   stroke:var(  --txt-color);
 }
+.close-modal:hover .close-sv_g path,
+.close-modal:focus .close-sv_g path {
+  stroke: var(--green);
+}
 
 
 @media screen and (min-width: 375px) {
