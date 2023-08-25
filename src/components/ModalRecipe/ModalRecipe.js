@@ -2,7 +2,7 @@ import { modalRatingOpCl } from '../Rating/Rating.js';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/';
 
-function fetchRecipe(id) {
+ export async function  fetchRecipe(id) {
   return fetch(`${BASE_URL}${id}`).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
@@ -46,31 +46,35 @@ function seeRecipe(evt) {
 }
 
 const popular = document.querySelector('.popular');
-popular.addEventListener('click', e => {
-  let targetEl = e.target;
-  let listItem = targetEl.closest('.photo-card_recipes');
-  if (listItem) {
-    fetchRecipe(listItem.id).then(obj => {
-      modalEl.innerHTML = renderRecipe(obj);
-      const closeModalBtn = document.querySelector('.close-modal');
-      backdropEl.classList.remove('is-hidden');
-      document.body.classList.add('no-scroll');
-      closeModalBtn.addEventListener('click', closeModal);
-      document.addEventListener('keydown', closoOnBackdrop);
-      const favoriteBtn = document.querySelector('.js-favorite');
-      const RatingeBtn = document.querySelector('.js-rating');
-      modalRatingOpCl(RatingeBtn);
-      RatingeBtn.addEventListener('click',()=>{
-      document.querySelector('.rating-backdrop').classList.remove('visible')
-  })
-      if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(listItem.id) )) {
-        favoriteBtn.innerText = 'Remove from favorites'; }
-      favoriteBtn.addEventListener('click', addFavorite);
-    });
+if(popular){
+  popular.addEventListener('click', e => {
+    let targetEl = e.target;
+    let listItem = targetEl.closest('.photo-card_recipes');
+    if (listItem) {
+      fetchRecipe(listItem.id).then(obj => {
+        modalEl.innerHTML = renderRecipe(obj);
+        const closeModalBtn = document.querySelector('.close-modal');
+        backdropEl.classList.remove('is-hidden');
+        document.body.classList.add('no-scroll');
+        closeModalBtn.addEventListener('click', closeModal);
+        document.addEventListener('keydown', closoOnBackdrop);
+        const favoriteBtn = document.querySelector('.js-favorite');
+        const RatingeBtn = document.querySelector('.js-rating');
+        favoriteBtn.addEventListener('click', addFavorite);
+        RatingeBtn.addEventListener('click',()=>{
+        document.querySelector('.rating-backdrop').classList.remove('visible')
+     
+        modalRatingOpCl(RatingeBtn);
+    })
+        if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(listItem.id) )) {
+         console.log('gggg') }
+      });
   
-  }
-  
-});
+    }
+  });
+}
+
+
 
 
 function openModalRating() {
@@ -78,7 +82,7 @@ function openModalRating() {
   document.body.classList.remove('no-scroll');
   document.removeEventListener('keydown', closoOnBackdrop);
 }
-function closeModal() {
+export function closeModal() {
   backdropEl.classList.add('is-hidden');
   document.body.classList.remove('no-scroll');
   document.removeEventListener('keydown', closoOnBackdrop);
@@ -97,13 +101,13 @@ window.onclick = function (event) {
   }
 };
 
-function closoOnBackdrop(e) {
+export function closoOnBackdrop(e) {
   if (e.code === 'Escape') {
     closeModal();
   }
 }
 
-function renderRecipe({
+export function renderRecipe({
   _id,
   title,
   rating,
@@ -199,13 +203,14 @@ function fetchRecipeById(recipeId) {
     .catch(error => console.error('Error:', error));
 }
 
-async function addFavorite(e) {
-  e.target.textContent = 'Add to favorite';
+ export async function addFavorite(e) {
+  e.target.textContent = 'Remove from favorites';
   const recipeId = e.target.id;
   const inStorage = favoriteArr.some(({ _id }) => _id === recipeId); //якщо вже в локал сторажд
   if (inStorage) {
     favoriteArr = favoriteArr.filter(({ _id }) => _id !== recipeId);
     e.target.classList.remove('heart-icon-active');
+    e.target.textContent = 'Add to favorite';
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
     return;
   }
