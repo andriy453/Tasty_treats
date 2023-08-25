@@ -53,6 +53,9 @@ function seeRecipe(evt) {
   
 
 }
+let bnt_Popular = document.querySelectorAll('.photo-card_recipes')
+
+setTimeout(()=>{console.log(bnt_Popular)},300)
 const popular  = document.querySelector('.popular')
 popular.addEventListener('click',(e)=>{
   console.log(e.target)

@@ -68,6 +68,16 @@ function remoteFavRecipe(e) {
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoritesRecipes))
     createGalleryCard(favoritesRecipes, listFav)
 
+    const UpdatedCategories =  favoritesRecipes.map(recipe => {return recipe.category})
+    const  UpdatedCAr = UpdatedCategories.map(name => {return `<button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`}).join('');
+    const all_categorieUpdate = () => {
+      if(UpdatedCategories.length  === 0){
+        return '';
+      }else{
+        return `<button class="btn-all-categori  active_all-categories" type="button">All categories</button>${UpdatedCAr}`
+      }
+    }
+    categoriesConteiner.innerHTML = all_categorieUpdate() ;
     // refreshPage();
   }
   
