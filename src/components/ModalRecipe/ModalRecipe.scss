@@ -240,7 +240,7 @@ body {
   cursor: pointer;
   border-radius: 15px;
   border: 1px solid #9bb537;
-  color: var(--white);
+  color: var(--primary-color-08);
   font-size: 14px;
   font-weight: 500;
   width: 148px;
@@ -307,6 +307,7 @@ body {
     width: 531px;
     gap: 905px;
     padding: 32px;
+    padding-top: 38px;
   }
   .modal__title {
     line-height: 24px;

@@ -52,11 +52,35 @@ function seeRecipe(evt) {
 
 const popular = document.querySelector('.popular');
 popular.addEventListener('click', e => {
-  console.log(e.target);
-
-  if (e.target.classList.contains('photo-card_recipes')) {
-    console.log('ggg');
+  let targetEl = e.target;
+  let listItem = targetEl.closest('.photo-card_recipes');
+  if (listItem) {
+    console.log(listItem.id);
+    fetchRecipe(listItem.id).then(obj => {
+      modalEl.innerHTML = renderRecipe(obj);
+      const closeModalBtn = document.querySelector('.close-modal');
+      backdropEl.classList.remove('is-hidden');
+      document.body.classList.add('no-scroll');
+      closeModalBtn.addEventListener('click', closeModal);
+      document.addEventListener('keydown', closoOnBackdrop);
+      const favoriteBtn = document.querySelector('.js-favorite');
+      const RatingeBtn = document.querySelector('.js-rating');
+      modalRatingOpCl(RatingeBtn);
+      console.log(RatingeBtn)
+      RatingeBtn.addEventListener('click',()=>{
+      document.querySelector('.rating-backdrop').classList.remove('visible')
+  })
+      if (
+        JSON.parse(
+          localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(id) )
+      ) {
+        favoriteBtn.textContent = 'Remove from favorites';
+      }
+      favoriteBtn.addEventListener('click', addFavorite);
+    });
+  
   }
+  
 });
 
 
@@ -102,9 +126,10 @@ function renderRecipe({
 }) {
   return `
       <button type="button" class="close-modal">
-                  <svg class="icon-close" width="12px" height="12px">
-                      <use href="../images/sprite.svg#icon-x"> </use>
-                  </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M15 5L5 15" stroke="#050505" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5 5L15 15" stroke="#050505" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
                   
               </button>
               <div class="modal__video">

@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import Notiflix from 'notiflix';
-import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
-import 'slim-select/dist/slimselect.css';
+// import SlimSelect from '../../../node_modules/slim-select/src/slim-select';
+// import 'slim-select/dist/slimselect.css';
 
 import { createGalleryCard } from './galleryCard';
 import { axiosRecipes } from './axiosRecipes';
@@ -62,9 +62,9 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
     optionEl.classList.add('option-text');
     refs.areaMob.appendChild(optionEl);
   });
-  const slimSelect = new SlimSelect({
-    select: refs.areaMob,
-  });
+  // const slimSelect = new SlimSelect({
+  //   select: refs.areaMob,
+  // });
 });
 
 axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
@@ -76,9 +76,9 @@ axiosRecipesInstance.getFilteredData(areaRef).then(areas => {
     optionEl.classList.add('option-text');
     refs.areaEl.appendChild(optionEl);
   });
-  const slimSelect = new SlimSelect({
-    select: refs.areaEl,
-  });
+  // const slimSelect = new SlimSelect({
+  //   select: refs.areaEl,
+  // });
 });
 
 axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients => {
@@ -90,9 +90,9 @@ axiosRecipesInstance.getFilteredData(ingredientsRef).then(ingredients => {
     optionEl.classList.add('option-text');
     refs.ingredientsEl.appendChild(optionEl);
   });
-  const slimSelect = new SlimSelect({
-    select: refs.ingredientsEl,
-  });
+  // const slimSelect = new SlimSelect({
+  //   select: refs.ingredientsEl,
+  // });
 });
 selectTime();
 function selectTime() {
@@ -105,9 +105,9 @@ function selectTime() {
     refs.timeEl.appendChild(optionEl);
   }
 
-  const slimSelectEl = new SlimSelect({
-    select: refs.timeEl,
-  });
+  // const slimSelectEl = new SlimSelect({
+  //   select: refs.timeEl,
+  // });
 }
 
 selectTimeMob();
@@ -123,9 +123,9 @@ function selectTimeMob() {
     refs.timeMob.appendChild(optionEl);
   }
 
-  const slimSelectEl = new SlimSelect({
-    select: refs.timeMob,
-  });
+  // const slimSelectEl = new SlimSelect({
+  //   select: refs.timeMob,
+  // });
 }
 
 /////////////////////////Отримуємо обрані значення
