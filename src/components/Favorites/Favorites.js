@@ -33,17 +33,16 @@ createGalleryCard(favoritesRecipes, listFav);
 function categories(categories) {
   const SetCategories = [...new Set(categories)];
 
-  categoriesConteiner.insertAdjacentHTML(
-    'afterbegin',
-    '<button class="btn-all-categori  active_all-categories" type="button">All categories</button>'
-  );
-  categoriesConteiner.insertAdjacentHTML(
-    'beforeend',
-    SetCategories.map(name => {
-      return `
-          <button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`;
-    }).join('')
-  );
+console.log(SetCategories)
+  const  UpdatedCAr = SetCategories.map(name => {return `<button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`}).join('');
+  const all_categorieUpdate = () => {
+    if(SetCategories.length){
+      return `<button class="btn-all-categori  active_all-categories" type="button">All categories</button>${UpdatedCAr}`
+    }else{
+    return '';
+    }
+  }
+  categoriesConteiner.innerHTML = all_categorieUpdate() ;
 }
 categories(categoriesArray);
 
@@ -68,16 +67,8 @@ function remoteFavRecipe(e) {
     localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoritesRecipes))
     createGalleryCard(favoritesRecipes, listFav)
 
-    const UpdatedCategories =  favoritesRecipes.map(recipe => {return recipe.category})
-    const  UpdatedCAr = UpdatedCategories.map(name => {return `<button class="fav-category-fltr-btn" id='${name}' type="button">${name}</button>`}).join('');
-    const all_categorieUpdate = () => {
-      if(UpdatedCategories.length  === 0){
-        return '';
-      }else{
-        return `<button class="btn-all-categori  active_all-categories" type="button">All categories</button>${UpdatedCAr}`
-      }
-    }
-    categoriesConteiner.innerHTML = all_categorieUpdate() ;
+
+    categories(favoritesRecipes.map(recipe => {return recipe.category;}));
     // refreshPage();
   }
   
