@@ -342,7 +342,7 @@ refs.btn_start.addEventListener('click', e => {
 refs.resetFilter.addEventListener('click', resetAllFilters);
 
 function resetAllFilters() {
-
+console.log(  refs.areaEl.value )
   refs.timeEl.value = '';
   refs.areaEl.value = '';
   refs.timeMob.value = '';
