@@ -30,7 +30,7 @@
                 name="user_phone"
                 minlength="11"
                 maxlength="17"
-                pattern="+000000000000"
+                pattern="[+0-9]{3} [0-9]{3} [0-9]{7}"
                 title="+xx xxx xxxxxxx"
                 required
               />
@@ -64,10 +64,7 @@
 
 <!-- ... (код формы) ... -->
 
-<div id="messageBox" class="message-box">
-  <p id="messageText"></p>
-  <button id="okButton">ОК</button>
-</div>
+
 
 <div id="thanksBox" class="message-box">
   <p id="messageText" >Thank you for your order, we will contact you shortly!</p>
