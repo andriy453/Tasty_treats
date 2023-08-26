@@ -9,6 +9,7 @@ import { renderRecipe } from '../Rating/Rating.js';
 
 const listFav = document.querySelector('.fav-recipe-card-list');
 const categoriesConteiner = document.querySelector('.fav-category-block');
+const Conteiner_carts = document.querySelector('.container-cards')
 const btn_heard = document.querySelector('.btn-heard');
 const btn_conteiner_pagination = document.querySelector(
   '.button-style-favorites'
@@ -299,10 +300,10 @@ if( JSON.parse(localStorage.getItem(KEY_FAVORITE)) !== null){
   if ( favoritesRecipes === undefined) {
    console.log( JSON.parse(localStorage.getItem(KEY_FAVORITE)))
  }
- const gallery = document.querySelector('.gallery');
 
- if(gallery){
-  gallery.addEventListener('click', seeRecipe);
+
+ if(Conteiner_carts){
+  listFav.addEventListener('click', seeRecipe);
  }
 
  const backdropEl = document.querySelector('.backdrop-see');
@@ -314,27 +315,27 @@ function seeRecipe(evt) {
 
   if (evt.target.innerText === 'See recipe') {
     let id = evt.target.id;
+  fetchRecipe(id).then(obj => {
+  const favoriteBtn = document.querySelector('.js-favorite');
+  favoriteBtn.textContent = 'Remove from favorites';
+  modalEl.innerHTML = renderRecipe(obj);
+  const closeModalBtn = document.querySelector('.close-modal');
+  backdropEl.classList.remove('is-hidden');
+  document.body.classList.add('no-scroll');
+  closeModalBtn.addEventListener('click', closeModal);
+  document.addEventListener('keydown', closoOnBackdrop);
+  const RatingeBtn = document.querySelector('.js-rating');
 
-    fetchRecipe(id).then(obj => {
-      const favoriteBtn = document.querySelector('.js-favorite');
-      favoriteBtn.textContent = 'Remove from favorites';
-      modalEl.innerHTML = renderRecipe(obj);
-      const closeModalBtn = document.querySelector('.close-modal');
-      backdropEl.classList.remove('is-hidden');
-      document.body.classList.add('no-scroll');
-      closeModalBtn.addEventListener('click', closeModal);
-      document.addEventListener('keydown', closoOnBackdrop);
-      const RatingeBtn = document.querySelector('.js-rating');
 
+  if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(id))) {
 
-      if (JSON.parse(localStorage.getItem('favorite') &&JSON.parse(localStorage.getItem('favorite')).includes(id))) {
- 
-      }
-      favoriteBtn.addEventListener('click', addFavorite);
-      createGalleryCard( JSON.parse(localStorage.getItem('favorite')), listFav);
-      // modalRatingOpCl(RatingeBtn);
-    });
   }
+  favoriteBtn.addEventListener('click', addFavorite);
+  // createGalleryCard( JSON.parse(localStorage.getItem('favorite')), listFav);
+  // modalRatingOpCl(RatingeBtn);  
+    
+})
+}
 }
 
 
