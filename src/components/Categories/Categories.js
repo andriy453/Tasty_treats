@@ -390,7 +390,7 @@ function displayAllCategories(e) {
 const KEY_FAVORITE = 'favorite';
 let favoriteArr = JSON.parse(localStorage.getItem(KEY_FAVORITE)) ?? [];
 
-function fetchRecipeById(recipeId) {
+async function fetchRecipeById(recipeId) {
   return fetch(
     `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeId}`
   )

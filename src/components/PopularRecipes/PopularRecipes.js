@@ -21,7 +21,7 @@ const markup = (data) => {
         }
     const markup = data.map((element) =>
         
-        `<button type="button" class="photo-card_recipes"  id="${element._id}">
+        `<button type="button" class="photo-card_recipes btn-see-resipe"  id="${element._id}">
             <img class="popular-foto"  src="${element.preview}" alt="foto" width="64" height="64" " />
             <div class="info_recipes">
                 <h3 class="recipe-title">${element.title}</h3>
