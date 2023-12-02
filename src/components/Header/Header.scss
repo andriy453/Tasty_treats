@@ -92,14 +92,16 @@
     height: 18px;
     background: var(--white_2);
     border-radius: 18px;
-    transition: 0.3s;
+    transition: all 300ms;
 }
 
 .input-switcher:checked+.input-label {
     background: #9bb537;
+    transition: all 300ms;
 }
 
 .input-switcher:checked+.input-label:after {
+    transition: all 300ms;
     left: calc(100% - 1px);
     transform: translateX(-100%);
 }
@@ -121,6 +123,7 @@
     border: none;
     border-radius: 50%;
     outline: none;
+    transition: all 300ms;
 }
 
 .menu-toggle:hover,

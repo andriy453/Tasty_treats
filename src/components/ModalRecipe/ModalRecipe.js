@@ -40,7 +40,7 @@ function seeRecipe(evt) {
         favoriteBtn.textContent = 'Remove from favorites';
       }
       favoriteBtn.addEventListener('click', addFavorite);
-      // modalRatingOpCl(RatingeBtn);
+      modalRatingOpCl(RatingeBtn);
     });
   }
 }

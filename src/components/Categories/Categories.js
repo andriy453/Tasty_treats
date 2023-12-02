@@ -35,9 +35,10 @@ const refs = {
 
   btn_all_categories: document.querySelector('.btn-all-categories'),
   resetFilter: document.querySelector('.reset-filter'),
+
+  fidbackRaiting:document.querySelector(".js-rating")
 };
 
-console.log();
 
 const axiosRecipesInstance = new axiosRecipes();
 
@@ -430,23 +431,4 @@ async function addFavorite(e) {
   }
 }
 
-
-// refs.gallery.addEventListener('click', seeRecipe);
-
-// function seeRecipe(evt) {
-//   if (evt.target.tagName !== 'BUTTON') {
-//     return;
-//   }
-//   if (evt.target.innerText === 'See recipe') {
-//     const recipeId = evt.target.id;
-//     fetchRecipeById(recipeId)
-//       .then(res => {
-//         console.log(res);
-//         refs.ratingBackdrop.classList.toggle('visible');
-//       })
-//       .catch(error => {
-//         console.error('Error:', error);
-//       });
-//   }
-// }
 

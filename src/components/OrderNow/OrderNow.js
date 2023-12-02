@@ -10,33 +10,28 @@ const thanksBox = document.getElementById('thanksBox');
 const closeThanksButton = document.getElementById('closeThanksButton');
 
 btn.addEventListener('click',(()=>{
-modal.style.display = 'block';
-window.addEventListener('click',closemod)
+  modal.classList.add('is-hidden');
+// window.addEventListener('click',closemod)
 }
 
 )) 
 if(btnOrderNow){
   btnOrderNow.addEventListener('click',(()=>{
-  modal.style.display = 'block'
-  window.addEventListener('click',closemod)
+  modal.classList.remove('is-hidden');
+  // window.addEventListener('click',closemod)
 })) 
 
 }
 
 closeBtn.onclick = function () {
-  modal.style.display = 'none';
-  messageBox.style.display = 'none';
-  thanksBox.style.display = 'none';
+  modal.classList.add('is-hidden');
 
 };
 
 window.addEventListener('click',closemod)
 function closemod (e){
   if (e.target === modal) {
-    modal.style.display = 'none';
-    messageBox.style.display = 'none';
-    thanksBox.style.display = 'none';
-    window.removeEventListener('click',closemod);
+  modal.classList.add('is-hidden');
   }
 
 }
