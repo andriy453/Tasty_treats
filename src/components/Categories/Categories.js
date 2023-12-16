@@ -245,7 +245,7 @@ function showRecipesAdapt() {
     refs.gallery.innerHTML = createGalleryCard(data.results);
   });
 }
-
+let page = 1;
 // pagination /////////////////////////// pagination/////////////////////////// pagination
 refs.button1.addEventListener('click', e => {
   axiosCardInstance.page = 1;
@@ -258,6 +258,7 @@ refs.button2.addEventListener('click', e => {
   if (totalPages === 2) {
     return;
   } else {
+    page = 2
     axiosCardInstance.page = e.currentTarget.innerText;
 
     axiosCardInstance.getCardData().then(data => {
@@ -269,6 +270,7 @@ refs.button3.addEventListener('click', e => {
   if (totalPages === 3) {
     return;
   }
+  page = 3
   axiosCardInstance.page = e.currentTarget.innerText;
 
   axiosCardInstance.getCardData().then(data => {
@@ -280,6 +282,8 @@ refs.btn_right.addEventListener('click', e => {
   if (totalPages === axiosCardInstance.page) {
     return;
   }
+  page++
+  console.log(page)
   axiosCardInstance.page++;
   axiosCardInstance.getCardData().then(data => {
     totalPages = data.totalPages;
@@ -287,7 +291,8 @@ refs.btn_right.addEventListener('click', e => {
   });
 });
 refs.btn_end.addEventListener('click', e => {
-
+  page = totalPages
+    console.log(page)
   axiosCardInstance.page = totalPages;
   axiosCardInstance.getCardData().then(data => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
@@ -297,6 +302,8 @@ refs.btn_left.addEventListener('click', e => {
   if (axiosCardInstance.page === 1) {
     return;
   }
+  page--;
+  console.log(page)
   axiosCardInstance.page--;
   axiosCardInstance.getCardData().then(data => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
@@ -304,6 +311,8 @@ refs.btn_left.addEventListener('click', e => {
 });
 
 refs.btn_start.addEventListener('click', e => {
+  page = 1;
+    console.log(page)
   axiosCardInstance.page = 1;
   axiosCardInstance.getCardData().then(data => {
     refs.gallery.innerHTML = createGalleryCard(data.results);
